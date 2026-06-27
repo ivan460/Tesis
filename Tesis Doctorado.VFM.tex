@@ -1,0 +1,2682 @@
+\documentclass[10pt]{amsart}
+\usepackage{geometry}
+\usepackage[dvips]{graphicx}
+%\usepackage[pdftex]{graphicx}
+%\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+\usepackage{amscd,amsfonts,amssymb,amsmath,amsthm,latexsym}
+
+%\usepackage{showlabels}
+\usepackage{enumitem}
+\usepackage{graphics}
+\usepackage[all]{xy}
+\xyoption{curve}
+\xyoption{import}
+\xyoption{arc}
+\xyoption{ps}
+
+
+%\usepackage{mathtools}
+%\usepackage{enumerate}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{bigstrut}
+\usepackage{makecell}
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.markings}
+\useshorthands{"}
+\addto\extrasspanish{\languageshorthands{spanish}}
+
+
+
+%\UsePSspecials{dvips}
+%\addto\captionsspanish{\renewcommand{\figurename}{\footnotesize{Figura}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definici\'on}[section]
+\newtheorem{nota}[definition]{Nota}
+\newtheorem{obs}[definition]{Observaci\'on}
+\newtheorem{cor}[definition]{Corolario}
+\newtheorem{theorem}[definition]{Teorema}
+\newtheorem{lemma}[definition]{Lema}
+\newtheorem{proposition}[definition]{Proposici\'on}
+\newenvironment{AMS}{}{}
+
+
+\theoremstyle{remark}
+\newtheorem{rmk}[equation]{Remark}
+\newtheorem{rmks}[equation]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{defi}[equation]{Definition}
+\newtheorem{exam}[equation]{Example}
+
+
+\newtheorem{notation}[definition]{Notaci\'on}
+\newtheorem{ejem}[definition]{Ejemplo}
+\newtheorem{ex}[definition]{Ejercicio}
+\newtheorem{conjecture}[definition]{Conjetura}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% ALGUNOS COMANDOS
+
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\Dep}{\operatorname{depth}}
+\newcommand{\pic}{\operatorname{Pic}}
+\newcommand{\og}{\mathcal{O}}
+\newcommand{\et}{\mathcal{E}}
+\newcommand{\rest}[1]{\big|_{#1}}
+\newcommand{\ogx}{\mathcal{O}_X}
+\newcommand{\ogxU}{\ogx^{\times}}
+\newcommand{\kgav}{\mathcal{K}}
+\newcommand{\kgavxU}{\kgav_X^{\times}}
+\newcommand{\fgav}{\mathcal{F}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\ke}{\text{Ker}\,}
+\newcommand{\im}{\text{Im}\,}
+\newcommand{\coke}{\text{Coker}\,}
+\newcommand{\zar}{\operatorname{Zar}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Hilb}{\operatorname{Hilb}}
+\newcommand{\iso}{\cong}
+\newcommand{\HINST}[1]{\mathbf{HI}_{#1}}
+\newcommand{\DMeff}[1]{DM^{\mathrm{eff}}_{#1}}
+\usepackage{etoolbox}
+\DeclareMathOperator*{\colim}{co{\lim}}
+\makeatletter
+\patchcmd{\varlim@}{lim}{\lim}{}{}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%% PAGE LAYOUT
+\setlength{\textheight}{595pt}
+%\addtolength{\hoffset}{10pt}
+\addtolength{\voffset}{-10pt}
+\addtolength{\textheight}{55pt}
+\addtolength{\textwidth}{35pt}
+\addtolength{\evensidemargin}{-40pt}
+\addtolength{\headsep}{10pt}
+\linespread{1.1}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+
+
+\title{Tesis Doctorado}
+
+%\subjclass[2010]{05E99, 13F60, 16G20}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%% IMPORTANTE: LLENA LO SIGUIENTE
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\address{Instituto de Matem\'aticas, Universidad Nacional Aut\'onoma de M\'exico\\ Semestre 2024-1}
+\email{ivan\_es@outlook.es}
+\date{\today}
+\maketitle
+
+% Índice general
+\tableofcontents
+\newpage
+
+% Resto del documento...
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% DIVIDE LAS NOTAS EN SECCIONES y/o SUBSECCIONES SEGÚN SEA EL CASO
+\section{Introducción}
+La teoría de ciclos algebraicos en variedades proyectivas suaves es uno de los pilares fundamentales de la geometría algebraica moderna. Desde sus inicios, el estudio de las relaciones de equivalencia entre ciclos ha revelado profundas conexiones con diversas áreas aledañas a la geometría algebraica, tales como la topología algebraica, la teoría de Hodge y la geometría aritmética. En particular, el análisis de los subgrupos de ciclos algebraicamente equivalentes a cero, denotados $CH^{n}_{\mathrm{alg}}(X)$, ha ocupado un lugar central en la investigación geométrica durante décadas.
+
+\subsection{Contexto histórico y motivación}
+
+El enfoque clásico para el estudio de $CH^{n}_{\mathrm{alg}}(X)$, introducido por Samuel \cite{Sam60}, consiste en analizar \textbf{homomorfismos regulares} con valores en variedades abelianas. Dado un homomorfismo regular $\psi:CH^{n}_{\mathrm{alg}}(X) \to A(k)$, donde $A$ es una variedad abeliana sobre un campo base $k$ algebraicamente cerrado, el núcleo de $\psi$ proporciona información valiosa sobre la estructura de los ciclos algebraicos. Entre los ejemplos más destacados se encuentran:
+
+\begin{enumerate}
+    \item La \textbf{aplicación de Albanese} $\mathrm{alb}_X:CH^{n}_{\mathrm{alg}}(X) \to \mathrm{Alb}(X)(k)$ para ciclos de dimensión cero.
+    \item La \textbf{aplicación de Picard} $CH^{1}_{\mathrm{alg}}(X) \to \mathrm{Pic}^0(X)(k)$ para divisores.
+    \item En el caso complejo, la \textbf{aplicación de Abel-Jacobi} de Weil $\psi_n:CH^{n}_{\mathrm{alg}}(X) \to J_a^n(X)(\mathbb{C})$ hacia la parte algebraica de la jacobiana intermedia de Weil-Griffiths.
+\end{enumerate}
+
+Estas construcciones no solo definen invariantes geométricos fundamentales, sino que también conducen a distintas nociones de equivalencia. La \textbf{equivalencia de Abel-Jacobi}, dada por el núcleo de $\psi_n$, y la \textbf{equivalencia abeliana}, definida como la intersección de los núcleos de todos los homomorfismos regulares posibles, representan refinamientos sucesivos de la equivalencia algebraica. En característica cero, existe la conjetura de que el cociente entre estas dos nociones es una \textbf{isogenia} \cite{Kle71}, hecho demostrado en codimensiones bajas mediante la teoría clásica de las variedades de Picard y Albanese.
+
+\subsection{El marco de los motivos de Voevodsky}
+
+La aparición de la \textbf{teoría de motivos de Voevodsky} \cite{Voe00a,Voe00b} ha revolucionado nuestro entendimiento de las estructuras cohomológicas en geometría algebraica. La categoría triangulada de motivos efectivos $DM$ proporciona un marco en el cual encapsula información homotópica y  cohomológica en un solo lenguaje categórico. Este enfoque permite trasladar problemas geométricos tradicionales a un contexto donde herramientas como la \textbf{filtración por rebanadas (slice filtration)} y las \textbf{$t$-estructuras homotópicas} ofrecen perspectivas nuevas y poderosas.
+
+La filtración por rebanadas, en particular, establece una torre de subcategorias
+\[
+\cdots \subseteq DM(m+1) \subseteq DM(m) \subseteq DM(m-1) \subseteq \cdots
+\]
+que induce functores de cubrimiento efectivo $f_m$ y de corte $s_m$. Esta estructura filtrante juega un papel análogo a la filtración por pesos en cohomología de Hodge, proporcionando un lenguaje natural para discutir aproximaciones sucesivas de objetos motivicos.
+
+\subsection{Contribuciones principales}
+
+En esta tesis, se presenta una investigación de los homomorfismos regulares y las equivalencias asociadas desde la perspectiva de la teoría de motivos de Voevodsky. Los resultados abordados se articulan en dos direcciones fundamentales:
+
+\subsection{Construcción motívica para homomorfismos regulares}
+
+Dado un homomorfismo regular $\psi: CH^{n}_{\mathrm{alg}}(X) \to A(k)$, se construye un morfismo en $DM$
+\[
+z_\psi: M^n_{\psi}(X) \to M(X)
+\]
+que satisface las siguientes propiedades notables:
+
+\begin{enumerate}
+    \item Es una \textbf{aproximación razonable} de $M(X)$ en el sentido de la filtración por rebanadas: para $r \geq 1$, los morfismos $f_{d-n+r}(z_\psi)$ y $s_{d-n+r}(z_\psi)$ son isomorfismos en $DM$.
+    \item \textbf{Calcula el núcleo} de $\psi$: bajo el isomorfismo estándar
+    \[
+    \operatorname{Hom}_{DM}(\mathbf{1}(d-n)[2d-2n], M(X)) \cong CH^n(X),
+    \]
+    la imagen del morfismo inducido
+    \[
+    z_{\psi*}: \operatorname{Hom}_{DM}(\mathbf{1}(d-n)[2d-2n], M^{n}_{\psi}(X)) \to \operatorname{Hom}_{DM}(\mathbf{1}(d-n)[2d-2n], M(X))
+    \]
+    coincide exactamente con $\ker(\psi) \subseteq CH^{n}_{\mathrm{alg}}(X)$.
+\end{enumerate}
+
+Esta construcción generaliza y unifica los ejemplos clásicos, proporcionando un puente formal entre la teoría de ciclos algebraicos y la teoría de motivos.
+
+\subsection{Motivo para la equivalencia abeliana}
+
+De manera análoga, se construye un morfismo
+\[
+z^n_{\mathrm{ab}}: M^{n}_{\mathrm{ab}}(X) \to M(X)
+\]
+en $DM$ cuyas propiedades reflejan las de $z_\psi$, pero que ahora clasifica los ciclos \textbf{abelianamente equivalentes a cero}. Específicamente, la imagen de $z^n_{\mathrm{ab}*}$ bajo el isomorfismo anterior es exactamente el subgrupo $CH^{n}_{\mathrm{ab}}(X) \subseteq CH^{n}_{\mathrm{alg}}(X)$.
+
+Este resultado refina la estructura fina de los grupos de Chow, mostrando cómo la teoría de motivos captura no solo información sobre ciclos individuales, sino también sobre relaciones de equivalencia definidas globalmente mediante toda la familia de homomorfismos regulares.
+
+\subsection{Aplicaciones y casos particulares}
+
+El enfoque dado en esta tesis permite tratar de manera unificada varios casos de interés especial:
+
+\begin{enumerate}
+    \item \textbf{Equivalencia de Abel-Jacobi}: Cuando $k = \mathbb{C}$ y $\psi_n$ es la aplicación de Abel-Jacobi, se obtiene una construcción motivica $z^n_\mathrm{AJ}: M_\mathrm{AJ}^{n} \to M(X)$ que clasifica los ciclos Abel-Jacobi equivalentes a cero.
+    \item \textbf{Equivalencia por incidencia}: Para la aplicación de Picard superior $\psi_n: CH^{n}_{\mathrm{alg}}(X) \to \mathrm{Pic}^n(X)(k)$, se construye $z_{\mathrm{inc}}^{n}:M_{\mathrm{inc}}^{n}(X)\to M(X)$ que captura los ciclos incidentemente equivalentes a cero.
+    \item \textbf{Compatibilidad con la torre ortogonal}: En trabajos futuros, se aplicarán estos resultados al estudio de la filtración ortogonal $F^*$ sobre grupos de Chow racionales \cite{GP22}, que satisface varios de los axiomas de la aún conjectural filtración de Bloch-Beilinson-Murre.
+\end{enumerate}
+
+\subsection{Estructura de la tesis}
+
+La presente tesis se organiza de la siguiente manera:
+
+\begin{enumerate}
+    \item Se establece notación, recordando resultados fundamentales sobre la categoría de motivos de Voevodsky, la filtración por rebanadas y la $t$-estructura homotópica.
+    \item Se desarrolla un primer resultado principal, construyendo el motivo $M^{n}_{\psi}(X)$ asociado a un homomorfismo regular arbitrario.
+    \item Se estudia en detalle las aplicaciones a la equivalencia de Abel-Jacobi y a la equivalencia por incidencia.
+    \item  Se presenta un segundo resultado principal sobre la construcción del motivo $M^{n}_{\mathrm{ab}}(X)$.
+    \item  Se analiza el comportamiento de nuestras construcciones respecto a la filtración por cortes, demostrando los teoremas de isomorfismo para cubrimientos efectivos y cortes.
+    \item  Se discuten aplicaciones potenciales, extensiones y problemas abiertos.
+\end{enumerate}
+
+\newpage
+\section{Preliminares y notación}
+Sea \(k\) un campo base algebraicamente cerrado, y \(X\) una variedad proyectiva suave sobre \(k\) de dimensión \(d\). Recordando, se escribirá  \(CH^{n}(X)\) para el grupo de ciclos algebraicos de codimensión \(n\) de \(X\) módulo equivalencia racional, \(1\leq n\leq d\), y \(CH^{n}_{\mathrm{alg}}(X)\subseteq CH^{n}(X)\) para el subgrupo de ciclos algebraicos que son algebraicamente equivalentes a cero.
+
+
+
+
+
+Un método clásico para el estudio de \(CH^{n}_{\mathrm{alg}}(X)\) consiste en el análisis de subgrupos de \(CH^{n}_{\mathrm{alg}}(X)\) que están parametrizados por variedades abelianas \cite[pp. 445-446]{Kle71}. A saber, se considera el núcleo de homomorfismos regulares \(\psi:CH^{n}_{\mathrm{alg}}(X)\to A(k)\) en el sentido de Samuel \cite[p. 477]{Sam60}, \ref{HR}; donde \(A(k)\) es el grupo de puntos \(k\)-racionales para una variedad abeliana \(A\) dada sobre \(k\). Ejemplos notables son el morfismo de Albanese \(\psi=\mathrm{alb}_{X}:CH^{n}_{\mathrm{alg}}(X)\to\mathrm{Alb}(X)(k)\) para ciclos de dimensión cero en \(X\), el morfismo natural \(\psi:CH^{1}_{\mathrm{alg}}(X)\to\mathrm{Pic}^{0}(X)(k)\) para ciclos de codimensión \(1\) en \(X\), y en el caso \(k=\mathbb{C}\), \(1<n<d\), el morfismo de Abel-Jacobi de Weil \(\psi_{n}:CH^{n}_{\mathrm{alg}}(X)\to J^{n}_{a}(X)(\mathbb{C})\) en la parte algebraica del jacobiano intermedio de Weil-Griffiths \(J^{n}(X)\). El núcleo de \(\psi_{n}\) es el subgrupo \(CH^{n}_{\mathrm{AJ}}(X)\subseteq CH^{n}_{\mathrm{alg}}(X)\) de ciclos algebraicos Abel-Jacobi equivalentes a cero.
+
+
+En este trabajo se estudiaron homomorfismos regulares en el contexto de la categoría triangulada de motivos de Voevodsky. Se escribirá \(DM^{\mathrm{eff}}_{k}\) para la categoría triangulada de motivos efectivos de Voevodsky; y \(\mathbf{1}\), \(M(X)\in DM^{\mathrm{eff}}_{k}\), respectivamente, para el motivo de \(\operatorname{Spec}(k)\), \(X\) \ref{MV}. Sea \(\mathbb{P}^{m}\) el espacio proyectivo \(m\)-dimensional sobre \(k\), y sea \(\mathbf{1}(r)[2r]\in DM^{\mathrm{eff}}_{k}\), \(0\leq r\leq m\), los sumandos directos en la descomposición de \(M(\mathbb{P}^{m})\) en \(DM^{\mathrm{eff}}_{k}\) \cite[Prop. 3.5.1]{Voe00b}, \ref{MV}.
+
+\subsection{Resumen de los resultados principales}
+Considere un homomorfismo regular $\psi:CH^{n}_{\mathrm{alg}}(X)\to A(k)$. En nuestro primer resultado principal \ref{TP1}, \ref{TP2} construimos un morfismo $z_{\psi}:M^{n}_{\psi}(X)\to M(X)$ en $DM^{\mathrm{eff}}_{k}$ que satisface dos propiedades:
+
+\begin{enumerate}
+    \item Es una aproximación razonable de $M(X)$ en el siguiente sentido: para $r\geq 1$, los morfismos $f_{d-n+r}(z_{\psi})$, $s_{d-n+r}(z_{\psi})$ son isomorfismos en $DM^{\mathrm{eff}}_{k}$, donde $f_{m}$, $m\in\mathbb{Z}$, (respectivamente $s_{m}$) es la cubierta $(m-1)$-efectiva (respectivamente la $m$-rebanada) de la filtración de rebanada de Voevodsky.
+
+    \item Calcula el núcleo de $\psi$. A saber, bajo el isomorfismo $\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}(d-n)[2d-2n],M(X))\cong CH^{n}(X)$ \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b}, la imagen del morfismo inducido $z_{\psi*}:\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}(d-n)[2d-2n],M^{n }_{\psi}(X))\to\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}(d-n)[2d-2n ],M(X))$ es el núcleo del homomorfismo regular $\psi:CH^{n}_{\mathrm{alg}}(X)\to A(k)$.
+\end{enumerate}
+
+También se estudia el subgrupo $CH^{n}_{\mathrm{ab}}(X)\subseteq CH^{n}_{\mathrm{alg}}(X)$ de ciclos algebraicos abelianamente equivalentes a cero, que consiste en aquellos elementos en el núcleo de todo homomorfismo regular $\psi:CH^{n}_{\mathrm{alg}}(X)\to A(k)$. Cuando $k=\mathbb{C}$, $CH^{n}_{\mathrm{alg}}(X)\subseteq CH^{n}_{AJ}(X)$ y el morfismo natural: $CH^{n}_{\mathrm{alg}}(X)/CH^{n}_{\mathrm{ab}}(X)\to CH^{n}_{\mathrm{alg}}(X)/CH^ {n}_{\mathrm{AJ}}(X)$ es conjecturalmente una isogenia \cite[p. 447]{Kle71}. La conjetura se cumple para $n=1$, $d$ (en esta situación ambos grupos son iguales por la teoría clásica de las variedades de Picard y Albanese) y para $n=2$ \cite[p. 982 Cor.]{Mur83}, \cite[p. 229 Thm. 1.11.1]{Mur85} (donde también se cumple la igualdad).
+
+Para el segundo resultado principal \ref{TP4}, se construye un morfismo $z^{n}_{\mathrm{ab}}:M^{n}_{\mathrm{ab}}(X)\to M(X)$ en $DM^{\mathrm{eff}}_{k}$ que satisface propiedades similares a las de $z_{\psi}$ anteriores. A saber,
+
+\begin{enumerate}
+    \item Para $r\geq 1$, los morfismos $f_{d-n+r}(z^{n}_{\mathrm{ab}})$, $s_{d-n+r}(z^{n}_{\mathrm{ab}})$ son isomorfismos en $DM^{\mathrm{eff}}_{k}$.
+
+    \item Bajo el isomorfismo $\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}(d-n)[2d-2n],M(X))\cong CH^{n}(X)$ \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b}, la imagen del morfismo inducido $z^{n}_{\mathrm{ab}*}:\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}(d-n )[2d-2n],M^{n}_{\mathrm{ab}}(X))\to\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}( \mathbf{1}(d-n)[2d-2n],M(X))$ es el subgrupo de ciclos algebraicos abelianamente equivalentes a cero: $CH^{n}_{\mathrm{ab}}(X)\subseteq CH^{n}_{\mathrm{alg}}(X)$.
+\end{enumerate}
+
+En un trabajo futuro, se aplicarán los resultados obtenidos al estudio de la filtración ortogonal $F^{*}$ en los grupos de Chow $CH^{n}(X)_{\mathbb{Q}}$ \cite{Pel17, GP22, PR25}, que es una filtración la cual satisface varios de los axiomas de la filtración de Bloch-Beilinson-Murre.
+
+Los resultados están organizados como sigue: en la sección \ref{MVHR} se enunciará y establecerá el primer resultado principal \ref{TP1}, \ref{TP2} concerniente a homomorfismos regulares y se discutirán varios ejemplos particulares donde se aplica el principal resultado obtenido: equivalencia de Abel-Jacobi \ref{JI}  y equivalencia de incidencia \ref{EI}. En la sección \ref{MVEA} se enunciará y se demostrará el segundo resultado principal \ref{TP3}, \ref{TP4} concerniente a equivalencia abeliana.
+
+Por otra parte, se usará libremente el lenguaje de categorías trianguladas. Las referencias principales usadas serán \cite{Nee01}, \cite{BBD82}. Se escribirá $[1]$ (respectivamente $[-1]$) para denotar el functor de suspensión (respectivamente desuspensión) en una categoría triangulada; y para $n>0$, la composición de $[1]$ (respectivamente $[-1]$) iterada $n$-veces será $[n]$ (respectivamente $[-n]$). Si $n=0$, entonces $[0]$ será el functor identidad.
+
+Dado un morfismo $f:M\to N$ en una categoría abeliana $\mathcal{C}$, se escribirá $\ker(m)$ (respectivamente $\operatorname{coker}(m)$) para el núcleo (respectivamente conúcleo) de $f$ en $\mathcal{C}$.
+
+\subsection{La categoría triangulada de motivos de Voevodsky}\label{MV}
+
+Se escribirá $T\in K^{\mathbb{A}^{1}}(Shv^{tr})$ para el complejo de cadenas $\mathbb{Z}_{tr}(\mathbb{G}_{m})[1]$ \cite[2.12]{MVW06}, donde $\mathbb{G}_{m}$ es el $k$-esquema $\mathbb{A}^{1}\backslash\{0\}$ punteado por $1$. Sea $Spt_{T}(Shv^{tr})$ la categoría de espectros $T$-simétricos en $K^{\mathbb{A}^{1}}(Shv^{tr})$ equipada con la estructura modelo considerada en \cite[8.7 y 8.11]{Hov01}, \cite[Def. 4.3.29]{Ayo07}. La categoría triangulada de motivos de Voevodsky $DM_{k}$ es la categoría homotópica de $Spt_{T}(Shv^{tr})$ \cite{Voe00b}.
+
+
+\subsection{La t-estructura de homotopía y la categoría  ${\bf HI}_{k}$}\label{HV} Considérese la $t$-estructura de homotopía de Voevodsky ($(DM^{\textrm{eff}}_{k})_{\geq 0},(DM^{\textrm{eff}}_{k})_{\leq 0}$) en $DM^{\textrm{eff}}_{k}$ \cite[p. 11]{Voe00b}. Se usará la notación homológica para $t$-estructuras \cite[§2.1.3]{Ayo07}, \cite[§1.3]{Ayo11}, y se escribirá $\tau_{\geq m}$, $\tau_{\leq m}$ para los functores de truncación y ${\bf h}_{m}=[-m](\tau_{\leq m}\circ\tau_{\geq m})$. Sea ${\bf HI}_{k}$ la categoría abeliana de gavillas de Nisnevich homotópicamente invariantes con transfers sobre $Sm_{k}$, que es el corazón de la $t$-estructura de homotopía en $DM^{\textrm{eff}}_{k}$.
+
+\subsubsection{Funtores de puntos de variedades abelianas}\label{NC}
+Sea $A\in SmProj_{k}$ una variedad abeliana. Se escribirá $\mathcal{A}\in{\bf HI}_{k}$ para los functores de puntos de $A$ considerados como una gavilla de Nisnevich homotópicamente invariante con transfers\cite[Lem. 3.2, Rmk. 3.3]{SS03}. Dado un morfismo $f:Y\rightarrowtail A$ en $Sm_{k}$, se escribirá $\mathcal{A}_{f}:M(Y)\rightarrowtail\mathcal{A}$ en $DM^{\textrm{eff}}_{k}$ para la imagen de $f$ bajo el isomorfismo $\Gamma(Y,\mathcal{A})\cong\text{Hom}_{DM^{\textrm{eff}}_{k}}(M(Y),\mathcal{A})$ \cite[Prop. 3.1.9 and 3.2.3]{Voe00b}.
+
+\newpage
+
+\section{Motivos mixtos de Voevodsky}
+Sea $k$ un campo base arbitrario, y $Sch_{k}$ la categoría de $k$-esquemas de tipo finito. Dado $X\in Sch_{k}$, se escribirá $X(k)$ para el conjunto de $k$-puntos de $X$, y $\pi_{X}:X\to\mathrm{Spec}(k)$ para el morfismo estructural. Si $x\in X(k)$ se hará abuso de notación y también se escribirá $x:\operatorname{Spec}(k)\to X$ para el morfismo correspondiente en $Sch_{k}$. En caso de que $X$ sea reducido e irreducible, sea $k(X)$ el campo de funciones de $X$.
+
+Se escribirá $Sm_{k}$ para la subcategoría plena de $Sch_{k}$ que consiste en $k$-esquemas suaves considerados como un sitio con la topología de Nisnevich. Sea $SmProj_{k}$ la subcategoría plena de $Sm_{k}$ dada por variedades proyectivas suaves. 
+
+\begin{definition}
+Sea $X$ un esquema suave conexo sobre $\mathit{k}$, y $Y$ es cualquier esquema sobre $\mathit{k}$. Una \textbf{correspondencia elemental} de $X$ a $Y$ es un subconjunto cerrado irreducible $W$ de $X \times Y$ cuyo subesquema entero asociado es finito y sobreyectivo sobre $X$.
+El grupo Cor(X,Y) es el grupo abeliano libre generado por las correspondencias elementales de $X$ a $Y$. Los elementos de Cor(X,Y) se llaman \textbf{correspondencias finitas}.
+\end{definition} 
+
+\begin{obs} Sea $f:X \rightarrow Y$ un morfismo sobre $Sm_{\mathit{k}}$. Si $X$ es conexo, la gráfica $\Gamma_{f}$ de $f$ es una correspondencia elemental de $X$ a $Y$.
+\end{obs}
+
+\begin{obs}
+Todo subesquema cerrado $Z$ de $X \times Y$ que sea finito y suprayectivo sobre $X$ determina una correspondencia finita $[Z]$ de $X$ a $Y$.
+\end{obs}
+
+\begin{definition} Se define  $Cor_{k}$ a la categoría de correspondencias finitas de Suslin-Voevodsky sobre $k$ \cite{SV00}, \cite{Sus17}, cuyos objetos son esquemas separados suaves de tipo finito sobre $\mathit{k}$ y cuyos morfismos de $X$ a $Y$ son elementos de Cor(X,Y):
+\begin{equation*}
+\operatorname{Hom}_{{Cor}_{k}}(X,Y)=Cor(X,Y).
+\end{equation*}
+\end{definition}
+Además, se tiene que la categoría $Cor_{k}$ es una categoría aditiva con $\emptyset$ como el objeto cero y unión disjunta como coproducto.
+
+
+\begin{obs}
+Las categorías $Cor_{\mathit{k}}$ y $Sm_{\mathit{k}}$ tienen los mismos objetos y se satisface que $\Gamma_{g} \circ \Gamma_{f}=\Gamma_{g \circ f}$. Es decir existe un funtor fiel 
+\begin{equation*}
+Sm_{\mathit{k}} \rightarrow Cor_{\mathit{k}}
+\end{equation*}
+definido como
+\begin{equation*}
+X \mapsto X
+\end{equation*}
+ y 
+\begin{equation*}
+(f:X \rightarrow Y) \mapsto \Gamma_{f}
+\end{equation*}
+\end{obs}
+
+
+\begin{definition}
+Si $X$ y $Y$ son dos objetos en $Cor_{\mathit{k}}$, su producto tensorial $X \otimes Y$ se define como el producto de los esquemas sobre $\mathit{k}$ subyacentes:
+\begin{equation*}
+X \otimes Y := X \times Y
+\end{equation*}.
+\end{definition}
+
+El producto tensorial así definido hace de la categoría $Cor_{\mathit{k}}$ una categoría simétrica monoidal.
+
+\subsection{La categoría de motivos geométricos efectivos}
+\begin{definition} Se define la categoría $\widehat{DM}^{\textrm{eff}}_{gm}$ como la localización de $K^{b}(Cor_{\mathit{k}})$, como la categoría tensorial triangulada, bajo
+\begin{enumerate}
+\item \textbf{Homotopía}. Para $X \in Sm_{\mathit{k}}$, se invierte $p_{*}:[X \times \mathbb{A}^1] \rightarrow [X]$.
+\item \textbf{Mayer-Vietoris}. Sea $X \in Sm_{\mathit{k}}$. Se escribe a $X$ como una unión abierta de Zariski $X=U  \cup V$. Se tiene el morfismo canónico
+\[
+Cone \left( [U \cap V] \xrightarrow{(j_{U,U\cap V*}, -j_{V,U\cap V*})} [U] \oplus [V] \right) \longrightarrow [X]
+\]
+\end{enumerate}
+\end{definition}
+
+La categoría $DM^{\textrm{eff}}_{gm}$ de \textbf{motivos efectivos geométricos} es la cubierta pseudoabeliana de $\widehat{DM}^{\textrm{eff}}_{gm}$. Los morfismos que se invierten para formar $DM^{\textrm{eff}}_{gm}$ son cerrados bajo $\otimes$ de modo que $DM^{\textrm{eff}}_{gm}$ hereda la estructura tensorial $\otimes$ de $K^{b}(Cor_{\mathit{k}})$. Además, $DM^{\textrm{eff}}_{gm}$ es una categoría triangulada.
+
+\subsection{La categoría de motivos geométricos}
+Para definir la categoría de motivos geométricos se invierte el motivo de Lefschetz. Para $X \in Sm_{\mathit{k}}$, el \textbf{motivo reducido} es
+\begin{equation*}
+[\widetilde{X}] = Cone(p_{*}:[X] \rightarrow [\spec \mathit{k}])[-1].
+\end{equation*}
+
+Sea $\mathbb{Z}(1)=[\widetilde{\mathbb{P}}][-2]$, y sea $\mathbb{Z}(n)=\mathbb{Z}(1)^{\otimes n}$ para $n \geq 0$ el twist de Tate.
+
+\begin{definition} La categoría de \textbf{motivos geométricos}, $DM_{gm}$, se define invirtiendo al funtor $\otimes \mathbb{Z}(1)$ sobre $DM^{\textrm{eff}}_{gm}$; es decir, se tienen objetos $X(n)$ para $X \in DM^{\textrm{eff}}_{gm}$, $n \in \mathbb{Z}$ y
+
+\[
+\operatorname{Hom}_{DM_{gm}}(X(n), Y(m)) := \varinjlim_{N} \operatorname{Hom}_{DM^{\text{eff}}_{gm}}(X \otimes \mathbb{Z}(n+N), Y \otimes \mathbb{Z}(m+N)).
+\]
+\end{definition}
+
+Se tienen las siguientes propiedades:
+\begin{enumerate}
+\item Manda $X$ a $X(0)$ y usando el morfismo canónico
+\[
+\operatorname{Hom}_{DM_{gm}}(X, Y) \to \varinjlim_{N} \operatorname{Hom}_{DM^{\text{eff}}_{gm}}(X \otimes \mathbb{Z}(N), Y \otimes \mathbb{Z}(N))
+\]
+
+define un funtor 
+\begin{equation*}
+i:DM^{\textrm{eff}}_{gm} \rightarrow DM_{gm}
+\end{equation*}
+
+\item La involución conmutativa $\mathbb{Z}(1) \otimes \mathbb{Z}(1) \rightarrow \mathbb{Z}(1) \otimes \mathbb{Z}(1)$ es la identidad. Así se tiene que $DM_{gm}$ es una categoría tensorial triangulada.
+
+\item Poniendo $\mathbb{Z}(n)=\textbf{1}(n)$ para $n \in \mathbb{Z}$, se tiene que:
+\begin{equation*}
+X(n) \cong X \otimes \mathbb{Z}(n),
+\end{equation*}
+y
+\begin{equation*}
+\mathbb{Z}(n) \otimes \mathbb{Z}(m) \cong \mathbb{Z}(n+m)
+\end{equation*}
+
+\item Se tiene el funtor $M_{gm}:Sm_{\mathit{k}} \rightarrow DM^{\textrm{eff}}_{gm}$ que manda $X$ a la imagen de $[X]$ y $f$ a la imagen de la gráfica $\Gamma_{f}$.
+\end{enumerate}
+\begin{theorem}(\textbf{El teorema de cancelación de Voevodsky}). El funtor
+\begin{equation*}
+i:DM^{\textrm{eff}}_{gm} \rightarrow DM_{gm}
+\end{equation*}
+es un encaje fiel y pleno.
+\end{theorem}
+
+Voevodsky introduce categorías de motivos paralelas en las cuales es posible realizar cálculos explícitos. 
+
+\begin{definition} (Gavillas con transfers) 
+
+\begin{enumerate}
+\item La categoría \textbf{PST} de pregavillas con transfers es la categoría de pregavillas aditivas de grupos abelianos sobre 
+$Cor_{k}$, esto es la categoría de funtores aditivos
+\begin{equation*}
+F:Cor^{op}_{k} \rightarrow \textbf{Ab}
+\end{equation*}
+\item La categoría de gavillas de Nisnevich con transfers sobre $Sm_{\mathit{k}}$, $Shv^{tr}$ es la subcategoría plena de $PST$ con objetos dados por pregavillas $F$ tales que, para cada $X \in Sm_{\mathit{k}}$, la restricción de $F$ al sitio $X_{Nis}$ es una gavilla. Por otra parte, se tiene que  $Shv^{tr}$  es una categoría abeliana \cite[13.1]{MVW06}.  Se tiene el siguiente funtor de gavillización dado por
+\begin{equation*}
+F \mapsto F_{Nis}
+\end{equation*}
+\end{enumerate}
+\end{definition}
+
+\begin{definition} Una pregavilla $F \in PST$ sobre $Sm_{\mathit{k}}$ es una pregavilla con morfismos transfers
+\begin{equation*}
+Tr(a):F(Y) \rightarrow F(X)
+\end{equation*}
+tal que para correspondencia finita $a \in Cor_{\mathit{k}}$, satisface
+\begin{enumerate}
+\item $Tr(\Gamma_{f})=f^{*}$,
+\item $Tr(a \circ b)=Tr(b) \circ Tr(a)$
+\item $Tr(a \pm b)=Tr(a)\pm Tr(b)$
+\end{enumerate}
+\end{definition}
+
+Para $X \in Sch_{\mathit{k}}$, se tiene la gavilla con transfers $\mathbb{Z}_{tr}(X)$ definida por
+\begin{equation*}
+\mathbb{Z}_{tr}(X)(Y)=Cor(Y,X)
+\end{equation*}
+para $Y \in Sm_{\mathit{k}}$. La gavilla $\mathbb{Z}_{tr}(X)$ es la gavilla libre con transfers generada por la gavilla representable de conjuntos $\Hom_{Sch_\mathit{k}}(-,X)$. En particular, se tienen los isomorfismos canónicos
+\begin{equation*}
+\operatorname{Hom}_{Shv^{tr}}(\mathbb{Z}_{tr}(X),F)=F(X)
+\end{equation*}
+
+De hecho, para $F \in Shv^{tr}$, se tiene el siguiente isomorfismo canónico:
+\begin{equation*}
+Ext^{n}_{Shv^{tr}}(\mathbb{Z}_{tr}(X),F) \cong H^{n}(X_{Nis},F).
+\end{equation*}
+
+Además, se define una estructura tensorial sobre la categoría $PST$ como
+\begin{equation*}
+\mathbb{Z}_{tr}(X) \otimes^{tr} \mathbb{Z}_{tr}(Y)= \mathbb{Z}_{tr}(X \times Y)
+\end{equation*}
+
+\begin{definition} Sea $F$ una pregavilla de grupos abelianos sobre $Sm_{\mathit{k}}$. Se dice que $F$ es \textbf{invariante bajo homotopía} si para todo $X \in Sm_{\mathit{k}}$, la aplicación
+\begin{equation*}
+p^{*}:F(X) \rightarrow F(X \times \mathbb{A}^1)
+\end{equation*}
+es un isomorfismo en donde $p:X \times \mathbb{A}^{1} \rightarrow X$ es la proyección canónica. Se dice que $F$ es \textbf{estrictamente homotópicamente invariante} si para todo $q \geq 0$, la pregavilla de cohomología
+\begin{equation*}
+X \mapsto H^{q}(X_{Nis},F_{Nis})
+\end{equation*}
+es invariante bajo homotopía.
+\end{definition}
+
+Los siguientes resultados debido a Voevodsky son importantes para los propósitos de esta sección
+\begin{theorem}(Voevodsky)
+Sea $F \in PST$ invariante bajo homotopía sobre $Sm_{\mathit{k}}$. Entonces
+\begin{enumerate}
+\item La pregavilla de cohomología $X \mapsto H^{q}(X_{Nis},F_{Nis})$ son pregavillas con transfers sobre $\mathit{k}$.
+\item $F_{Nis}$ es estrictamente homotópicamente invariante.
+\item $F_{Zar}=F_{Nis}$ y $H^{q}(X_{Zar},F_{Zar})=H^{q}(X_{Nis},F_{Nis})$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Ch. 3, Thm. 4.27 y Thm. 5.7]{Voe00a}.
+\end{proof}
+
+\subsection{La categoría de complejos motívicos}
+Dentro de la categoría derivada $D^{-}(Shv^{tr})$, se tiene la subcategoría plena $DM^{\textrm{eff}}_{-}$ que consiste de complejos cuyas gavillas de cohomología son invariantes bajo homotopía.
+
+La idea ahora es describir a la categoría triangulada $DM^{\textrm{eff}}_{-}$ como una localización $D^{-}(Shv^{tr})$, por lo cual será necesario introducir el concepto de complejo de Suslin. Sea $\Delta^{n}=\spec\mathit{k}[t_{0},...,t_{n}]/\sum_{i=0}^{n}t_{i}-1$. La aplicación $n \mapsto \Delta^{n}$ define el $\mathit{k}$-esquema cosimplicial $\Delta^{*}$ con cocara
+\begin{equation*}
+\delta^{n}_{i}:\Delta^{n} \rightarrow \Delta^{n+1}
+\end{equation*}
+
+con
+
+\begin{equation*}
+\delta^{n}_{i}(x_{0},...,x_{n})=(x_{0},...,x_{i-1},0,x_{i},...,x_{n}).
+\end{equation*}
+
+\begin{definition}
+Sea $F$ una pregavilla de grupos abelianos sobre $Sm_{\mathit{k}}$. Se define la pregavilla $C_{n}(F)$ como 
+\begin{equation*}
+C_{n}(F)(X)=F(X \times \Delta^{n}).
+\end{equation*}
+El \textbf{complejo de Suslin} $C_{*}(F)=F(X \times \Delta^{n})$ es el complejo con diferencial
+\begin{equation*}
+d_{n}=\sum_{i}(-1)^{i}\delta^{*}_{i}:C_{n}(F) \rightarrow C_{n-1}(F).
+\end{equation*}
+
+Para $X \in Sm_{\mathit{k}}$, sea $C_{*}(X)$ el complejo de gavillas
+\begin{equation*}
+C_{n}(X)(U)=Cor(U\times \Delta^{n},X).
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Sean $F$ y $G$ en $C^{-}(PST)$. Se dice que dos aplicaciones $f,g:F \rightarrow G$ son $\mathbb{A}^{1}$-homotópicos si existe
+\begin{equation*}
+h:F \otimes^{tr} L(\mathbb{A}^1) \rightarrow G
+\end{equation*}
+con
+\begin{equation*}
+f=h \circ (id \otimes i_{0}),
+\end{equation*}
+
+\begin{equation*}
+g=h \circ(id \otimes i_{1})
+\end{equation*}
+Esta relación de equivalencia se escribe como $f ~_{\mathbb{A}^1} g$. Una aplicación $f:F \rightarrow G$ en $C^{-}(PST)$ es una $\mathbb{A}^1$-equivalencia homotópica si existe una aplicación $g:G \rightarrow F$ tal que $fg\sim_{\mathbb{A}^1} id_{G}$ y $gf\sim_{\mathbb{A}^1} id_{F}$.
+\end{definition}
+
+\begin{definition}
+Se denota por $\mathcal{A}_{\mathbb{A}^1}$ a la subcategoría de localización más pequeña de $D^{-}(Shv^{tr})$ que contiene al cono de cada $\mathbb{A}^1$-equivalencia homotópica $f:F \rightarrow G$ en $C^{-}(PST)$. Similarmente, $\tau_{\mathbb{A}^1}$ es la subcategoría de localización más pequeña de $D^{-}(PST)$ que contiene al cono de cada $\mathbb{A}^1$-equivalencia de homotopía $f:F \rightarrow G$ en $C^{-}(PST)$.
+\end{definition}
+
+\begin{theorem}
+El funtor
+\begin{equation*}
+C_{*}:C^{-}(Shv^{tr}) \rightarrow DM^{\textrm{eff}}_{-}
+\end{equation*}
+desciende a un funtor triangulado
+\begin{equation*}
+RC_{*}:D^{-}(Shv^{tr}) \rightarrow DM^{\textrm{eff}}_{-}
+\end{equation*}
+el cual es adjunto izquierdo a la inclusión $DM^{eff}_{-} \rightarrow D^{-}(Shv^{tr})$. El funtor $RC_{*}$ identifica $DM^{\textrm{eff}}_{-}$ con la localización $D^{-}(Shv^{tr})/\mathcal{A}_{\mathbb{A}^1}$. Además, $\mathcal{A}_{\mathbb{A}^1}$ es la subcategoría de localización de $D^{-}(Shv^{tr})$ generada por los complejos
+\begin{equation*}
+\mathbb{Z}_{tr}(X \times \mathbb{A}^1) \rightarrow \mathbb{Z}_{tr}(X)
+\end{equation*}
+ para $X \in Sm_{\mathit{k}}$.
+\end{theorem}
+
+\begin{proof}
+Ver \cite[ Prop. 3.2.3]{Vo1}.
+\end{proof}
+
+De igual manera, si se considera el funtor
+\begin{equation*}
+L:Cor_{k} \rightarrow Shv^{tr}
+\end{equation*}
+el cual manda $X$ a la gavilla representable $\mathbb{Z}_{tr}(X)$, se puede extender el funtor $L$ a la categoría homotópica de complejos acotados:
+\begin{equation*}
+L:K^{b}(Cor_{k}) \rightarrow D^{-}(Shv^{tr})
+\end{equation*}.
+
+Por otra parte, se tiene el siguiente resultado:
+\begin{theorem} Existe un diagrama conmutativo de funtores tensoriales exactos
+
+\[ \begin{array}{c} K^b(Cor_{k}) \xrightarrow{L} D(Shv^{tr}(Cor)) \\ \downarrow \qquad \qquad \downarrow \\ DM_{gm}^{\text{eff}} \xrightarrow{i} DM^{\text{eff}} \end{array} \]
+
+tal que
+
+(1) $i$ es un encaje pleno con imagen densa.
+
+(2) $RC_*(L(X)) \cong C_*(X)$.
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 3.2.6]{MVW06}
+\end{proof}
+
+\subsection{Cohomología motívica}
+\begin{definition}
+Para cada $X \in Sm_{\mathit{k}}$, $q \geq 0$, se define $M(X)=C_{*}(X)$ y
+\begin{equation*}
+H^{p}(X,\mathbb{Z}(q))=\operatorname{Hom}_{DM^{eff}_{-}}(M_{gm}(X),\mathbb{Z}(q)[p]).
+\end{equation*}
+\end{definition}
+
+Se define el producto cup de la siguiente manera:
+\begin{equation*}
+H^{p}(X,\mathbb{Z}(q)) \otimes H^{p^{\prime}}(X,\mathbb{Z}(q^{\prime})) \rightarrow H^{p+p^{\prime}}(X,\mathbb{Z}(q+q^{\prime}))
+\end{equation*}
+mandando $a \otimes b$ a
+\begin{equation*}
+ \xymatrix{ M(X) \ar[r]^-{\Delta} & M(X)\otimes M(X) \ar[r]^-{a \otimes b} & \mathbb{Z}(q)[p] \otimes \mathbb{Z}(q^{\prime})[p^{\prime}]}
+\end{equation*}
+
+\begin{obs} El producto cup así definido hace de $\bigoplus_{p,q}H^{p}(X,\mathbb{Z}(q))$ un anillo conmutativo graduado con unidad dada por la aplicación
+\begin{equation*} 
+M(X) \rightarrow \mathbb{Z}
+\end{equation*}
+inducida por $p_{X}:X \rightarrow \spec \mathit{k}$.
+\end{obs}
+
+\begin{obs} \textbf{Homotopía} El isomorfismo $p_{*}:M(X \otimes \mathbb{A}^1) \rightarrow M(X)$ da lugar al isomorfismo
+\begin{equation*}
+p^{*}:H^{p}(X,\mathbb{Z}(q)) \cong H^{p}(X \otimes \mathbb{A}^1,\mathbb{Z}(q)).
+\end{equation*}
+\end{obs}
+
+\begin{obs} \textbf{Sucesión exacta de Mayer-Vietoris} Para $U,V \subset X$ subesquemas abiertos, el triángulo distinguido
+\begin{equation*}
+ \xymatrix{ M(U \cap V) \ar[r] & M(U)\bigoplus M(V) \ar[r] & M(U \cup V) \ar[r] & M(U \cap V)[1]}
+\end{equation*}
+\end{obs}
+
+da lugar a la sucesión exacta de Mayer-Vietoris:
+\begin{equation*}
+ \xymatrix{ .... \ar[r] & H^{p-1}(U \cap V, \mathbb{Z}(q)) \ar[r] & H^{p}(U \cup V, \mathbb{Z}(q))\ar[r] & 
+H^p(U, \mathbb{Z}(q)) \bigoplus H^{p}(V, \mathbb{Z}(q))\ar[r] & H^{p}(U \cap V, \mathbb{Z}(q)) \ar[r] & ..... }
+\end{equation*}
+
+A partir de esto, se tienen algunos resultados fundamentales de Voevodsky.
+\begin{enumerate}
+\item \textbf{Cancelación} Supóngase que $\mathit{k}$ es un campo perfecto. Entonces, para $A, B \in DM^{\mathrm{eff}}_{gm}$, la aplicación
+\begin{equation*}
+-\otimes id:\operatorname{Hom}(A,B) \rightarrow \operatorname{Hom}(A(1),B(1))
+\end{equation*}
+es un isomorfismo.
+
+ \item \textbf{Dualidad} Para cualquier $\mathit{k}$ que admita resolución de singularidades, la categoría $DM_{gm}$ es rígida en el siguiente sentido:
+\begin{enumerate} 
+\item Para cualesquiera par de objetos $A$, $B$ en $DM_{gm}$ existe un objeto Hom interno, donde $A^{*}=\mathcal{H}om(A, \mathbb{Z})$.
+\item Para cualquier objeto $A$ en $DM_{gm}$, la aplicación canónica
+\begin{equation*}
+A \rightarrow (A^{*})^{*}
+\end{equation*}
+es un isomorfismo.
+\end{enumerate}
+\end{enumerate}
+
+\subsection{La categoría de motivos mixtos de Voevodsky}
+Para cada $X \in Sm_{\mathit{k}}$, se muestra que la localización $D^{-}(Shv^{tr})/\mathcal{A}_{\mathbb{A}^1}$ también existe. Se denota por $DM^{\mathrm{eff}}_{k}$ a esta categoría triangulada \cite[Thm. 4.3.76]{Ayo07}, la cual permite trabajar con complejos no acotados. Además , se tiene que el funtor inclusión $DM^{eff}_{-} \rightarrow DM^{\mathrm{eff}}_{k}$ es un funtor triangulado, identifica a $DM^{eff}_{-}$ con una subcategoría plena de $DM^{\mathrm{eff}}_{k}$. De igual manera, invirtiendo el motivo de Tate, $\mathbb{Z}(1) \in DM^{\mathrm{eff}}_{k}$, por lo cual existe una categoría tensorial triangulada $DM$ \cite[Prop. 4.3.77]{Ayo07}, en la cual el funtor
+\begin{equation*}
+\mathbb{Z}(1) \otimes -:DM_{k} \rightarrow DM_{k}
+\end{equation*}
+es una equivalencia de categorías, lo cual generaliza el teorema de cancelación de Voevodsky y da una funtor tensorial triangulado, el cual se escribirá como 
+\begin{equation*}
+\Sigma^{\infty}:DM^{\mathrm{eff}}_{k} \rightarrow DM_{k}
+\end{equation*}
+el cual es un encaje fiel y pleno. Este funtor es conocido como el funtor de suspensión \cite[7.3]{Hov01}. Haciendo abuso de la notación y simplemente se escribirá $E$ para $\Sigma^{\infty}E$, $E\in DM_{k}^{\mathrm{eff}}$.
+
+\textbf{Notación} Se tiene que estas categorías tienen como unidad $1=M(\operatorname{Spec}(k))$. Se escribirá $E(1)$ para $E\otimes M(\mathbb{G}_{m})[-1]$, $E\in DM_{k}$ e inductivamente $E(n)=(E(n-1))(1)$, $n\geq 0$. Se observa que el functor $DM_{k}\to DM_{k}$, $E\mapsto E(1)$ es una equivalencia de categorías \cite[8.10]{Hov01}, \cite[Thm. 4.3.38]{Ayo07}; se escribirá $E\mapsto E(-1)$ para su inverso, e inductivamente $E(-n)=(E(-n+1))(-1)$, $n>0$. Por convención $E(0)=E$ para $E\in DM_{k}$.
+
+Resumiendo lo anterior, se tiene el siguiente diagrama conmutativo
+\begin{center}
+		$\xymatrix{
+		 DM^{\mathrm{eff}}_{gm}\ar[d]\ar[r] & DM^{\mathrm{eff}}_{k}\ar[d]\\
+		DM_{gm}\ar[r]  & DM_{k}}$ 
+	\end{center} 
+
+Finalmente, dado $X \in Sm_{\mathit{k}}$, $M(X) \in DM_{k}$ es la imagen de $M(X)\in DM^{\mathrm{eff}}_{-}$, bajo los encajes $DM^{\mathrm{eff}}_{-} \rightarrow DM^{\mathrm{eff}}$ y $DM^{\mathrm{eff}}_{k} \rightarrow DM_{k}$. Además, por construcción, se verá más adelante que $DM_{k}$ es una categoría triangulada compactamente generada con generadores compactos $\{M(X)(n)\}_{n \in \mathbb{Z}}$.
+
+\begin{obs}
+Para el caso de complejos de cadenas no acotados, sea $K(Shv^{tr})$ la categoría de complejos de cadenas no acotados en $Shv^{tr}$ equipada con la estructura modelo inyectiva \cite[Prop. 3.13]{Bek00}, y sea $D(Shv^{tr})$ su categoría homotópica. Se escribirá $K^{\mathbb{A}^{1}}(Shv^{tr})$ para la localización de Bousfield izquierda \cite[3.3]{Hir03} de $K(Shv^{tr})$ con respecto al conjunto de morfismos $\{\mathbb{Z}_{tr}(X\times_{k}\mathbb{A}^{1})[n]\rightarrow\mathbb{Z}_{tr}(X)[n]:X \in Sm_{k};n\in\mathbb{Z}\}$ inducidos por las proyecciones $p:X\times_{k}\mathbb{A}^{1}\to X$. La categoría triangulada de motivos efectivos de Voevodsky $DM_{k}^{\mathrm{eff}}$ es la categoría homotópica de $K^{\mathbb{A}^{1}}(Shv^{tr})$ \cite{Voe00b}.
+\end{obs}
+
+\newpage
+\section{Categor\'ias trianguladas compactamente generadas}
+Sea $\tau$ una categoría triangulada compactamente generada en el sentido de Neeman (Ver \cite{Nee01}) con un conjunto de generadores compactos $\mathcal{G}$. Para $\mathcal{G}^{\prime} \subset \mathcal{G}$, $Loc(\mathcal{G}^{\prime})$ denota la subcategoría triangulada plena más pequeña de $\tau$ la cual contiene a $\mathcal{G}^{\prime}$ y es cerrada bajo coproductos arbitrarios. 
+\begin{definition}\label{DEF1}
+Sea $\tau^{\prime} \subset \tau$ una subcategor\'ia triangulada. Se escribe $\tau^{\prime}{^{\perp}}$ para la subcategor\'ia plena de $\tau$ consistente de los objetos $E \in \tau$ tales que para cualquier $K \in \tau^{\prime}$: $\mathrm{Hom}_{\tau}(K,E)=0$. Si $\tau^{\prime}=Loc(\mathcal{G}^{\prime})$ y $E \in \tau^{\perp}$, se dice que $E$ es $\mathcal{G}^{\prime}$-ortogonal.
+\end{definition}
+
+\begin{theorem}\label{Neeman}
+Bajo las hip\'otesis dadas la definición \ref{DEF1}. Sea $\tau^{\prime}$ una categor\'ia triangulada de $\tau$. As\'umase que $\tau^{\prime}$ es tambi\'en compactamente generada. Entonces la inclusi\'on $i:\tau^{\prime} \rightarrow \tau$ admite un adjunto derecho $r$, el cual es un funtor triangulado. Sea $f=i \circ r$. Entonces existe un funtor triangulado $s:\tau \rightarrow \tau$ junto con las transformaciones naturales:
+\begin{equation*}
+\pi: id \rightarrow s
+\end{equation*}
+\begin{equation*}
+\sigma: s \rightarrow [1] \circ f
+\end{equation*}
+tales que para cualquier $E \in \tau$ las siguientes condiciones se siguen:
+\begin{enumerate}
+\item Existe un triángulo natural distinguido en $\tau$:
+\begin{equation*}
+ \xymatrix{ f(E) \ar[r] & E \ar[r]^{\pi} & s(E) \ar[r]^{\sigma} & 
+f(E)[1]}
+\end{equation*}
+\item $s(E)$ está en $\tau^{\prime}{^{\perp}}$
+\end{enumerate}
+\end{theorem}
+
+Recordando que $\tau$ es una categoría triangulada compactamente generada con conjunto de generadores compactos $\mathcal{G}$.
+Considérese una familia de subconjuntos de $\mathcal{G}:\mathcal{S}=\{\mathcal{G}_{n}\}_{n \in \mathbb{Z}}$ tales que $\mathcal{G}_{n+1} \subset \mathcal{G}_{n} \subset \mathcal{G}$ para cualquier $n \in \mathbb{Z}$.
+
+Así, se obtiene una torre de subcategorías trianguladas de $\tau$:
+\begin{equation*}
+...\subset Loc(\mathcal{G}_{n+1}) \subset Loc(\mathcal{G}_{n}) \subset Loc(\mathcal{G}_{n-1}) \subset....
+\end{equation*}
+
+Esta torre es conocida como la \textbf{torre rebanada} determinada por $\mathcal{S}$. Si se considera las categorías ortogonales $Loc(\mathcal{G}_{n})^{\perp}$, se obtiene una torre de subcategorías plenas trianguladas de $\tau$:
+\begin{equation*}
+...\subset Loc(\mathcal{G}_{n-1})^{\perp} \subset Loc(\mathcal{G}_{n})^{\perp} \subset Loc(\mathcal{G}_{n+1})^{\perp} \subset ...
+\end{equation*}
+
+\section{Cubiertas birracionales y la torre ortogonal}
+En esta sección se aplicará el formalismo de la sección anterior, a la categoría triangulada de motivos de Voevodsky $DM_{k}$, con la finalidad de construir una torre de subcategorías trianguladas de $DM_{k}$ las cuales inducen una filtración en los grupos de Chow los cuales serán de interés en esta tesis.
+
+\subsection{Generadores Compactos y la torre de subcategorías efectivas}
+Se observa que $DM_{k}$ es una categoría triangulada compactamente generada \cite[Def. 1.7]{Nee01} con el siguiente conjunto de generadores compactos \cite[Thm. 4.5.67]{Ayo07}:
+
+
+\begin{equation}\label{GM}
+\mathcal{G}_{DM_{k}}=\{M(X)(r):X\in Sm_{k};r\in\mathbb{Z}\}.
+\end{equation}
+
+Dado $m\in\mathbb{Z}$, considérese:
+
+\begin{equation}\label{GM2}
+\mathcal{G}^{\textrm{eff}}(m)=\{M(X)(r):X\in Sm_{k};r\geq m\}\subseteq\mathcal {G}_{DM_{k}}.
+\end{equation}
+
+Sea $DM^{\textrm{eff}}_{k}(m)$ la subcategoría triangulada plena más pequeña de $DM_{k}$ que contiene $\mathcal{G}^{\textrm{eff}}(m)$\ref{GM2} y es cerrada bajo coproductos arbitrarios (infinitos). Se observa que $DM^{\textrm{eff}}_{k}(m)$ es también una categoría triangulada compactamente generada con conjunto de generadores $\mathcal{G}^{\textrm{eff}}(m)$ \cite[Thm. 2.1(2.1.1)]{Nee96}.
+
+La filtración por rebanadas  \cite{Voe02b}, \cite[p. 18]{Voe10b}, \cite{HK06} es la siguiente torre de subcategorías trianguladas de $DM_{k}$:
+
+\begin{equation}\label{GM3}
+\cdots\subseteq DM^{\textrm{eff}}_{k}(m+1)\subseteq DM^{\textrm{eff}}_{k}(m) \subseteq DM^{\textrm{eff}}_{k}(m-1)\subseteq\cdots
+\end{equation}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+donde la inclusión $i_{m}:DM^{\textrm{eff}}_{k}(m)\to DM_{k}$ admite un adjunto derecho $r_{m}:DM_{k}\to DM^{\textrm{eff}}_{k}(m)$ que también es un functor triangulado \cite[Thm. 4.1]{Nee96}. La cubierta $(m-1)$-efectiva de la filtración de rebanada se define como $f_{m}=i_{m}\circ r_{m}:DM_{k}\to DM_{k}$ \cite{Voe02b}, \cite[p. 18]{Voe10b}, \cite{HK06}. Además, existen functores triangulados canónicos $s_{m}:DM_{k}\to DM_{k}$, $m\in\mathbb{Z}$, equipados con transformaciones naturales $f_{m}\to s_{m}$ y $s_{m}\rightarrow[1]\circ f_{m+1}$ que encajan en un triángulo distinguido natural en $DM_{k}$:
+
+\begin{equation}\label{GM4}
+f_{m+1}E\to f_{m}E\to s_{m}E,\;\;E\in DM_{k}.
+\end{equation}
+
+Se observa que el functor de suspensión $\Sigma^{\infty}:DM^{\textrm{eff}}_{k}\to DM_{k}$ induce una equivalencia de categorías entre $DM^{\textrm{eff}}_{k}$ y $DM^{\textrm{eff}}_{k}(0)$ \cite[Cor. 4.10]{Voe10a} (en el caso de que $k$ no sea perfecto de característica $p$, es necesario considerar coeficientes $\mathbb{Z}[\frac{1}{p}]$ \cite[Sus17, Thm. 4.12 and Thm. 5.1]{Sus17}).
+
+
+Se escribirá $DM^{\textrm{eff}}_{k}(n)$ para la subcategoría plena triangulada $Loc(\mathcal{G}^{\textrm{eff}}_{k}(n))$ de $DM_{k}$, y por $DM^{\perp}_{k}(n)$ a la categoría triangulada ortogonal de $DM^{\textrm{eff}}_{k}(n)$. Es decir, los objetos de $DM^{\perp}_{k}(n)$ son objetos $E \in DM^{\textrm{eff}}_{k}$ tales que, para cada objeto $A \in DM^{\textrm{eff}}_{k}(n)$, $\operatorname{Hom}_{DM^{\textrm{eff}}_{k}}(A,E)=0$. Además, nótese que $DM^{\textrm{eff}}_{k}(n)$ es compactamente generada con el conjunto de generadores de $\mathcal{G}^{\textrm{eff}}(n)$.
+
+\subsection{Propiedades básicas de la torre ortogonal}
+
+\begin{definition}
+Considérese la familia $\mathbb{S}=\{\mathcal{G}^{\textrm{eff}}(n)\}_{n\in\mathbb{Z}}$ de subconjuntos de $\mathcal{G}_{DM}$. Por la construcción se obtiene una torre de subcategorías trianguladas completas de $DM_{k}$:
+\begin{equation*}\label{tb}
+....\subset DM^{\perp}_{k}(q-1) \subset DM^{\perp}_{k}(q) \subset DM^{\perp}_{k}(q+1) \subset ....
+\end{equation*}
+La torre \ref{tb} es conocida como la \textbf{torre ortogonal}.
+\end{definition}
+
+\begin{obs} La categoría ortogonal $DM^{\perp}_{k}(n)$ es compactamente generada. De esta manera, por \ref{Neeman} se tiene la siguiente proposición:
+\end{obs}
+
+\begin{proposition} La inclusi\'on $j_{q}:DM^{\perp}_{k}(q) \rightarrow DM_{k}$ admite un adjunto derecho:
+\begin{equation*}
+p_{q}:DM_{k} \rightarrow DM^{\perp}_{k}(q),
+\end{equation*}
+el cual es un funtor triangulado.
+\end{proposition}
+\begin{definition}
+\textbf{Cubiertas birracionales}: Se define $bc_{\leq q} = j_{q+1} \circ p_{q+1}$ y sea $E \in DM_{k}$. La \textbf{cubierta ortogonal} de $E$ se define por 
+\begin{equation*}
+bc_{\leq q} E \rightarrow E.
+\end{equation*}
+\end{definition}
+
+A continuación, se enunciarán las propiedades que satisface la cubierta ortogonal.
+
+\begin{proposition} Se tienen las siguientes propiedades de la cubierta ortogonal $bc_{\leq q} E$, con $E \in DM_{k}$.
+\begin{enumerate}
+\item $bc_{\leq q} E \in DM^{\perp}_{k}(q+1)$.
+\item La counidad $bc_{\leq q} = j_{q} \circ p_{q} \stackrel{\theta}{\rightarrow} Id$ de la adjunci\'on construida satisface la siguiente propiedad universal:
+Para cualquier $E \in DM_{k}$ y para cualquier $F \in DM^{\perp}_{k}(q+1)$, el morfismo $\theta^{E}_{q}:bc_{\leq q} E \rightarrow E$ en $DM_{k}$ induce un isomorfismo de grupos abelianos:
+\begin{equation*}
+\operatorname{Hom}_{DM_{k}}(F,bc_{\leq q})  \stackrel{\cong}{\rightarrow}\operatorname{Hom}_{DM_{k}}(F,E).
+\end{equation*}
+\item Se tiene el isomorfismo de funtores $bc_{\leq q} \circ bc_{\leq q+1} \cong bc_{\leq q}$ y existe una transformación natural canónica 
+\begin{equation*}
+bc_{\leq q} \rightarrow bc_{\leq q+1}.
+\end{equation*}
+\item Sea $E$ en $DM_{k}$. Entonces, el morfismo natural $\theta^{E}_{q}=bc_{\leq q} E \rightarrow E$ es un isomorfismo en $DM_{k}$ si y s\'olo si $E$ pertenece a $DM^{\perp}_{k}(q+1)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Ver \cite[Prop. 3.2.4 y Cor. 3.2.7]{Pel17}.
+\end{proof}
+
+\begin{definition} Para cualquier $E \in DM_{k}$, existe una torre en $DM_{k}$:
+$$\xymatrix@R=10mm@C=14mm{
+\cdots
+\ar@{->}[r]^{}
+&
+bc_{\leq_{-1}}(E)
+\ar@{->}[r]^{} 
+\ar@{->}[dr]|{\theta_{-1}^{E}} 
+&
+bc_{\leq_{0}}(E)
+\ar@{->}[r]
+\ar@{->}[d]|{\theta_{0}^{E}}
+&
+bc_{\leq_{1}}(E) 
+\ar@{->}[dl]|{\theta_{1}^{E}} 
+\ar@{->}[r]
+&
+\cdots
+\\
+&
+&
+E 
+&
+&
+}$$\label{tbE}
+
+
+Se conoce como \ref{tbE} la torre ortogonal de $E$.
+\end{definition}
+
+\begin{obs}
+La torre ortogonal de $E$ es funtorial con respecto a morfismos en $DM_{k}$.
+\end{obs}
+
+
+\subsection{Cubiertas efectivas}
+Se tienen los siguientes resultados respecto a cubiertas efectivas:
+\begin{obs}
+ Para cada $F \in DM^{\textrm{eff}}_{k}(q)$, la counidad de la adjunci\'on $(i_{n},r_{n})$, $\epsilon^{E}_{q}:f_{q}E \rightarrow E$ en $DM_{k}$ induce un isomorfismo de grupos abelianos:
+
+\begin{equation*}
+\operatorname{Hom}_{DM_{k}}(F,f_{q}E)   \stackrel{\cong}{\rightarrow} \operatorname{Hom}_{DM_{k}}(F,E).
+\end{equation*}
+\end{obs}
+
+\begin{lemma}
+Sea $p,q \in \mathbb{Z}$ con $q\geq p$. Entonces:
+\begin{enumerate}
+\item $f_{p}(bc_{\leq q} E) \in DM_{k}^{\textrm{eff}} \cap DM^{\perp}_{k}(q+1)$.
+\item $f_{p}(bc_{\leq q} E)$ est\'a caracterizado salvo por un \'unico isomorfismo por la siguiente propiedad universal:
+Para cada $F \in DM^{\textrm{eff}}_{k} \cap DM^{\perp}_{k}(q+1)$, la composici\'on de las counidades dada por $\theta^{E}_{q} \circ \epsilon^{bc_{\leq q}}E:f_{p}(bc_{\leq q} E) \rightarrow E$ en $DM_{k}$ induce un isomorfismo de grupos abelianos:
+\begin{equation*}
+\operatorname{Hom}_{DM_{k}}(F,f_{p}(bc_{q}E))  \stackrel{\cong}{\rightarrow} \operatorname{Hom}_{DM_{k}}(F,E).
+\end{equation*}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Ver \cite[Lema 3.3.2]{Pel17}.
+\end{proof}
+
+\begin{proposition}
+Sea $E \in DM_{k}$ y sea $n,q \in \mathbb{Z}$. Entonces:
+\begin{enumerate}
+\item Existe un isomorfismo natural $t^{bc}_{n}(E):(bc_{\leq q}E)(n) \rightarrow bc_{q+n}(E(n))$ tal que $\theta^{E(n)}_{q+n} \circ t^{bc}_{n}(E)=\theta^{E}_{q}(n)$.
+\item Existe un isomorfismo natural $t^{eff}_{n}(E):(f_{q}E)(n) \rightarrow f_{q+n}(E(n))$ tal que $\epsilon^{E(n)_{q+n}} \circ t^{eff}_{n}(E)=\epsilon^{E}_{q}(n)$.
+\end{enumerate}
+
+
+\end{proposition}
+
+\begin{proof}
+Ver \cite[Lema 3.3.3]{Pel17}.
+\end{proof}
+
+
+\section{La torre ortogonal para la cohomolog\'ia mot\'ivica}
+A continuación se darán propiedades de la torre ortogonal para el motivo de un punto $\textbf{1}_{R}$ con coeficientes en un anillo conmutativo $R$. Las propiedades básicas son las siguientes:
+\begin{enumerate}
+\item $\textbf{1}_{R}$ pertenece a $DM^{\perp}_{k}(1)$ y a $DM^{\textrm{eff}}_{k}$.
+\item Sea $n\geq 0$ un entero arbitrario. Entonces el morfismo natural, $\theta^{\textbf{1}_{R}}_{n}:bc_{\leq n}(\textbf{1}_{R}) \rightarrow \textbf{1}_{R}$ es un isomorfismo en $DM_{k}$.
+\end{enumerate}
+
+De aquí, se concluye que la torre ortogonal \ref{tb} para el motivo de un punto con coeficientes en $R$ está dada de la siguiente manera:
+$$\xymatrix@R=10mm@C=14mm{
+	\cdots
+	\ar@{->}[r]^{}
+	&
+	bc_{\leq_{-3}}(\textbf{1}_{R})
+	\ar@{->}[r]^{} 
+	\ar@{->}[drr]|{\theta_{-3}^{\textbf{1}_{R}}} 
+	&
+	bc_{\leq_{-2}}(\textbf{1}_{R})
+	\ar@{->}[r]
+	\ar@{->}[dr]|{\theta_{-2}^{\textbf{1}_{R}}}
+	&
+	bc_{\leq_{1}}(\textbf{1}_{R}) 
+	\ar@{->}[d]|{\theta_{-1}^{\textbf{1}_{R}}} 
+	\\
+	&
+	&
+	&
+	\textbf{1}_{R}
+}$$
+
+
+\begin{obs} Con respecto a la construcción, la filtración $F^{*}$ es funtorial en $X$ con respecto a morfismos en $DM_{k}$.
+\end{obs}
+
+\subsection{La filtraci\'on sobre la cohomolog\'ia mot\'ivica de un esquema}
+Sea $X \in Sm_{\mathit{k}}$ y $p,q \in \mathbb{Z}$. Se escribirá $H^{p,q}(X,R)$ para $\operatorname{Hom}_{DM_{k}}(M(X),\textbf{1}_{R}(q)[p])$, es decir, para la cohomolog\'ia mot\'ivica de $X$ con coeficientes en $R$ de grado $p$ y peso $q$. Por la adjunci\'on, se sigue que
+
+\begin{equation*}
+H^{p,q}(X,R) \cong\operatorname{Hom}_{DM_{k}}(M(X)(-q)[-p],\textbf{1}_{R}).
+\end{equation*}
+
+\begin{definition}\label{def_filt}
+ Sean $p$,$q$ enteros arbitrarios, y sea $X \in Sm_{\mathit{k}}$. Considérese la filtración decreciente $F^{*}$ en $H^{p,q}(X,R)$ donde $F^{n}H^{p,q}(X,R)$, está dada por la imagen de $\theta^{\mathbf{1}_R}_{-n}$, con $n\geq 0$:
+$$\xymatrix@R=10mm{ 
+\text{Hom}_{DM_{k}}\left(M\left(X\right)\left( -q\right)  \left[-p\right]\text{,}bc_{\leq{-n}}\textbf{1}_{R}  \right) 
+\ar@{->}[d]^{\theta_{-n\ast}^{\textbf{1}_{R}}}
+\\
+\text{Hom}_{DM_{k}}\left(M\left(X\right)\left( -q\right)  \left[-p\right]\text{,}\textbf{1}_{R}\right)=H^{p\text{,}q}\left( X \text{,}R\right). 
+}$$
+
+\end{definition}
+
+\begin{obs} Con respecto a la construcción, la filtración $F^{*}$ es funtorial en $X$ con respecto a morfismos en $DM_{k}$.
+\end{obs}
+
+Los resultados indican a continuación que la filtración $F^{*}$ en $H^{p,q}(X,R)$, definida en \ref{def_filt}, está concentrada en el rango $0 \leq n \leq q$.
+
+\begin{theorem}
+Sean $p,q$ enteros arbitrarios, y sea $X$ en $Sm_{\mathit{k}}$. Entonces la filtraci\'on decreciente $F^{*}$ en $H^{p,q}(X,R)$ construida anteriormente satisface las siguientes propiedades:
+\begin{enumerate}
+\item$ F^{0}H^{p,q}(X,R)=H^{p,q}(X,R)$,
+\item $F^{q+1}H^{p,q}(X,R)=0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 5.2.4]{Pel17}.
+\end{proof}
+
+Sea $X \in Sm_{\mathit{k}}$ y sea $\alpha \in H^{p,q}(X,R)$ con $q \geq 0$. Sea $A=M(X)(-q)[-p] \in DM$. Entonces $\alpha$ induce un morfismo $\alpha(-q)[-p]:A \rightarrow \textbf{1}_{R}$. Sea $n>0$ y sea $n^{\prime}=-n+1$. Recordando que la $n^{\prime}$-cubierta efectiva $\epsilon^{A}_{n^{\prime}}:f_{n^{\prime}}(A) \rightarrow A$.
+
+\begin{proposition}
+$\alpha \in F^{n}H^{p,q}(X,R)$ si y s\'olo si $\alpha(-q)[-p] \circ \epsilon^{A}_{n^\prime}=0$.
+
+
+\end{proposition}
+
+\begin{proof}
+Ver \cite[Prop. 5.3.2]{Pel17}.
+\end{proof}
+
+\begin{cor}
+La filtración $F^{n}H^{p,q}(X,R)$ es isomorfo:
+\begin{equation*}
+\ker(\operatorname{Hom}_{DM_{k}}(M(X)(-q)[-p],\textbf{1}_{R})  \stackrel{\epsilon^{A_{*}}_{-n+1}}{\longrightarrow} \operatorname{Hom}_{DM_{k}}(f_{-n+1}(M(X)(-q)[-p]),\textbf{1}_{R}))
+\end{equation*}
+
+el cual es isomorfo a
+
+\begin{equation*}\label{fil1}
+\ker(\operatorname{Hom}_{DM_{k}}(M(X),\textbf{1}_{R}(q)[p])  \stackrel{\epsilon^{A_{*}}_{q-n+1}}{\longrightarrow} \operatorname{Hom}_{DM_{k}}(f_{q-n+1}(M(X)),\textbf{1}_{R}(q)[p]))
+\end{equation*}
+\end{cor}
+
+\begin{proof}
+Ver \cite[Cor. 5.3.3]{Pel17}.
+\end{proof}
+
+
+\newpage
+
+\section{Variedades Abelianas}
+\subsection{Definiciones y Propiedades}
+Una \textbf{variedad de grupo} sobre $\mathit{k}$ es una $\mathit{k}$-variedad algebraica $\pi:A \rightarrow \operatorname{Spec}\mathit{k}$ junto con morfismos regulares
+\begin{equation*}
+m:A \times_{\mathit{k}} A \rightarrow A
+\end{equation*}
+\begin{equation*}
+inv:A \rightarrow A
+\end{equation*}
+ y un elemento $e \in A(\mathit{k})$ tal que la estructura sobre $A(\mathit{k})$ definida por $m$ y $inv$ es un grupo con elemento identidad $e$.
+
+\begin{obs} La cuarteta  $(A,m,inv,e)$ es un grupo en la categoría de variedades sobre $\mathit{k}$. Esto significa que:
+\begin{enumerate}
+\item 
+\begin{equation*}
+ \xymatrix{ G \ar[r]^-{(id,e)} & G \times_{\mathit{k}} G \ar[r]^-{m} & G},
+\end{equation*}
+
+\begin{equation*}
+ \xymatrix{ G \ar[r]^-{(e,id)} & G \times_{\mathit{k}} G \ar[r]^-{m} & G},
+\end{equation*}
+
+son ambos el morfismo identidad
+
+\item Los morfismos
+
+$$\xymatrix@R=14mm@C=10mm{ G \,\,\, \ar@{->}[r]^(.4){\varDelta} & G \times_{k} G \ar@<1ex>[r]^{\text{id}\times \text{inv}} \ar@<-1ex>[r]_{\text{id}\times \text{inv}}& G \times_{k} G \ar@{->}[r]^(.6){m} &  G }$$
+
+
+son iguales respecto a la composición
+
+\begin{equation*}
+ \xymatrix{ G \ar[r] & \operatorname{Spec}(k) \ar[r]^-{e} & G},
+\end{equation*}
+
+ \item  El siguiente diagrama conmuta
+
+\begin{center}
+		$\xymatrix{
+		 G \times_{\mathit{k}} G \times_{\mathit{k}} G\ar[d]^-{m \times 1} \ar[r]^-{1 \times m}  & G \times_{\mathit{k}}\ar[d]^-{m} \\
+		 G \times_{\mathit{k}} G\ar[r]^-{m}   & G}$ 
+	\end{center} 
+\end{enumerate}
+\end{obs}
+
+\begin{obs} Cualquier $\mathit{k}$-álgebra $R$, se sigue que $A(R)$ adquiere una estructura de grupo.
+\end{obs}
+
+Sea $A$ una variedad de grupos sobre $\mathit{k}$. Para un punto $a \in A$ con coordenadas en $\mathit{k}$, se define $t_{a}:A \rightarrow A$ (\textbf{traslación por la derecha} por $a$) para ser la composición
+\begin{equation*}
+A \rightarrow A \times A \rightarrow  A.
+\end{equation*}
+\begin{equation*}
+x \mapsto (x,a) \mapsto xa
+\end{equation*}
+
+Así, un punto $t_{a}$ es $x \mapsto xa$. Éste es un isomorfismo $A \rightarrow A$ con inverso $t_{inv(a)}$.
+
+\begin{obs} Una variedad de grupos es no singular.
+\end{obs}
+
+\begin{obs} Una variedad de grupos conexa es geométricamente conexa.
+\end{obs}
+
+\begin{definition}
+Una \textbf{Variedad Abeliana} es una variedad de grupos conexa y completa.
+\end{definition}
+
+\begin{definition}
+Se denota como $Abv_{k}$ la subcategoría plena de $Sm_{k}$ dada por variedades abelianas. 
+\end{definition}
+
+\subsection{Teorema de Rigidez y morfismos de variedades abelianas}
+
+Hay varias propiedades que relacionan las variedades abelianas y los morfismos regulares las cuales son las siguientes:
+
+\begin{theorem} (Teorema de Rigidez). Considere un morfismo regular $\alpha:V \times W \rightarrow U$, y asúmase que $V$ es completo y que $V \times W$ es geométricamente irreducible. Si existen puntos $u_{0} \in U(\mathit{k})$, $v_{0} \in V(\mathit{k})$, y $w_{0} \in W(\mathit{k})$ tal que:
+\begin{equation*}
+\alpha(V \times w_{0})=\{u_0\}=\alpha(\{v_0\} \times W)
+\end{equation*}
+entonces $\alpha(V \times W)=\{u_0\}$.
+
+
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 1.1]{Mil}.
+\end{proof}
+
+El Teorema de rigidez, nos dice en otras palabras, que si dos de los ejes coordenados colapsan a un punto entonces esto fuerza a que el espacio completo colapse a un punto. 
+
+Para relacionar dos variedades abelianas, será necesario definir el concepto de morfismo de variedad abeliana el cual está dado a continuación.
+
+\begin{definition} Sean $A$ y $B$ variedades abelianas. Un \textbf{Morfismo de Variedades Abelianas} $\alpha: A \rightarrow B$ es una función que preserva la estructura de grupo entre dos variedades abelianas, es decir, envía dos variedades abelianas de tal manera que la operación de grupo se conserva.
+\end{definition}
+
+A partir de lo anterior, se tienen las siguientes propiedades de morfismos de variedades abelianas:
+
+\begin{cor} Cualquier morfismo regular $\alpha:A \rightarrow B$ de variedades abelianas es la composición de un morfismo con una traslación.
+\end{cor}
+\begin{proof}
+Ver \cite[Cor.1.2]{Mil}.
+\end{proof}
+
+\begin{cor} La ley de grupos sobre variedades abelianas es conmutativa.
+\end{cor}
+\begin{proof}
+Ver \cite[Cor. 1.4]{Mil}.
+\end{proof}
+
+\begin{cor} Sean $V$ y $W$ dos variedades completas sobre $\mathit{k}$ con $\mathit{k}$-puntos racionales $v_{0}$ y $w_{0}$, y sean $p$ y $q$ los morfismos de proyecciones $p:V \times W \rightarrow V$ y $q:V \times W \rightarrow W$. Sea $A$ una variedad abeliana. Entonces un morfismo $h:V \times W \rightarrow A$ tal que $h(v_{0},w_{0})=0$ puede ser escrita únicamente como $h=f \circ p + g \circ q$ con morfismos $f:V \rightarrow A$ y $g:W \rightarrow A$ tal que $f(v_0)=0$ y $g(w_{0})=0$.
+\end{cor}
+
+\begin{proof}
+Ver \cite[Cor. 1.5]{Mil}.
+\end{proof}
+
+\begin{definition} Sea $\alpha:V \rightarrow W$ un morfismo de variedades abelianas. Se define \textbf{kernel} de $\alpha$ como la fibra de $\alpha$ sobre $0$ en el sentido de espacios algebraicos. 
+\end{definition}
+
+Se tiene que el kernel es un subespacio algebraico de $V$, y además tiene estructura de grupo en la categoría de espacios algebraicos. Además si $\mathit{k}$ tiene característica cero, $\ker(\alpha)$ es una variedad algebraica, que coincide con la fibra sobre $0$ en el sentido de variedades algebraicas.
+
+Esto nos lleva a dar la siguiente definición, la cual nos habla de un tipo de morfismos de variedades abelianas que serán de importancia en la presente tesis.
+
+
+\begin{definition} Un morfismo $\alpha: V \rightarrow W$ de variedades abelianas es llamado una \textbf{isogenia} si el morfismo es suprayectivo y tiene kernel finito, es decir, el kernel tiene dimensión cero. 
+\end{definition}
+
+
+\subsection{El morfismo de Albanese generalizado}
+Sea $\mathit{k}$ un campo perfecto. Dos invariantes clásicos para variedades proyectivas suaves $X$ sobre un campo $\mathit{k}$ son las variedades abelianas $\mathrm{Alb}(X)$ (Variedad de Albanese), y $\mathrm{Pic}(X)$ (Variedad de Picard).  En esta tesis, se trabajará la variedad de Albanese, la cual está definida de la siguiente manera:
+
+Para cualquier $\mathit{k}$-punto $P$ de $X$ existe un morfismo $i_{p}:X \rightarrow \mathrm{Alb}_{X}$ tal que $i_{P}(P)=0$ y si $(B,f)$ es un par consistente de una variedad semiabeliana $B$ y un morfismo $f:X \rightarrow B$ el cual envía $P$ a $0_{B}$ tal que existe un único morfismo $g:\mathrm{Alb}_{X} \rightarrow B$ de esquemas de grupo con $g \circ i_{P}=f$, es decir, se tiene el siguiente diagrama conmutativo:
+
+\[ \xymatrix{X \ar[r]^{i_{p}}\ar[dr]^{f}& \mathrm{Alb}(X)\ar[d]^{g}\\
+			& B}
+\]
+
+Nótese que los morfismos $i_{P}$ satisfacen la fórmula:
+\begin{equation*}
+i_{P}(Q)=i_{P}(R)+i_{R}(Q)
+\end{equation*}
+para cualesquiera $\mathit{k}$-puntos $P$, $Q$, $R$ de $X$.
+
+\begin{obs} Si $X$ es un morfismo propio sobre $\mathit{k}$, entonces $\mathrm{Alb}_{X}$ es la variedad de Albanese en el sentido clásico.
+\end{obs}
+
+\begin{obs} La asignación $X \mapsto \mathrm{Alb}_{X}$ es un funtor covariante para morfismos arbitrarios de variedades.
+\end{obs}
+
+
+
+
+\newpage
+\section{Ciclos Algebraicos}
+\begin{definition} Un \textbf{Ciclo Algebraico} en una variedad $X \in Sm_{\mathit{k}}$, es una suma formal finita $Z=\sum_{\alpha}n_{\alpha}Z_{\alpha}$ de subvariedades irreducibles $Z_{\alpha}$ en $X$, tales que $n_{\alpha} \in \mathbb{Z}$. Si toda $Z_{\alpha}$ tiene la misma codimensión $n$ se dice que $Z$ es un ciclo de codimensión $n$ en $X$. Se denota el grupo abeliano libre generado por las subvariedades irreducibles de codimensión $n$ en $X$ como:
+\[
+\mathcal{Z}^n(X) := \{\text{ciclos algebraicos de codimensión } n \text{ en } X\}.
+\]
+\end{definition}
+
+Se tiene que $\mathcal{Z}_{n}(X)$ es el grupo abeliano libre generado por las subvariedades irreducibles de dimensión $n$ en $X$. A los elementos de $\mathcal{Z}_{n}(X)$ se les conoce como \textbf{ciclos de dimensión} $n$ o $n$ ciclos.  Si $X$ es pura de dimensión $d$, entonces $\mathcal{Z}^{n}(X)=\mathcal{Z}_{d-n}(X)$ para $1 \leq n \leq d$.
+
+Se tiene un producto bilineal parcialmente definido en ciclos algebraicos, a saber el producto de intersección:
+\begin{equation*}
+\mathcal{Z}^{m}(X) \times \mathcal{Z}^{n}(X) \rightarrow \mathcal{Z}^{m+n}(X)
+\end{equation*}
+
+\begin{equation*}
+(\alpha,\beta) \rightarrow \alpha \cdot_{X} \beta
+\end{equation*}
+
+Por otra parte, si $f:X \rightarrow Y$ es un morfismo en $Sm_{\mathit{k}}$, dado que $f$ es propio, entonces se tiene un \textbf{push-forward} $f_{*}:\mathcal{Z}_{n}(X) \rightarrow \mathcal{Z}_{n}(Y)$, el cual respeta la graduación por dimensión y esta construcción es funtorial siendo en este caso covariante. En el sentido contravariante, se tiene un \textbf{pull-back} de un morfismo plano $f$, el cual respeta la graduación por codimensión $f^{*}:\mathcal{Z}^{n}(Y) \rightarrow \mathcal{Z}^{n}(X)$. De manera más general, cualquier correspondencia $\alpha \in \mathcal{Z}^{*}(X \times Y)$ da un morfismo aditivo parcialmente definido dados de la siguiente manera:
+
+\[
+\begin{aligned}
+\alpha_*:\mathcal{Z}^*(X) &\to \mathcal{Z}^*(Y); &\gamma &\mapsto \mathrm{p}_{Y*}(\alpha \cdot \mathrm{p}_X^*(\gamma)) \in \mathcal{Z}^*(Y), \\
+\alpha^*:\mathcal{Z}^*(Y) &\to \mathcal{Z}^*(X); &\gamma &\mapsto \mathrm{p}_{X*}(\alpha \cdot \mathrm{p}_Y^*(\gamma)) \in \mathcal{Z}^*(X),
+\end{aligned}
+\]
+
+donde $p_{X}:X \times Y  \rightarrow X$ y $p_{Y}:X \times Y \rightarrow Y$ son las proyecciones.
+
+\subsection{Relaciones de equivalencia adecuadas}
+Sea $R$ un anillo conmutativo, para una variedad $X$ sobre $\mathit{k}$ y $n \in \mathbb{N}$:
+\[
+\mathcal{Z}^n(X)_R := \{ \sum r_{\alpha} Z_{\alpha} \mid r_{\alpha} \in R \text{ y } Z_{\alpha} \subset X \text{ de codim. } n \} = \mathcal{Z}^n(X) \otimes_{\mathbb{Z}} R
+\]
+
+es un $R$-módulo libre generado por las subvariedades irreducibles de $X$ de codimensión $n$. A los elementos $\mathcal{Z}^{n}_{R}$ se les conoce como \textbf{ciclos algebraicos de codimensión $n$ con coeficientes en $R$}. En este caso, se considera $\mathcal{Z}^{*}(X)_{R}=\bigoplus_{n \geq 0} \mathcal{Z}^{n}(X)_{R}$.
+
+\begin{definition}
+Una relación de equivalencia $\sim$ en ciclos algebraicos es $\textbf{adecuada}$, si para cada $X$, $Y \in Sm_{\mathit{k}}$ se tiene:
+\begin{enumerate}
+\item $\sim$ es compatible con la estructura $R$-lineal y la graduación de $\mathcal{Z}^{*}(X)_{R}$.
+\item Dado $\alpha$ y $\beta$ en $\mathcal{Z}^{*}_{R}$, existe un ciclo $\alpha^{\prime}$ de tal manera que $\alpha \sim \alpha^{\prime}$ y $\alpha^{\prime}$ intersecta propiamente con $\beta$ en $X$.
+\item Para $\gamma \in \mathcal{Z}^{*}(X)_{R}$ y para todo $\alpha \in \mathcal{Z}^{*}(X \times Y)_{R}$ se intersecta propiamente con $pr^{*}_{X}(\gamma)$, se tiene que $\alpha(\gamma):=(pr_{Y})_{*}(pr^{*}_{X}(\gamma) \cdot \alpha) \sim 0$ si $\gamma \sim 0$.
+\end{enumerate}
+\end{definition}
+Las condiciones anteriores implican que el producto de intersección parcialmente definido en $\mathcal{Z}^{*}(X)_{R}$, está completamente definido en el cociente:
+\begin{equation*}
+\mathcal{Z}^{*}(X)_{{\sim}_{R}}:=\mathcal{Z}^{*}(X)_{R}/\mathcal{Z}^{*}(X)_{{\sim},R}
+\end{equation*}
+
+donde $\mathcal{Z}^{*}_{{\sim},R}:=\{Z \in \mathcal{Z}^{*}(X)_{R}|Z \sim 0\}$.
+
+Entre las relaciones de equivalencias adecuadas existe un orden parcial: Se dice que $\sim_{1}$ es $\textbf{más fina}$ que $\sim_{2}$ y se escribe como $\sim_{1} \succ \sim_{2}$, si $\alpha \sim_{1} 0$ implica que $\alpha\sim_{2} 0$. Ejemplos de relaciones de equivalencias adecuadas son las siguientes:
+
+\begin{ejem}
+Un ciclo $\alpha \in \mathcal{Z}^{n}(X)_{R}$ es \textbf{racionalmente equivalente a cero} ($\alpha\sim_{rat} 0$) si existe un ciclo $\beta=\sum n_{i}\beta_{i} \in \mathcal{Z}^{n}(X \times \mathbb{P}^1)_{R}$, tales que las proyecciones $\pi_{i}: \beta_{i} \rightarrow \mathbb{P}^1$ sean dominantes y se cumpla que:
+\begin{equation*}
+\alpha=\sum [\beta_{i}(0)]-[\beta_{i}(\infty)],
+\end{equation*}
+
+donde $[\beta_{i}(t)]:=pr_{X*}[\pi^{-1}_{i}(t)]$ para $t \in \mathbb{P}^1$.
+
+El conjunto de ciclos racionalmente triviales forman un subgrupo, se escribe
+\begin{equation*}
+CH^{n}(X):=\mathcal{Z}^{n}(X)/\sim_{rat},
+\end{equation*}
+para el $n$-ésimo \textbf{grupo de Chow} de $X$. En $CH^{*}(X)=\sum^{d}_{n=0} CH^{n}(X)$, se tiene definido un buen producto, el cual en las componentes es dado por:
+\[
+\begin{array}{ccc}
+CH^m(X) \times CH^n(X) & \xrightarrow{\cdot_X} & CH^{m+n}(X) \\
+(\alpha, \beta) & \longmapsto & \alpha \cdot_X \beta
+\end{array}
+\]
+El producto de anillos es conmutativo, y además con respecto a la suma y producto de intersección de clases de ciclos $CH^{*}(X)$ es un anillo graduado y $CH^{*}(X)_{R}$ es una $R$-álgebra graduada, donde la unidad es $1=[X]$. Este anillo es conocido como el \textbf{anillo de Chow} de $X$. 
+\end{ejem}
+
+\textbf{Notación} Si $X\in SmProj_{k}$ de dimensión $n$ y $x\in X(k)$, se escribirá $[x]\in CH^{n}(X)$ para el ciclo de cero asociado a $x$ como un subesquema cerrado de $X$, y $z_{0}^{X}:X(k)\to CH^{n}(X)$ para el morfismo $x\in X(k)\mapsto[x]\in CH^{n}(X)$.
+
+\begin{ejem} A partir de lo anterior, se puede definir a la \textbf{equivalencia algebraica} ($\sim_{alg}$), pero está parametrizada por una curva proyectiva y suave arbitraria. Es claro que si $\alpha \sim_{rat} 0$, entonces $\alpha \sim_{alg} 0$, pero en general no son iguales. Por ejemplo, si $C$ es una curva elíptica, y $a$, $b$ son dos puntos distintos, entonces $Z=a-b$ no es el divisor de una función, pero sin embargo $Z$ es algebraicamente equivalente a cero.
+\end{ejem}
+
+Considerando el subgrupo
+\begin{equation*}
+\mathcal{Z}^{n}_{\mathrm{rat}}(X) \subset \mathcal{Z}^{n}_{\mathrm{alg}}(X) \subset \mathcal{Z}^{n}(X)
+\end{equation*}
+
+Considerando el cociente de grupos, se define
+\begin{equation*}
+CH^{n}_{\mathrm{alg}}(X)=\mathcal{Z}^{n}_{\mathrm{alg}}(X)/\mathcal{Z}^{n}_{\mathrm{rat}}(X)
+\end{equation*} 
+
+y 
+
+\begin{equation*}
+{\rm NS}^{n}(X)=\mathcal{Z}^{n}(X)/\mathcal{Z}^{n}_{\mathrm{alg}}(X)
+\end{equation*}
+
+En esta tesis, el grupo $CH^{n}_{\mathrm{alg}}(X)$ será ampliamente estudiado, es decir, el subgrupo de $CH^{n}(X)$ de clases de equivalencia racional que son algebraicamente equivalentes a cero. Desafortunadamente, para muchos resultados que se tendrán, sólo están definidos para el caso cuando $n=1,2$ y $d=\dim X$.
+
+\begin{ejem}
+Para el caso cuando $n=1$, se tiene que $\mathcal{Z}^{1}(X)=Div(X)$, el grupo de divisores de Weil o divisores de Cartier sobre $X$. 
+\end{ejem}
+
+\begin{ejem}
+Sea $X \in SmProj_{\mathit{k}}$. Se define el morfismo estructural $p: X \rightarrow \operatorname{Spec}{\mathit{k}}$ el cual induce el siguiente \textbf{morfismo de grado} en clases de $0$-ciclos, definido para $\alpha=\sum n_{i}p_{i} \in CH_{0}(X)$, como:
+\begin{equation*}
+\deg(\alpha):=\int_{X} \alpha = \sum n_{i}[\mathit{k}(p_{i}):\mathit{k}].
+\end{equation*}
+\end{ejem} 
+
+Un ciclo $\alpha \in CH^{n}(X)_{R}$ es \textbf{numéricamente equivalente a $0$} ($\alpha \sim_{\mathrm{num}} 0$) si para todo ciclo $\beta \in CH^{d-n}(X)_{R}$, se tiene que $\deg(\alpha \cdot \beta)=0$. La relación $\sim_{\mathrm{num}}$ es adecuada para ciclos algebraicos, y es la menos fina entre todas las equivalencias adecuadas. Se define:
+\begin{equation*}
+N^{n}(X):=\mathcal{Z}^{n}_{\mathrm{num}}(X)=\mathcal{Z}^{n}(X)/\sim_{\mathrm{num}}
+\end{equation*}
+
+\subsection{Cohomologías de Weil}
+Sea $\mathit{k}$ un campo de característica cero. Se denota por $\mathrm{GrVec}_{\mathit{k}}$ a la $\otimes$-categoría rígida de $\mathit{k}$-espacios vectoriales $\mathbb{Z}$-graduados de dimensión finita, donde la conmutatividad está dada por la regla de signos de Koszul.
+\begin{definition} Una \textbf{teoría de cohomología de Weil} consiste de:
+\begin{enumerate}
+\item Un funtor contravariante:
+\begin{equation*}
+H^{*}:SmProj_{\mathit{k}} \rightarrow \mathrm{GrVec}_{\mathit{k}}
+\end{equation*}
+\item Existe $\mathit{k}$-espacio vectorial de dimensión $1$, $\mathit{k}(-1):=H^{2}(\mathbb{P}^1)$, el cual define la torcedura de Tate:
+\begin{equation*}
+(-r):=-\otimes H^2(\mathbb{P}^1)^{\otimes r}:\mathrm{GrVec}_{\mathit{k}} \rightarrow \mathrm{GrVec}_{\mathit{k}}
+\end{equation*}
+dado de la siguiente forma. Para un $\mathit{k}$-espacio vectorial $V \in \mathrm{GrVec}_{\mathit{k}}$ y $r \in \mathbb{Z}$, se define $V(-r):=V \otimes_{\mathit{k}} H^2(\mathbb{P}^1)^{\otimes r}$.
+\item Para toda variedad proyectiva y suave $X$ pura de dimensión $d$, existe un \textbf{morfismo de traza} $ \mathrm{Tr}= \mathrm{Tr}_{X}:H^{2d}(X)(d) \rightarrow \mathit{k}$.
+\item Para cada $X \in SmProj_{\mathit{k}}$ y toda subvariedad irreducible $Z$ de codimensión $n$, existe una clase fundamental $\mathrm{cl}_{X}(Z) \in H^{2n}(X)(n)$.
+\item Cada $H^{i}(X)$ es un $\mathit{k}$-espacio vectorial de dimensión finita. En el caso $i \notin \{0,....,2d_{X}\}$, se tiene que $H^{i}(X)=0$.
+\item (\textbf{Fórmula de Kunneth}) Dadas dos variedades $X$, $Y \in SmProj_{\mathit{k}}$. Las proyecciones $pr_{X}:X \times Y \rightarrow X$ y $pr_{Y}: X \times Y \rightarrow Y$ inducen un morfismo de $\mathit{k}-$álgebras:
+\begin{equation*}
+H^{*}(X) \otimes_{\mathit{k}} H^{*}(Y) \rightarrow H^{*}(X \times Y):
+\end{equation*}
+
+\begin{equation*}
+\alpha \otimes\beta \mapsto pr^{*}_{X}(\alpha) \cup pr^{*}_{Y}(\beta)
+\end{equation*}
+el cual es un isomorfismo.
+
+ \item (\textbf{Dualidad de Poincaré}) Para toda variedad proyectiva, suave y conexa $X$, el morfismo de traza $\mathrm{Tr}:H^{2d}(X)(d) \rightarrow \mathit{k}$ es un isomorfismo. Para toda $0 \leq n \leq d$, el producto cup induce un apareamiento:
+\begin{equation*}
+H^{n}(X) \times H^{2d-n}(X)(d) \rightarrow \mathit{k};
+\end{equation*}
+
+\begin{equation*}
+(\alpha,\beta) \mapsto \mathrm{Tr}_{X}(\alpha \cup \beta)
+\end{equation*}
+
+\item Para $X$, $Y$ dos variedades proyectivas y suaves, el morfismo de traza
+\begin{equation*}
+ \mathrm{Tr}_{X\times Y}:H^{2d+2d_{Y}}(X \times Y)(d+d_{Y}) \rightarrow \mathit{k}
+\end{equation*}
+satisface que:
+\begin{equation*}
+\mathrm{Tr}_{X \times Y}(pr^{*}_{X}(\alpha) \cup pr^{*}_{Y}(\beta))=\mathrm{Tr}_{X}(\alpha) \mathrm{Tr}_{Y}(\beta),
+\end{equation*}
+
+donde $\alpha \in H^{2d}(X)(d)$ y $\beta \in H^{2d_{Y}}(Y)(d_{Y})$. Esta propiedad se puede escribir como 
+\begin{equation*}
+\mathrm{Tr}_{X \times Y}=\mathrm{Tr}_{X} \otimes \mathrm{Tr}_{Y}
+\end{equation*}
+dado que $\alpha \otimes \beta = \mathrm{pr}^{*}_{X}(\alpha) \cup pr^{*}_{Y}(\beta)$.
+
+
+\end{enumerate}
+\end{definition}
+
+Dada una teoría de cohomología de Weil $H$. Se extiende por linealidad en un morfismo de ciclos:
+\begin{equation*}
+\mathrm{cl}^{n}_{X}:\mathcal{Z}^{n}(X) \rightarrow H^{2n}(X)(n).
+\end{equation*}
+
+Este morfismo da la estructura de uno de los grupos en el otro, relacionando el producto de intersección con el producto cup. El morfismo de ciclos $\mathrm{cl}^{n}_{X}$ factoriza a través de $CH^{n}(X)$, y así tenemos la definición siguiente:
+\begin{definition} Dada una teoría de cohomología de Weil $H^{*}$, se define el morfismo de clase de ciclos:
+\begin{equation*}
+\mathrm{cl}^{n}_{X}=\mathrm{cl}^{n}_{X,H}:CH^{n}(X) \rightarrow H^{2n}(X)(n)
+\end{equation*}
+asociado a $H$ de la siguiente manera: Para un ciclo $\alpha=\sum n_{i}Z_{i}$ de codimensión $n$ en una variedad proyectiva y suave $X$, sea:
+\begin{equation*}
+\mathrm{cl}^{n}_{X}(\alpha):=\sum n_{i}\mathrm{cl}(Z_{i}) \in H^{2n}(X)(n).
+\end{equation*}
+\end{definition}
+
+\begin{definition} Sea $H^{*}$ una teoría de cohomología de Weil. Un ciclo $\alpha \in \mathcal{Z}^{n}(X)_{R}$ es \textbf{homológicamente equivalente a cero} ($\alpha \sim_{\mathrm{hom}} 0$), si $\mathrm{cl}^{n}_{X}(\alpha)=0$.
+\end{definition}
+ La definición de equivalencia homológica depende de la elección de una teoría de cohomología de Weil, $\sim_{\mathrm{hom}}$ define una relación de equivalencia adecuada para ciclos algebraicos. Se denota por:
+\begin{equation*}
+EH^{*}(X):=\mathcal{Z}^{*}(X)/\sim_{\mathrm{hom}}
+\end{equation*}
+
+el anillo graduado de ciclos algebraicos módulo $\sim_{\mathrm{hom}}$.
+
+Tomando $p=2n$ se demuestra que un ciclo algebraico $\alpha \in H^{2n,n}(X,R) \cong CH^{n}(X)$ está en $F^{1}H^{2n,n}(X,R)$ si y sólo si $\alpha$ es numéricamente equivalente a cero. En caso que los coeficientes del anillo $R \neq \mathbb{Q}$, se dice que $\alpha$ es numéricamente equivalente a cero si  para cualquier extensión de campos $K/\mathit{k}$ de grado de trascendencia finita y cualquier ciclo $\beta \in CH_{q}(X_{K})_{R}$, la multiplicidad de intersección $\deg(\alpha_{K} \cdot \beta) \in R$ es cero.
+
+El siguiente teorema permite identificar la primera componente de la filtración con los ciclos numéricamente equivalentes a cero.
+
+
+\begin{theorem}
+Sea $X$ un $\mathit{k}$-esquema proyectivo suave y $n \geq 0$. Entonces, v\'ia el isomorfismo $H^{2n,n}(X,R) \cong CH^{n}(X)_{R}$, entonces $F^{1}H^{2n,n}(X,R)$ es identificado con el $R$-subm\'odulo de ciclos numericamente equivalentes a cero.
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 5.3.6]{Pel17}.
+\end{proof}
+
+Por otra parte, se tiene el siguiente resultado:
+\begin{proposition}
+\textbf{Relación de la cohomología motívica con los grupos de Chow} Para $Y \in Sm_{\mathit{k}}$
+\begin{equation*}
+CH^{i}(Y,j) \cong H^{2i-j}(Y,\mathbb{Z}(i))
+\end{equation*}
+para $i \geq 0$ y $j \in \mathbb{Z}$.
+\end{proposition}
+
+\begin{proof}
+Ver \cite[Thm. 1.3]{L}.
+\end{proof}
+
+
+
+
+ \newpage
+\section{Ciclos Algebraicos sobre Variedades Abelianas}
+Sea $X \in SmProj_{\mathit{k}}$, y sea $n\geq 0$ un entero. También se definen los ciclos de dimensión $n$, $CH_{n}(X)=CH^{d-n}(X)$. Se denotará
+\begin{equation*}
+CH^{*}(X)=\bigoplus_{n\geq 0} CH^{n}(X),
+\end{equation*}
+
+\begin{equation*}
+CH_{*}(X)=\bigoplus_{n \geq 0} CH_{n}(X),
+\end{equation*}
+
+para los objetos graduados. $CH^{*}(X)$ es un funtor contravariante y $CH_{*}(X)$ es un funtor covariante para morfismos de variedades.
+
+\subsection{Producto de Pontryagin y grado en variedades abelianas}
+
+\begin{obs}
+Cuando $X=A$ es una variedad abeliana, $CH_{*}(A)$ tiene también una estructura de anillo, conocida como producto de Pontryagin el cual fue estudiado por Lang, y está definido de la siguiente forma:
+
+Sea $\mu:A \times A \rightarrow A$ una ley de grupo. Dado ciclos $\gamma \in CH_{n}(A)$, $\tau \in CH_{s}(A)$  se tiene que $\gamma \times \tau \in CH_{n+s}(A \times A)$. El producto de Pontryagin $\gamma * \tau$ está definido por 
+\begin{equation*}
+\gamma * \tau = \mu_{*}(\gamma \times \tau) \in CH_{n+s}(A).
+\end{equation*}
+\end{obs}
+
+Nótese que los $0$-ciclos $CH_{0} \subset CH_{*}(A)$ forman un subanillo. De hecho, $CH_{0}(A)$ es una $\mathbb{Z}$-álgebra, cuyo aumento está dado por el morfismo de grado
+\begin{equation*}
+\deg:CH_{0}(A) \rightarrow \mathbb{Z}.
+\end{equation*}
+
+Sea $I=I(A) \subset CH_{0}(A)$ el kernel del morfismo $\deg$. Entonces $I$ es un ideal para la multiplicación de Pontryagin, se tiene una sucesión exacta
+
+\begin{equation}
+ \xymatrix{ 0 \ar[r] & I \ar[r] & CH_{0} \ar[r]^{\deg} & 
+\mathbb{Z} \ar[r] & 0 }.
+\end{equation}
+
+Para $a \in A$ un $\mathit{k}$-punto, $(a) \in CH_{0}(A)$ se denota el ciclo correspondiente. Así el origen $0 \in A$ corresponde al elemento identidad $(0)=1 \in CH_{0}(A)$ e $I$ es generado por ciclos $(a)-(0)$, para $a \in A$. Las potencias de Pontryagin de $I$ serán denotadas como $I^{*r}$. Como ejemplo, nótese que $I^{*2}$ es generado por ciclos
+
+\begin{equation*}
+((a)-(0))*((b)-(0))=(a+b)-(a)-(b)+(0)
+\end{equation*}
+
+Existe un morfismo natural $I \rightarrow A$ dado por
+\begin{equation*}
+(a)-(0) \mapsto a,
+\end{equation*}
+y así se obtiene una sucesión exacta
+
+\begin{equation}
+ \xymatrix{ 0 \ar[r] & I^{*2} \ar[r] & I \ar[r] & 
+A \ar[r] & 0 }.
+\end{equation}
+
+\begin{obs} La identificación $A=I/I^{*2}$ será usada en el presente trabajo.
+\end{obs}
+
+\begin{theorem}
+Sea $A$ una variedad abeliana de dimensión $d$ sobre un campo algebraicamente cerrado $\mathit{k}$. Entonces $I^{*d+1}=0$
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 0.1]{B}.
+\end{proof}
+
+El siguiente resultado, será de gran importancia para la tesis:
+\begin{theorem}
+El grupo $CH^{1}_{\mathrm{alg}}(A)$ es isomorfo al grupo de puntos de una variedad abeliana. Este grupo también es conocido como \textbf{Variedad de Picard} de $A$.
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 0.2]{B}.
+\end{proof}
+
+Ahora bien, se escribirá $\mathrm{Pic}(A)$ en lugar de $CH^{1}_{\mathrm{alg}}(A)$. Se denota por $\mathrm{Pic}^{0}(A) \subset \mathrm{Pic}(A)$ al subgrupo de divisores algebraicamente equivalentes a cero. $\mathrm{Pic}^{0}(A)$ es conocido por ser el grupo de puntos cerrados de una variedad abeliana, y si $D \in \mathrm{Pic}(A)$ es un divisor amplio, el morfismo
+\begin{equation*}
+\Phi_{D}:A \rightarrow \mathrm{Pic}^{0}(A);
+\end{equation*}
+dado por 
+\begin{equation*}
+\Phi_{D}(a):D_{a}-D=D*((a)-(0))
+\end{equation*}
+está bien definido, y es una isogenia de variedades abelianas. Así $\mathrm{Pic}^{0}(A)=I*CH^{1}(A)$. De esta manera, se tiene un morfismo de intersección
+\begin{equation*}
+\mathrm{Pic}(A)^{\otimes n-1} \otimes \mathrm{Pic}^{0}(A) \rightarrow I
+\end{equation*}
+es suprayectivo, es decir, para cualquier $0$-ciclo de grado $0$, es racionalmente equivalente a la suma de intersecciones de divisores.
+
+\begin{definition} Para una variedad abeliana $A$, $\mathrm{Pic}(A)/\mathrm{Pic}^{0}(A)$ es llamado el \textbf{grupo de Néron-Severi} NS(A).
+\end{definition}
+
+\section{Funtor de Puntos de una Variedad Abeliana}
+Sea $\mathcal{C}$ una categoría. Un objeto $X$ de $\mathcal{C}$ define un funtor contravariante
+\begin{equation*}
+h_{X}:\mathcal{C} \rightarrow Set
+\end{equation*}
+dado por la correspondencia
+\begin{equation*}
+T \mapsto \operatorname{Hom}(T,X).
+\end{equation*}
+
+Además, $X \mapsto h_{X}$ define un funtor $\mathcal{C} \rightarrow F(\mathcal{C},Set)$. Se puede pensar $h_{X}(T)$ como el conjunto de $T$ puntos de $X$. Este funtor es fiel y pleno, es decir 
+\begin{equation*}
+\operatorname{Hom}(X,Y)=\operatorname{Hom}(h_{X},h_{Y}).
+\end{equation*}
+
+\begin{definition} Un funtor contravariante $F:\mathcal{C} \rightarrow Set$ se dice que es \textbf{representable} si este es isomorfo a $h_{X}$ para algún objeto $X$ de $\mathcal{C}$, y se dice que $X$ es representado por $F$.
+ \end{definition}
+
+Tomando $X= \mathrm{Alb_{X}}$ y $T=\operatorname{Spec}{\mathit{k}}$, se tiene $\operatorname{Hom}(\operatorname{Spec}{\mathit{k}}, \mathrm{Alb}_{X})$ el cual es conocido como el \textbf{Funtor de Puntos de la Variedad de Albanese}.
+Se denota 
+\begin{equation*}
+ \mathrm{Alb}_{X}(\mathit{k}):=\operatorname{Hom}(\operatorname{Spec}{\mathit{k}}, \mathrm{Alb}_{X})
+\end{equation*}
+
+\begin{definition}
+Supóngase que el campo base $k$ es algebraicamente cerrado. Sea $X\in SmProj_{k}$ de dimensión $n$. El morfismo $\psi=\operatorname{alb}_{X}:CH^{n}_{\operatorname{alg}}(X)\to\operatorname{Alb}(X)(k)$ es conocido como el \textbf{morfismo de Albanese}.
+\end{definition}
+
+Considerando un campo algebraicamente cerrado $\mathit{k}$ de característica $p \geq 0$ y una $\mathit{k}$-variedad $X$ suave, conexa y casi-proyectiva, se tiene un teorema debido a A.A.Roitman, el cual asegura que un morfismo de Albanese
+\begin{equation*}
+\mathrm{alb}_{X}:CH_{0}(X)^{0} \rightarrow \mathrm{Alb_{X}}(\mathit{k})
+\end{equation*}
+del grupo de Chow de $0$-ciclos de grado $0$ en $X$ al grupo de $\mathit{k}$-puntos de la variedad de Albanese induce un isomorfismo sobre los subgrupos de $p$-torsión.
+
+En general, se denota como A($\mathit{k}$) el grupo de $\mathit{k}$-puntos racionales para dada variedad abeliana $A$ sobre $\mathit{k}$.
+
+
+\section{Teoría de Jacobianos Intermedios}
+
+\subsection{Axioma de Jacobiano Intermedio de Lieberman}
+
+
+ Lieberman introdujo un axioma conocido como \textbf{Axioma de Jacobiano Intermedio} el cual consiste de lo siguiente:
+
+
+ Para cada $X \in SmProj_{\mathit{k}}$ y para entero $1 \leq n \leq\dim X$, existe:
+\begin{enumerate}
+\item Un subgrupo $K^{n}(X)$ de $CH^{n}_{\mathrm{alg}}(X)$ donde 
+\begin{equation*}
+K^{n}(X)=\bigcap \ker(CH^{n}_{\mathrm{alg}}(X) \rightarrow A)
+\end{equation*} 
+y
+ \item Una variedad abeliana $J^{n}(X)$.
+\end{enumerate}\label{CondJI}
+Estas estructuras anteriores deben cumplir las siguientes condiciones:
+\begin{enumerate}
+\item $J^{n}(X)$ es la variedad de Albanese de $X$ si $n=\dim X$.
+\item\label{iso}  Existe un isomorfismo de grupos dado por $CH^{n}_{\mathrm{alg}}(X)/K^{n}(X) \cong J^{n}(X)$.
+\item Funtorialidad: Para variedades arbitrarias $X$ y $Y$, y un elemento $z$ de $CH^{n+m}(X \times Y)$, existe un morfismo de variedades abelianas:
+\begin{equation*}
+[z]:J^{d-m}(X) \rightarrow J^{n}(Y)
+\end{equation*}
+con $d=\dim X$ tal que diagrama es conmutativo
+\begin{center}
+          $\xymatrix{
+           CH^{d-m}_{\mathrm{alg}}(X)\ar[d]\ar[r]^-{z(?)} & CH^{n}_{\mathrm{alg}}(Y)\ar[d]\\
+            J^{d-m}(X)\ar[r]^-{[z]}& J^{n}(Y)}
+          $ 
+         \end{center}
+donde los morfismos verticales están definidos vía el isomorfismo \ref{iso} y el morfismo horizontal superior está dado por $x \mapsto p_{Y}(x \times Y \cdot z)$, donde $p_{Y}: X \times Y \rightarrow Y$ es la proyección. Entonces $J^{n}(X)$ es conocido como una \textbf{Teoría de Jacobiano Intermedio}.
+\end{enumerate}
+
+\begin{obs}
+ Se sigue del axioma, que $J^{1}(X)$ es la variedad de Picard de $X$.
+\end{obs}
+
+
+
+
+
+\section{Homomorfismos Regulares}
+
+\subsection{Homomorfismos regulares}\label{HR}
+
+Sea $X \in SmProj_{k}$ de dimensión $d$, $1 \leq n \leq d$, $A \in SmProj_{k}$ una variedad abeliana. Un homomorfismo de grupos $\psi: CH^{n}_{\mathrm{alg}}(X) \to A(k)$ es regular \cite[p. 477]{Sam60}, si para todo $Y \in SmProj_{k}$, $\Lambda \in CH^{n}(Y \times X)$, $y_{0} \in Y(k)$; existe un morfismo de variedades $\psi_{\Lambda,y_{0}}: Y \to A$ en $Sm_{k}$, tal que para $y \in Y(k)$: $\psi_{\Lambda,y_{0}}(y) = \psi(\Lambda([y] - [y_{0}]))$ \ref{In}.
+
+\subsubsection{Notación}\label{HR0}
+
+Escribiremos $\operatorname{Reg}^{n}(X, A)$ para el grupo abeliano de homomorfismos regulares $\psi: CH^{n}_{\mathrm{alg}}(X) \to A(k)$.
+
+La siguiente proposici\'on ser\'a de mucha importancia en el presente trabajo
+\begin{proposition}\label{HS1}
+Sea $\psi:CH^{n}_{\mathrm{alg}}(X) \rightarrow A(\mathit{k})$ un morfismo regular. Entonces
+\begin{enumerate}
+\item La imagen de $\psi$ es una subvariedad abeliana de $A(\mathit{k})$; y
+\item Existe una variedad abeliana $B$ y un ciclo $\Lambda \in CH^{n}(B \times X)$ tal que el morfismo  $\psi_{\Lambda,y_{0}}(y) : B \rightarrow A$ tiene un kernel finito y que la imagen de $\psi_{\Lambda,y_{0}}(y)$ es $\psi$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Ver \cite[Prop. 1.2]{Sai79}.
+\end{proof}
+
+\begin{definition}\label{Cond}
+Sea $\underline{A}$ una clase de homomorfismos regulares que satisface las siguientes condiciones:
+\begin{enumerate}\label{Cond}
+\item\label{Cond1} Para cada variedad $X$, cada variedad abeliana $A$ y cada $p\geq 0$, el morfismo cero $CH_{\mathrm{alg}}^{n}(X)\to A$ pertenece a $\underline{A}$.
+
+Fijando una variedad $X$ y un número $p\geq 0$, ponemos
+
+\[
+K^{n}(X) = \bigcap \ker(CH_{\mathrm{alg}}^{n}(X)\to A)
+\]
+
+donde $h$ recorre todos los homomorfismos regulares pertenecientes a $\underline{A}$ desde $CH_{\mathrm{alg}}^{n}(X)$ a cualquier variedad abeliana $A$.
+
+\item\label{Cond2} $K(X) = \oplus_{p}K^{n}(X)$ define una relación de equivalencia adecuada sobre el conjunto de ciclos en $X$, es decir,
+\begin{enumerate}
+
+\item La relación de equivalencia definida por $K(X)$ es compatible con la suma.
+
+\item Para un ciclo $z$ en $X$ y un número finito de subvariedades $Y_{j}$ (no necesariamente no singulares), existe un ciclo $z^{\prime}$ equivalente a $z$ tal que $z^{\prime}\cdot Y_{j}$ están definidos para todo $j$.
+
+\item Sean $X$ e $Y$ variedades, $u$ un ciclo en $X$ equivalente a cero, $z$ un ciclo en $X\times Y$ tal que $z(u) = \pi_{Y}(u\times X\cdot z)$ está definido. Entonces el ciclo $z(u)$ en $Y$ es equivalente a cero. Ponemos
+
+\[
+G^{n}(X) = CH_{\mathrm{alg}}^{n}(X) / K^{n}(X),\quad\text{y}\quad G_{a}(X) = G^{m - q}(X),\ m = \dim X.
+\]
+\end{enumerate}
+
+\item\label{Cond3} $G_{a}(X)$ y $\operatorname{Alb}(X)$ son naturalmente isomorfos, es decir, el núcleo del mapa canónico $A(X)\to \operatorname{Alb}(X)$ (1.1.4) es $K_{a}(X)$.
+
+\item\label{Cond4} Si $h:CH_{\mathrm{alg}}^{n}(X)\to A$ pertenece a $\underline{A}$ y si $h$ se factoriza como
+
+\[
+h:CH_{\mathrm{alg}}^{n}(X)\xrightarrow{k}B\hookrightarrow A,
+\]
+
+donde $B$ es una subvariedad abeliana de $A$, entonces $k$ pertenece a $\underline{A}$.
+
+\item\label{Cond5} Si $h:CH_{\mathrm{alg}}^{n}(X)\to A$ y $k:CH_{\mathrm{alg}}^{n}(X)\to B$ pertenecen a $\underline{A}$, entonces
+
+
+\[
+(h,k):CH_{\mathrm{alg}}^{n}(X)\to A\times B
+\]
+
+también pertenece a $\underline{A}$.
+\end{enumerate}
+\end{definition}
+
+\begin{ejem}
+Sea $\underline{A}$ la clase de todos los homomorfismos regulares. Entonces $\underline{A}$ satisface las condiciones dadas en \ref{Cond}.
+\end{ejem}
+
+
+Finalmente, se tiene el siguiente resultado:
+\begin{proposition}
+Existe una variedad abeliana \(P\) y un homomorfismo \(\theta: CH_{\mathrm{alg}}^n(X) \to P\) en la clase $\underline{A}$  con la siguiente propiedad: para cualquier homomorfismo \(h: CH_{\mathrm{alg}}^n(X) \to A\) en la clase de homomorfismos regulares existe uno y solo un homomorfismo de variedad abeliana \(f: P \to A\) tal que \(h = f \circ \theta\).
+\end{proposition}
+
+\begin{proof}
+Ver \cite[Prop. 2.1]{Sai79}.
+\end{proof}
+
+
+
+\subsection{Equivalencia abeliana}\label{EA}
+\begin{definition}
+Sea $X\in SmProj_{k}$ de dimensión $d$, $1\leq n\leq d$ y $\alpha\in CH^{n}_{\mathrm{alg}}(X)$. Se dice que $\alpha$ es \textit{abelianamente equivalente a cero} \cite[p. 477]{Sam60} si $\alpha\in\mathrm{ker}(\psi)$, para toda variedad abeliana $A\in SmProj_{k}$ y todo homomorfismo regular $\psi:CH^{n}_{\mathrm{alg}}(X)\to A(k)$ \ref{HR}.
+
+
+Se escribirá $CH^{n}_{\mathrm{ab}}(X)$ para el subgrupo de $CH^{n}_{\mathrm{alg}}(X)$ que consiste en ciclos algebraicos abelianamente equivalentes a cero, es decir, 
+\[ CH_{\mathrm{ab}}^n(X) = \{ a \in CH^{n}_{\mathrm{alg}}(X); a \stackrel{ab}{\sim} 0 \} \subseteq CH^{n}_{\mathrm{alg}}(X) \]
+\end{definition}
+
+\begin{obs}
+\begin{enumerate}
+\item Se puede restringir la atención a morfismos regulares suprayectivos en la definición anterior.
+\item Es fácil notar que la equivalencia abeliana es una relación adecuada.
+\end{enumerate}
+\end{obs}
+
+
+
+Ahora se tiene el siguiente problema:
+¿Existe un homomorfismo universal regular? es decir, existe una pareja $(A_{0},\phi_{0})$ con $A_{0}$ una variedad abeliana y $\phi_{0}:CH^{n}_{\mathrm{ab}}(X) \rightarrow A_{0}$ un homomorfismo regular tal que para cualquier otra pareja $(A,\phi)$, con $A$ una variedad abeliana y $\phi$ un homomorfismo regular se tiene la siguiente factorización:
+
+\begin{center}
+		$\xymatrix{
+			CH^{n}_{\mathrm{ab}}(X)  \ar[rr] \ar[dr]  & & A_{0}\ar[dl]\\
+			& A & }
+		$ 
+	\end{center}
+
+
+\begin{obs}
+\begin{enumerate}
+\item Claramente $\phi_{0}$ es suprayectivo. Además es suficiente la existencia de la factorización, porque si $f$ existe, $f$ es única.
+\item Claramente $(A_{0},\phi_{0})$ existe es único, salvo isomorfismo. Se denota por $A_{0}:=\mathrm{Ab}^{n}(X)$.
+\item Claramente $\ker(\phi_{0})=CH^{n}_{\mathrm{ab}}(X) $, entonces si $(\mathrm{Ab}^{n}(X),\phi_{0})$, existe, se sigue por el primer teorema de isomorfismo que 
+\begin{equation*}
+CH^{n}_{\mathrm{alg}}(X)/CH^{n}_{\mathrm{ab}}(X) \cong \mathrm{Ab}^{n}(X)
+\end{equation*}
+\end{enumerate}
+\end{obs}
+
+\section{El caso de codimensión 2}
+Se tienen los siguientes resultados auxiliares para los siguientes resultados de la tesis:
+\begin{theorem}
+Para el caso $n=2$ existe una representación algebraica
+\begin{equation*}
+\phi_{0}:CH^{2}_{\mathrm{alg}}(X) \twoheadrightarrow \mathrm{Ab}^{2}(X).
+\end{equation*}
+ \end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 1.9]{Mur85}.
+\end{proof}
+
+\begin{obs}
+Para $2<n<d$ la existencia de un representativo algebraico es desconocido.
+\end{obs}
+
+De acuerdo a Lieberman una \textbf{n-ésima variedad de Picard} de $V$ es una pareja $(P^{n},\rho^{n})$ con $P^{n}$ y una variedad abeliana, denotada por $P^{n}=\mathrm{Pic}^{n}$ y $\rho^{n} \in CH^{n}(P^{n} \times V)$ tal que la composición es 
+
+\[P^n \xrightarrow{\mathbf{w}_p} CH^n(V) \xrightarrow{} CH^n(V)/CH^{n}_{\text{ab}}(V)\]
+
+es un isomorfismo.  En este sentido estricto, la existencia solo se conoce para $n=1$ (la variedad de Picard usual). Sin embargo, parece natural, e incluso necesario, modificar ligeramente esta definición, es decir, requerir solo la existencia de $P^n$ sobre $P^n$ "localmente para la topología fielmente plana". Entonces la existencia de $(P^i, P^j)$ también es cierta para $n=d$ (la variedad de Albanese) y para $n=2$:
+
+\begin{theorem}
+Para $n=2$, existe una pareja de Picard $(\mathrm{Pic}^{2},\rho^{2})$ en el sentido de Lieberman.
+ \end {theorem}
+
+\begin{proof}
+Ver \cite[Thm. 1.10.1]{Mur85}.
+\end{proof}
+
+\subsection{Relación con el Jacobiano intermedio}
+
+En esta sección, se tomará $k=\mathbb{C}$, el campo de los números complejos. Ahora tenemos la teoría de los jacobianos intermedios (en el sentido de Weil o en el sentido de Griffiths). Para esto, consideremos la descomposición de Hodge de $X\in SmProj_{k}$:
+
+\[
+H^{2n-1}(X, \mathbb{C}) = H^{2n-1,0}(X) + H^{2n-2,1}(X) + \ldots + H^{0,2n-1}(X)
+\]
+
+Se define
+
+\[
+F^n = F^nH^{2n-1}(X, \mathbb{C}) = H^{2n-1,0}(X) + \ldots + H^{n,n-1}(X)
+\]
+
+y
+
+\[
+H^{2n-1}(X)_{\mathbb{Z}} = \operatorname{Im}(H^{2n-1}(X, \mathbb{Z}) \longrightarrow H^{2n-1}(X, \mathbb{C}))
+\]
+
+Entonces el $n$-ésimo jacobiano intermedio (en el sentido de Griffiths) se define como
+
+\[
+J^n(X) = H^{2n-1}(X, \mathbb{C})/(F^n+H^{2n-1}(X)_{\mathbb{Z}}).
+\]
+
+Este es un toro complejo (y en general no una variedad abeliana).
+
+Es natural definir la noción de un morfismo de Abel-Jacobi de Weil definido de la siguiente forma
+\begin{equation*}
+\psi_{n}: CH^{n}_{\mathrm{alg}}(X) \rightarrow J^{n}(X)
+\end{equation*}
+
+definido vía integración de formas diferenciables. Es decir, si $a \in CH^{n}_{\mathrm{alg}}(X)$, entonces, como es bien sabido, $a$ es homológicamente equivalente a cero, por lo tanto \(a = \partial T\) con $T$ una cadena integral de dimensión $(2d-2n+1)$. Ahora un elemento de \(H^{2n-1}(X, \mathbb{C})/F^n\) es una función lineal sobre \(F^{d-n+1}H^{2d-2n+1}(X, \mathbb{C})\) y entonces $\psi_{n}$ se define como sigue:
+
+\[
+a \mapsto \int_T \omega \; (\text{mod } H^{2i-1}(X)_{\mathbb{Z}}) \quad (\omega \in F^{d-n+1}H^{2d-2n+1}(X, \mathbb{C}))
+\]
+
+Esto depende de varias elecciones, pero resulta que \(\psi_{n}\) está bien definido. Así, de esta forma, se define
+
+\begin{equation*}
+J^{n}_{a}(X)=\operatorname{Im}(CH^{n}_{\mathrm{alg}}(X) \rightarrow^{\psi_{n}} J^{n}(X))
+\end{equation*}
+entonces $J^{n}_{a}(X)$ es una variedad abeliana y $\psi_{n}$ es un homomorfismo regular \cite[Thm. 6.5(i)]{Lie68}, \ref{HR}. Más aún, Lieberman muestra \cite[Thm. 6.5(iii)]{Lie68} que la imagen de $\psi_{n}$ está dada por los $\mathbb{C}$-puntos de la variedad abeliana $J_{a}^{n}(X)$.
+
+Esto nos conduce al siguiente problema:
+
+
+\textbf{Problema} ¿Es $(J^{n}_{a}(X), \psi^{n})$ el representativo algebraico para $CH^{n}_{\mathrm{alg}}(X)$?
+La respuesta es que para $n=1$ y para $n=d$ se sabe que la respuesta es sí. Para $2<n<d$ la respuesta es desconocida y para $n=2$ la respuesta es que sí.
+
+
+\begin{theorem}\label{TeoC}
+Para $n=2$, la pareja $(J^{2}_{a}(X),\psi^{2})$ es la representación algebraica de $A^{2}(X)$.
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 1.11.1]{Mur85}.
+\end{proof}
+
+\begin{definition}
+Un ciclo en $a \in CH^{n}_{\mathrm{alg}}(X)$ es llamado \textbf{equivalencia de Abel-Jacobi a cero} si y sólo si $\psi_{n}(a)=0$.
+\end{definition}
+
+Se escribirá $CH^{n}_{\mathrm{AJ}}(X)$ para el subgrupo de $CH^{n}_{\mathrm{alg}}(X)$ que consiste en ciclos Abel-Jacobi equivalentes a cero, es decir, 
+\[ CH_{\mathrm{AJ}}^n(X) = \{ a \in CH^{n}_{\mathrm{alg}}(X); a \stackrel{AJ}{\sim} 0 \} \subseteq CH^{n}_{\mathrm{alg}}(X) \]
+
+\begin{obs}
+Así por \ref{TeoC} dice que para $n=2$ que la \textbf{equivalencia de Abel-Jacobi} es igual a la \textbf{equivalencia abeliana}.
+\end{obs}
+
+\subsection{Equivalencia de incidencia}\label{EI}
+Sea $\alpha\in CH_{\mathrm{alg}}^{n}(X)$. Se dice que $\alpha$ es \textit{incidentemente equivalente} a cero \cite[p. 6-7]{Sam60}, si para todo $Y\in SmProj_{k}$ y todo $\beta\in CH^{d-n+1}(X\times Y)$: $p_{Y*}(p_{X}^{*}(\alpha)\cdot\beta)=0\in CH^{1}(Y)$, donde $p_{X}:X\times Y\to X$, $p_{Y}:X\times Y\to Y$ son las proyecciones.
+
+
+Se escribirá $CH^{n}_{\mathrm{inc}}(X)$ para el subgrupo de $CH^{n}_{\mathrm{alg}}(X)$ que consiste en ciclos algebraicos incidentes equivalentes a cero, es decir, 
+
+\[
+CH^n_{\text{inc}}(X) = \{a \in CH^n_{\mathrm{alg}}(X) : a \text{ es incidentemente equivalente a cero}\}.
+\]
+
+El siguiente es un resultado bien conocido de Griffiths y Lieberman:
+
+\begin{lemma}
+\(CH^n_{\text{AJ}}(X) \subseteq CH^n_{\text{inc}}(X)\).
+\end{lemma}
+
+\begin{proof}
+Ver \cite{Mur83}. Ver Lema 2.2.
+\end{proof}
+
+De hecho este lema se sigue de la functorialidad de los jacobianos intermedios, i.e. tenemos un diagrama conmutativo:
+
+\[
+\begin{array}{c}
+    CH^n_\mathrm{alg}(X) \xrightarrow{\phi}  CH^1_\mathrm{alg}(Y) \\
+    \downarrow{\psi} \quad\quad\quad \downarrow{\psi} \\
+    J^n(X) \xrightarrow{\phi} J^1(Y) 
+\end{array}
+\]
+donde se sabe que $ J^1(Y) = \text{Pic}^{(0)}(Y)$
+
+Usando este lema no es difícil ver que existe una variedad abeliana, denotada por \(\text{Pic}^n(X)\) y llamada la \textbf{n-ésima variedad de Picard}, tal que
+
+\[
+ CH^n_\mathrm{alg}(X) / CH^n_{\text{inc}}(X) \cong \text{Pic}^n(X)
+\]
+
+y se tiene un morfismo sobreyectivo de variedades abelianas:
+
+\[
+\rho: J_a^n(X) \rightarrow \text{Pic}^n(X).
+\]
+
+\begin{obs}
+La razón de este nombre es que Hiroshi Saito ha demostrado la existencia de variedades abelianas con la propiedad sobre cualquier campo algebraicamente cerrado.
+\end{obs}
+
+Finalmente un resultado principal de Hiroshi Saito es el siguiente:
+
+\begin{theorem}
+Para \(n= 2\) el morfismo \(\rho\) es una isogenia; i.e. para \(n = 2\) la equivalencia de Abel-Jacobi difiere a lo sumo por una isogenia de la equivalencia de incidencia.
+\end{theorem}
+
+\begin{obs}
+\begin{enumerate}
+    \item Como se señaló en la introducción, esto responde, para \(n = 2\).
+    \item En todos los ejemplos concretos conocidos \(\rho\) es de hecho un isomorfismo.
+\end{enumerate}
+\end{obs}
+
+\begin{definition}
+Sea \(X\) una variedad de dimensión \(m\) y sea \(A\) una variedad abeliana. Un homomorfismo de grupos $h: CH_{\text{alg}}^{n}(X) \to A$ se dice un \textbf{homomorfismo de Picard} si existen una variedad \(Y\) y un ciclo $z \in CH^{m-p+1}(X \times Y)$ tales que $A$ es una subvariedad abeliana de la variedad de Picard $J^1(Y)$ de $Y$ y que el diagrama
+\[
+\begin{array}{ccc}
+CH_{\mathrm{alg}}^n(X) & \xrightarrow{z(?)} & CH_{\mathrm{alg}}^1(Y) \\
+& \searrow h & \downarrow \\
+& & A \hookrightarrow J^1(Y)
+\end{array}
+\]
+es conmutativo.
+\end{definition}
+\begin{obs}\label{Pic}
+Un homomorfismo de Picard es regular. Se denota la clase de homomorfismos de Picard por \(\mathcal{P}\)  \cite[Def. 3.1]{Sai79}. Esta clase \(\mathcal{P}\) satisface \ref{Cond}.
+\end{obs}
+
+Por otra parte, la siguiente proposición es de vital importancia para resultados previos de esta tesis:
+
+\begin{proposition}
+ Existe una variedad abeliana \(P\) y un homomorfismo de Picard \(\theta: CH_{\mathrm{alg}}^n(X) \to P\), universal para homomorfismos de Picard. Se escribirá \(\operatorname{Pic}^n X\) para \(P\) y \(\theta^n\) para \(\theta\). Por convención, ponemos \(\operatorname{Pic}^n X = 0\) si \(n \leq 0\) o \(n > \dim X\). También \(\operatorname{Pic}_{m-n} X = \operatorname{Pic}^n X\) si \(m = \dim X\).
+\end{proposition}
+
+\begin{proof}
+Ver \cite[Prop. 3.5]{Sai79}.
+\end{proof}
+
+\begin{theorem}
+\(\operatorname{Pic}^n X\) satisface el axioma de Jacobiana Intermedia. 
+\begin{proof}
+Se tiene lo siguiente:
+\begin{enumerate}
+\item Recordando que $CH_{\mathrm{inc}}^n(X)$ es el conjunto de ciclos equivalentes por incidencia a cero, y \(\theta^n: CH_{\mathrm{alg}}^n(X) \to \operatorname{Pic}^n X\) induce un isomorfismo \(CH_{\mathrm{alg}}^n(X) / CH_{\mathrm{inc}}^n(X) \simeq \operatorname{Pic}^n X\).
+\item\label{CondPi1} \(\mathrm{Pic}^1 X\) es la variedad de Picard de \(X\). \(\mathrm{Pic}_0 X\) es la variedad de Albanese de \(X\).
+\item\label{CondPi2}  Para cualquier ciclo \(z \in CH^{p+q}(X \times Y)\) (\(m = \dim X\)) existe uno y solo un morfismo de variedades abelianas \([z] = [z]_F^m: \mathrm{Pic}_n X \to \mathrm{Pic}^m Y\) tal que el diagrama
+\[
+\begin{array}{ccc}
+CH_{n alg}(X)  & \xrightarrow{z(?)} & CH_{\mathrm{alg}}^n(X)  \\
+\downarrow & & \downarrow \\
+\operatorname{Pic}_n X & \xrightarrow{[z]_F^p} & \operatorname{Pic}^m Y
+\end{array}
+\]\label{CondPi3}
+es conmutativo.
+\end{enumerate}
+Se sigue por \ref{CondJI} que $\mathrm{Pic}^n X$ satisface el axioma de Jacobiana Intermedia.
+\end{proof}
+\end{theorem}
+
+Por \ref{CondPi3} se sigue que para \(m\) y \(n \geq 0\) fijos, las asignaciones
+\[
+X \mapsto \mathrm{Pic}^m X \quad \text{y} \quad X \mapsto \operatorname{Pic}_n X
+\]
+definen functores contravariantes y covariantes desde la categoría de variedades a la de variedades abelianas.
+
+\begin{obs} 
+Se define una clase \(\mathcal{L}'\) de homomorfismos regulares como sigue: Un homomorfismo regular \(h: CH_{n\,\mathrm{alg}}(X) \to A\) pertenece a \(\mathcal{L}'\) si existen un homomorfismo de Picard \(k: CH_{\mathrm{alg}}^n(X) \to B\) y un homomorfismo de variedad abeliana \(\pi: A \to B\) tales que \(k = \pi \circ h\) y que el núcleo de \(\pi\) es finito. La clase \(\mathcal{L}'\),  define una teoría de jacobiana intermedia \(J^n(X)\) y además hay un morfismo canónico \(J^n(X) \to \operatorname{Pic}^n X\) con núcleo finito. 
+\end{obs}
+
+
+Tomando $X={\mathrm{Pic}^{0}}(X)$ y $T=\spec{\mathit{k}}$, se tiene $\operatorname{Hom}(\operatorname{Spec}{\mathit{k}},\mathrm{Pic}^{0}(X))$ el cual es conocido como el \textbf{Funtor de Puntos de la Variedad de Picard}. Se denota 
+\begin{equation*}
+\mathrm{Pic}^{0}(X)(k):=\operatorname{Hom}(\operatorname{Spec}{\mathit{k}},{\mathrm{Pic}}^{0}(X))
+\end{equation*}
+
+
+Finalmente, se define el homomorfismo natural \(\psi:CH^{1}_{\mathrm{alg}}(X)\to\mathrm{Pic}^{0}(X)(k)\) para ciclos de codimensión \(1\) en \(X\). Este morfismo será de vital importancia más adelante en este trabajo.
+\section{Conjeturas de Bloch-Beilinson-Murre}
+
+
+Asumiendo que $\mathit{k}$ es un campo perfecto. Sea $SmProj_{\mathit{k}}$ la subcategor\'ia plena de $Sm_{\mathit{k}}$ donde los objetos son variedades proyectivas suaves sobre $\mathit{k}$. Se escribir\'a que $CH^{*}(X)_{\mathbb{Q}}$ para el anillo de Chow de $X$ con coeficientes racionales:
+
+ \begin{equation*}
+\bigoplus^{\dim X}_{n=0} CH^n(X)_{\mathbb{Q}}
+\end{equation*}
+
+Dada una correspondencia $\Lambda \in CH^{n}(X \otimes Y)_{\mathbb{Q}}$, se escribe respectivamente:
+\begin{equation*}
+CH^{i}_{\Lambda}:CH^{i+d_{X}-q}(X)_{\mathbb{Q}} \rightarrow CH^{i}(Y)_{\mathbb{Q}},
+\end{equation*}
+entonces
+\begin{equation*}
+H^{i}_{\Lambda}:H^{i+2(d_{X}-q)}(X) \rightarrow H^{i}(Y)
+\end{equation*}
+
+para los morfismos inducidos en los grupos de Chow y grupos de cohomolog\'ia, donde $d_{X}$ es la dimensi\'on de $X$. Se denota, como
+
+\begin{equation*}
+CH^{i}(\alpha)=p_{Y}{*}(\Lambda \cdot p^{*}_{X}\alpha)
+\end{equation*}
+donde $p_{X}$, $p_{Y}$, son las proyecciones relativas a $X$ y $Y$; y similarmente para $H^{i}_{\Lambda}$.
+
+\subsection{Definición de la filtración de Bloch-Beilinson-Murre}
+
+\begin{definition}
+Sea $X \in SmProj_{\mathit{k}}$. Se dir\'a que una filtraci\'on descendente $F^{*}$ en $CH^{*}(X)_{\mathbb{Q}}$ es una filtraci\'on de tipo Bloch-Beilinson-Murre si las siguientes condiciones se satisfacen:
+\begin{enumerate}
+\item\label{1} $F^{0}CH^{n}(X)_{\mathbb{Q}}=CH^{n}(X)_{\mathbb{Q}}$, para cualquier $0\leq n \leq \dim X$.
+\item\label{2} $F^{1}CH^{n}(X)_{\mathbb{Q}}=CH^{n}_{\mathrm{num}}(X)_{\mathbb{Q}}$, el grupo de ciclos numericamente equivalentes a cero m\'odulo equivalencia racional.
+\item\label{3} $F^{*}$ es funtorial con respecto a las correspondencias de Chow entre variedades proyectivas suaves, es decir, dado $\Lambda \in CH^{q^\prime}(X \otimes Y)_{\mathbb{Q}}$:
+\begin{equation*}
+CH^{q}_{\Lambda}(F^{n}CH^{q+d_{X}-q^{\prime}}(X)_{\mathbb{Q}}) \subset F^{n}CH^{q}(Y)_{\mathbb{Q}}.
+\end{equation*}
+Se escribirá $Gr^{n}_{F}(CH^{q}_{\Lambda})$ para el morfismo inducido por $CH^{q}_{\Lambda}$ sobre los grupos graduados:
+
+\begin{equation*}
+Gr^{n}_{F}(CH^{q+d_{X}-q^{\prime}}(X)_{\mathbb{Q}}) \rightarrow Gr^{n}_{F}(CH^{q}(Y)_{\mathbb{Q}}).
+\end{equation*}
+
+ \item \label{4} Si $H^{2q-n}_{\Lambda}=0$, entonces $Gr^{n}_{F}(CH^{q}_{\Lambda})=0$.
+\item  \label{5}$F^{q+1}CH^{q}(X)_{\mathbb{Q}}=0$.
+\end{enumerate}
+\end{definition}
+
+\begin{obs} En vez de considerar $\ref{4}$ se considerará una condición más débil: Si la clase $\Lambda \in CH^{q^\prime}(X \otimes Y)_{\mathbb{Q}}$ es homol\'ogicamente equivalente a cero, es decir $\mathrm{cl}_{X \otimes Y}(\Lambda)=0 \in H^{2q^\prime}(X \otimes Y)$, entonces $Gr^{n}(CH^{q}_{\Lambda})=0$. para cualquier $0 \leq n \leq q$.
+\end{obs}
+
+\begin{obs} Asumiendo que las equivalencias homológicas y numéricas coinciden en $X$, es decir, la conjetura estándar $D(X)$, se observa por \ref{2} simplemente dice que $F^{1}CH^{q}(X)_{\mathbb{Q}}$ está dado por el ciclo de grupos de homológicamente equivalentes a cero módulo equivalencia racional $CH^{q}_{\mathrm{hom}}(X)_{\mathbb{Q}}$. Nótese que cuando el campo base $\mathit{k}=\mathbb{C}$, entonces la conjetura estándar $D(X)$ es cierta en los siguientes casos:
+\begin{enumerate}
+\item $CH^{n}_{\mathrm{hom}}(X)_{\mathbb{Q}}=CH^{n}_{\mathrm{num}}(X)_{\mathbb{Q}}$; para $n=0,1$, $\dim X -1$, $\dim X$. De hecho, cuando $n=1$ y $\mathit{k}$ es algebraicamente cerrado, la equivalencia homológica y la equivalencia numérica coinciden.
+\item $X$ es una variedad abeliana.
+\item $\dim X \leq 4$.
+\end{enumerate}
+\end{obs}
+
+\begin{theorem} Sea $X \in SmProj_{\mathit{k}}$ Entonces la filtración $F^{*}$ en $CH^{*}(X)_{\mathbb{Q}}$ definida en \ref{def_filt} satisface las condiciones \ref{1}, \ref{2}, \ref{3} y \ref{5}.
+\end{theorem}
+
+\begin{proof}
+Ver \cite[Thm. 6.1.4]{Pel17}.
+\end{proof}
+
+\newpage
+
+\section{Resultados}
+En esta sección se establecerán los principales resultados técnicos para el estudio del morfismo de Albanese comenzando con una caracterización de los morfismos nulos en la categoría  ${\bf HI}_{k}$ bajo la hipótesis de que el campo base $k$ es algebraicamente cerrado. Este criterio será fundamental más adelante.
+\begin{proposition}\label{NC1}
+Con la notación y condiciones de \ref{NC}. Supóngase que el campo base $k$ es algebraicamente cerrado, y sea $\mathcal{F}\in{\bf HI}_{k}$ \ref{HV}. Considere un morfismo $f:\mathcal{F}\rightarrowtail\mathcal{A}$ en ${\bf HI}_{k}$. Entonces $f=0$ si y sólo si el morfismo inducido $f_{k}=0:\Gamma(\operatorname{Spec}(k),\mathcal{F})\rightarrowtail\Gamma(\operatorname{Spec}(k),\mathcal{A})$.
+\end{proposition}
+
+\begin{proof}
+Por un lado, si $f=0$, es inmediato que el morfismo inducido $f_{k}=0$. Por otro lado, si $f_{k}=0:\Gamma(\operatorname{Spec}(k),\mathcal{F})\rightarrowtail\Gamma(\operatorname{Spec}(k),\mathcal{A})$, entonces es suficiente mostrar que para cualquier $X\in Sm_{k}$ afín: el morfismo inducido $f_{X}=0:\Gamma(X,\mathcal{F})\rightarrowtail\Gamma(X,\mathcal{A})$.
+
+
+Sea $\gamma\in\Gamma(X,\mathcal{F})$, entonces $f_{X}(\gamma)\in\Gamma(X,\mathcal{A})$ está dado por un morfismo en $Sm_{k}$: $f_{X}(\gamma):X\to A$. Dado que $k$ es algebraicamente cerrado, para mostrar que $f_{X}(\gamma)=0$, es suficiente ver que para cada $x\in X(k)$: $f_{X}(\gamma)(x)=0\in A(k)$ \cite[Ch. II. Prop. 2.6]{Har77}, lo cual se sigue de la naturalidad de $f:\mathcal{F}\to\mathcal{A}$, es decir, la conmutatividad del siguiente diagrama:
+\begingroup\shorthandoff{"}
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+\Gamma(X,\mathcal{F}) \arrow[r,"f_{X}"] \arrow[d,"x^*"] &
+\Gamma(X,\mathcal{A}) \arrow[d,"x^*"] \\
+\Gamma(\operatorname{Spec}(k),\mathcal{F}) \arrow[r,"f_{k}=0"'] &
+\Gamma(\operatorname{Spec}(k),\mathcal{A})
+\end{tikzcd}
+\]
+\endgroup
+\end{proof}
+
+\subsection{El morfismo de Albanese}
+
+Con la notación y condiciones de \ref{NC}. Supóngase que el campo base $k$ es algebraicamente cerrado. Sea $X\in SmProj_{k}$ de dimensión $d$, y $\psi=\operatorname{alb}_{X}:CH^{d}_{\operatorname{alg}}(X)\to\operatorname{Alb}(X)(k)$ el morfismo de Albanese. Sea $x_{0}\in X(k)$ y $f:X\to A=\operatorname{Alb}(X)$ el morfismo canónico en la variedad de Albanese tal que $f(x_{0})=0$.
+
+Considere los siguientes morfismos en $DM^{\operatorname{eff}}_{k}$, $\mathcal{A}_{f}:M(X)\to\mathcal{A}$ \ref{NC} y $\pi_{X}:M(X)\to\mathbf{1}$ el morfismo inducido por el morfismo estructural $\pi_{X}:X\to\operatorname{Spec}(k)$. Se escribirá $\langle\pi_{X},\mathcal{A}_{f}\rangle:M(X)\to\mathbf{1}\oplus\mathcal{A}$ para el morfismo en $DM^{\operatorname{eff}}_{k}$ inducido por $\pi_{X}$, $\mathcal{A}_{f}$ en cada factor directo de $\mathbf{1}\oplus\mathcal{A}$, véase \cite[(7) en p.7, y Rmk. 3.3]{SS03}. Sea
+
+\[
+M_{T}(X)\xrightarrow{\;z_{T}\;}M(X)\xrightarrow{\;\langle\pi_{X},\mathcal{A}_{f}\rangle\;} \mathbf{1}\oplus\mathcal{A}
+\]
+
+un triángulo distinguido en $DM^{\operatorname{eff}}_{k}$.
+
+Ahora, por \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b} se obtiene el siguiente morfismo inducido de grupos abelianos:
+\begingroup\shorthandoff{"}
+\[
+\begin{tikzcd}
+\operatorname{Hom}_{DM_{k}}(\mathbf{1},M(X))\arrow[r,"\pi_{X*}"]&\operatorname{Hom}_{DM_{k}}(\mathbf{1},\mathbf{1})\\
+CH^{d}(X)\arrow[u, "\cong"]\arrow[r]&\mathbb{Z}\arrow[u, "\cong"]\\
+\gamma\arrow[r]&\deg(\gamma)
+\end{tikzcd}
+\]
+\endgroup
+
+Por lo tanto, se  concluye que la imagen del morfismo inducido:
+
+\[
+z_{T*}:\operatorname{Hom}_{DM^{\operatorname{eff}}_{k}}(\mathbf{1},M_{T}(X))\to\operatorname{Hom}_{DM^{\operatorname{eff}}_{k}}(\mathbf{1},M(X))\cong CH^{d}(X)
+\]
+
+es el núcleo de Albanese $T(X)\subseteq CH^{d}_{\operatorname{alg}}(X)$.
+
+
+Si se consideran coeficientes racionales, entonces se observa que la descomposición de la diagonal en \cite[7.1 Thm. 3]{Mur90} se cumple para cualquier $X\in SmProj_{k}$, así, por \cite[1.5B, 3.1 Thm.1 and 4.1 Thm. 2]{Mur90} hay un sumando directo $i_{T}:M^{\prime}(X)\to M(X)_{\mathbb{Q}}$ de $M(X)_{\mathbb{Q}}$ que calcula el núcleo de Albanese, es decir, la imagen del morfismo inducido $i_{T*}:\operatorname{Hom}_{DM^{\operatorname{eff}}_{k}}(\mathbf{1},M^{\prime}(X ))\to\operatorname{Hom}_{DM^{\operatorname{eff}}_{k}}(\mathbf{1},M(X)_{ \mathbb{Q}})\cong CH^{d}(X)_{\mathbb{Q}}$ es $T(X)_{\mathbb{Q}}\subseteq CH^{d}_{\mathrm{alg}}(X)_{\mathbb{Q}}$.
+
+El objetivo principal es generalizar esto para ciclos de mayor dimensión y homomorfismos regulares arbitrarios \ref{HR}. A saber, construir un análogo del morfismo $z_{T}:M_{T}(X)\to M(X)$, que calcule el núcleo de un homomorfismo regular dado $\psi:CH^{n}_{\operatorname{alg}}(X)\to A(k)$.
+
+\section{Motivos de Voevodsky y homomorfismos regulares}\label{MVHR}
+\subsection{Caracterización de los homomorfismos regulares}\label{In}
+En esta sección se asumirá además que el campo base $k$ es algebraicamente cerrado.
+
+Sean $X, Y \in SmProj_{k}$ de dimensión $d$, $d_{Y}$, respectivamente, y $\Lambda \in CH^{n}(Y \times X)$, $0 \leq n \leq d$. Dado $\gamma \in CH^{d_{Y}}(Y)$, se escribirá $\Lambda(\gamma) \in CH^{n}(X)$ para $p_{X*}(p^{*}_{Y}(\gamma) \cdot \Lambda)$ donde $p_{X}: Y \times X \to X$, $p_{Y}: Y \times X \to Y$ son las proyecciones.
+
+Dado $\alpha \in CH^{m}(Z)$, $Z \in Sm_{k}$, se hará abuso de la notación y también se escribirá $\alpha: M(Z) \to \mathbf{1}(m)[2m]$ para el morfismo en $DM_{k}$ correspondiente a $\alpha$ bajo el isomorfismo \cite{Voe02a}:
+\[
+\operatorname{Hom}_{DM_{k}}(M(Z), \mathbf{1}(m)[2m]) \cong CH^{m}(Z).
+\]
+
+
+\subsubsection{Dualización de la correspondencia}\label{In2}Con la notación y condiciones de \ref{In}. Sea $y_{0} \in Y(k)$, y considere $\Lambda: M(Y) \otimes M(X) \to \mathbf{1}(n)[2n]$ en $DM_{k}$. Dualizando $M(X)$ \cite[Thm. 4.3.7]{Voe00b}, \cite[Prop. 6.7.1 and §6.7.3]{BV08} se obtiene el siguiente morfismo en $DM_{k}$:
+\[
+\Lambda_{X}: M(Y) \to M(X)(-d + n)[-2d + 2n].
+\]
+
+\subsubsection{Morfismos inducidos por puntos racionales}\label{In3}
+Dado un morfismo $f: X \to Y$ en $Sm_{k}$, se escribirá $f: M(X) \to M(Y)$ para el morfismo inducido por $f$ en $DM_{k}$. En particular, se escribirá $y_{0}: \mathbf{1} \to M(Y)$ para el morfismo en $DM_{k}$ inducido por $y_{0} \in Y(k)$.
+
+Sea $\overline{y}_{0}$ la siguiente composición en $DM_{k}$:
+\[
+\overline{y}_{0} = \Lambda_{X} \circ y_{0} \circ \pi_{Y}: M(Y) \to M(X)(-d + n)[-2d + 2n],
+\]
+donde $\pi_{Y}: Y \to \operatorname{Spec}(k)$ es el morfismo estructural.
+
+\subsubsection{El morfismo $\Lambda_{y_{0}}$}\label{In4} Considérese el siguiente morfismo en $DM_{k}$ \ref{In2}-\ref{In3}:
+\[
+\Lambda_{y_{0}} = \Lambda_{X} - \overline{y}_{0}: M(Y) \to M(X)(-d + n)[-2d + 2n].
+\]
+Entonces, combinando el lema de Lieberman \cite[Prop. 16.1.1]{Ful98} y \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b}, se deduce que $\Lambda_{y_{0}}$ induce el siguiente morfismo de grupos abelianos:
+
+\begingroup\shorthandoff{"}
+\[
+\begin{tikzcd}\label{MF}
+\operatorname{Hom}_{DM_{k}}(\mathbf{1}, M(Y)) \arrow[r, "\Lambda_{y_{0}*}"] & \operatorname{Hom}_{DM_{k}}(\mathbf{1}, M(X)(-d + n)[-2d + 2n]) \\
+CH^{d_{Y}}(Y) \arrow[r] & CH^{n}(X) \arrow[u, "\cong"] \\
+\gamma \arrow[r, mapsto] & \Lambda(\gamma) - \deg(\gamma)\Lambda([y_{0}])
+\end{tikzcd}
+\] \label{Reldig}
+
+
+Así, se obtiene la siguiente composición:
+
+\begin{align}  \label{diag.algequiv}
+\begin{split}
+\xymatrix@R=0.1pc{Y(k) \ar[r]^-{z_0 ^Y}& CH^{d_Y}(Y) \ar[r]^-{\Lambda _{y_0 \ast}}
+& CH^n(X) \\
+y \ar@{|->}[r]&[y] \ar@{|->}[r]& \Lambda ([y] -  [y_0 ])}
+\end{split}
+\end{align}
+
+\subsubsection{Morfismo inducido por un homomorfismo regular}\label{3.2.2}Con la notación y condiciones de \ref{In} y \ref{In2}. Sea $\psi:CH^{n}_{\mathrm{alg}}(X)\to A(k)$ un homomorfismo regular \ref{HR}. Entonces el morfismo $\psi_{\Lambda,y_{0}}:Y\to A$ en $Sm_{k}$ \ref{In3} induce el siguiente morfismo en $DM^{\mathrm{eff}}_{k}$ \ref{HR}:
+
+\[
+\mathcal{A}_{\psi_{\Lambda,y_{0}}}:M(Y)\to\mathcal{A}.
+\]
+
+Considere el morfismo inducido por $\mathcal{A}_{\psi_{\Lambda,y_{0}}}$:
+
+\[
+(\mathcal{A}_{\psi_{\Lambda,y_{0}}})_{*}:\operatorname{Hom}_{DM^{\mathrm{eff }}_{k}}(\mathbf{1},M(Y))\cong CH^{d_{y}}(Y)\to\operatorname{Hom}_{DM^{\mathrm{ eff}}_{k}}(\mathbf{1},\mathcal{A})\cong A(k)
+\]
+
+\begin{proposition}\label{Prop323}
+Sea $\beta\in\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1},M(Y))\cong CH^{d_{y}}(Y)$. Entonces:
+\[
+(\mathcal{A}_{\psi_{\Lambda,y_{0}}})_{*}(\beta)=\psi(\Lambda(\beta)- \deg(\beta)\Lambda([y_{0}]))\in\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}( \mathbf{1},\mathcal{A})\cong A(k)\].
+\end{proposition}
+
+\begin{proof}
+Dado que el campo base $k$ es algebraicamente cerrado, se observa que $\beta=\sum_{i}n_{i}y_{i}$, $n_{i}\in\mathbb{Z}$, $y_{i}\in Y(k)$, donde la suma se considera en $\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1},M(Y))$ \ref{In3}. Por lo tanto, $(\mathcal{A}_{\psi_{\Lambda,y_{0}}})_{*}(\beta)=\sum_{i}n_{i}(\mathcal{A}_{\psi_{ \Lambda,y_{0}}})_{*}(y_{i})\in A(k)$.
+
+Ahora, recordando que $\mathcal{A}\in\mathbf{HI}_{k}$ es el functor de puntos de $A$ \ref{NC}, así que $(\mathcal{A}_{\psi_{\Lambda,y_{0}}})_{*}(y_{i})=\psi_{\Lambda,y_{0}}(y_{i})$ para $y_{i}\in Y(k)$. Por lo tanto, dado que $\psi$ es un homomorfismo regular \ref{HR}, se concluye que:
+\[
+\sum_{i}n_{i}\psi(\Lambda([y_{i}])-\Lambda([y_{0}]))=\sum_{i}n_{i}\psi_{\Lambda ,y_{0}}(y_{i})=\sum_{i}n_{i}(\mathcal{A}_{\psi_{\Lambda,y_{0}}})_{*}(y_{i})=( \mathcal{A}_{\psi_{\Lambda,y_{0}}})_{*}(\beta).
+\]
+
+Finalmente, dado que $\psi$ es un homomorfismo de grupos, se deduce que $\sum_{i}n_{i}\psi(\Lambda([y_{i}])-\Lambda([y_{0}]))=\psi(\Lambda(\sum_{i}n_{i}[ y_{i}])-\sum_{i}n_{i}\Lambda([y_{0}]))=\psi(\Lambda(\beta)-\deg(\beta)\Lambda([y _{0}]))$, lo cual implica el resultado.
+\end{proof}
+
+Combinando \ref{In4} y \ref{Prop} se obtiene el siguiente diagrama en $DM_{k}$:
+\begin{align}\label{ind.reg.B}
+\begin{split}
+\xymatrix{M(Y) \ar[r]^-{\Lambda _{y_0}}
+\ar[d]^-{\mathcal A 
+_{\psi_{\Lambda, y_0}}}& M(X)(-d+n)[-2d+2n]\\
+\mathcal A &}
+\end{split}
+\end{align}
+
+
+\subsubsection{Construcción de $\mathcal{T}$ y diagrama asociado}\label{ind.reg.B1}
+
+Sea $SmProj_{\geq 1}=\{Y\in SmProj_{k}:\dim Y\geq 1\}$ y sea $\mathcal{T}\in DM^{\mathrm{eff}}_{k}$ la siguiente suma directa:
+
+\[
+\mathcal{T}=\bigoplus_{\begin{subarray}{c}\Lambda\in CH^{n}(Y\times X),y_{0} \in Y(k)\\ Y\in SmProj_{\geq 1}\end{subarray}}M(Y),
+\]
+
+Considere los morfismos en $DM_{k}$ inducidos por \ref{ind.reg.B} en cada sumando directo de $\mathcal{T}$:
+\begin{align}  \label{diag.starting}
+\begin{split}
+\xymatrix{\mathcal T \ar[r]^-{(\Lambda _{y_0})}
+\ar[d]_-{(\mathcal A _{\psi _{\Lambda , y_0}})}& M(X)(-d+n)[-2d+2n]\\
+\mathcal A &}
+\end{split}
+\end{align}
+
+
+\subsubsection{Functor $\varphi_{m}$ y factorización universal }\label{3.2.7} Para simplificar la notación, se escribirá $\varphi_{m}:DM_{k}\to DM_{k}^{\rm eff}$, $m\in\mathbb{Z}$ para el functor triangulado: $E\mapsto f_{m}(E)(-m)[-2m]$ \ref{GM3}-\ref{GM4}. Por \cite[Lem. 5.9]{Voe10b}, \cite[Prop. 1.1]{HK06}, se deduce que para $E\in DM_{k}^{\rm eff}$, $m\geq 0$: $\varphi_{m}(E)\cong{\bf hom}^{\rm eff}(1(m)[2m],E)$, donde ${\bf hom}^{\rm eff}$ es el functor Hom interno en $DM_{k}^{\rm eff}$.
+
+Recordando que $f_{0}(E(-m)[-2m])\cong f_{m}(E)(-m)[-2m]$ \cite[3.3.3(2)]{Pel17}, y $\mathcal{T}\in DM_{k}^{\rm eff}$  \label{ind.reg.B1}; así, por la propiedad universal \cite[3.3.1]{Pel17}, de la counidad de la adjunción $(i_{0},r_{0})$ \ref{GM3}, hay un único morfismo $p$ tal que el siguiente diagrama en $DM_{k}$ conmuta:
+
+\begin{align}  \label{diag.modeffcov}
+\begin{split}
+\xymatrix{ & \varphi _{d-n}(M(X))= f_0(M(X)(-d+n)[-2d+2n]) 
+\ar[d]^-{\epsilon _0}\\
+\mathcal T \ar[r]_-{(\Lambda _{y_0})} \ar[ur]^-p& M(X)(-d+n)[-2d+2n]}
+\end{split}
+\end{align}
+
+y un isomorfismo:
+
+\begin{equation}
+{\rm Hom}_{DM_{k}^{\rm eff}}({\bf 1},\varphi_{d-n}(M(X)))\mathop{\buildrel \simeq\over{\rightarrow}}_{e_{0}}\ {\rm Hom}_{DM_{k}}({\bf 1},M(X)(-d+n)[-2d+2 n]).
+\end{equation}
+
+
+Así, por \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b}:
+
+\begin{equation}\label{IS}
+{\rm Hom}_{DM_{k}^{\rm eff}}({\bf 1},\varphi_{d-n}(M(X)))\cong CH^{n}(X).
+\end{equation}
+
+
+\begin{obs}\label{OBS}
+Bajo el isomorfismo \ref{IS}, la imagen de $p_{*}:{\rm Hom}_{DM_{k}^{\rm eff}}({\bf 1},\mathcal{T})\to{\rm Hom}_{DM_{k}^{\rm eff}}({\bf 1},\varphi_{d-n}(M(X)))$  \ref{diag.modeffcov} está dada por $CH^{n}_{\rm{alg}}(X)$. En efecto, esto se sigue de \ref{diag.modeffcov}-\ref{IS}, \ref{MF}-\ref{diag.algequiv} y la definición de equivalencia algebraica \cite[§2.2]{Sam60}.
+\end{obs}
+
+\subsubsection{Triángulo distinguido para $\mathcal{R}$}\label{TRID} Considere el siguiente triángulo distinguido en $DM_{k}^{\rm eff}$:
+
+\begingroup\shorthandoff{"}\label{tri}
+\[
+\begin{tikzcd}[column sep=15pt]
+\mathcal{R}\arrow[r, "r"] & \mathcal{T}\arrow[r, "p"] & \varphi_{d-n}(M(X)).
+\end{tikzcd}
+\]
+\endgroup
+
+
+
+
+Nótese que $\varphi_{d-n}(M(X)),\mathcal{T}\in(DM_{k}^{\rm eff})_{\geq 0}$ \cite[5.1.4]{PR25}; así, dado que $\{{\bf h}_{i}:DM_{k}^{\rm eff}\to{\bf H}{\bf I}_{k},i\in\mathbb{Z}\}$ es un functor cohomológico \cite[Thm. 1.3.6]{BBD82}, se concluye que $\mathcal{R}\in(DM_{k}^{\rm eff})_{\geq-1}$ y que ${\bf h}_{-1}(\mathcal{R})$ es el conúcleo en ${\bf H}{\bf I}_{k}$ del morfismo $p_{*}:{\bf h}_{0}(\mathcal{T})\to{\bf h}_{0}(\varphi_{d-n}(M(X)))$.
+
+\subsubsection{Gavillas birracionales y grupo de Neron-Severi}\label{GB} Así, dado que ${\bf h}_{0}(\varphi_{d-n}(M(X)))\in{\bf H}{\bf I}_{k}$ es una gavilla biracional \cite[5.1.5]{PR25}, se concluye que ${\bf h}_{-1}(\mathcal{R})\in{\bf H}{\bf I}_{k}$ es también una gavilla biracional \cite[Prop. 2.6.2]{KS17}.
+
+Además, combinando \ref{IS} con \ref{OBS} se concluye que $\Gamma({\rm Spec}(k),{\bf h}_{-1}(\mathcal{R}))$ es el grupo de Neron-Severi de ciclos algebraicos de codimensión $n$ de $X$, ${\rm NS}^{n}(X)=CH^{n}(X)/CH^{n}_{\rm{alg}}(X)$, y que existe un morfismo en ${\bf H}{\bf I}_{k}$: ${\bf h}_{-1}(\mathcal{R})\to{\rm NS}^{n}_{/X}$ que se convierte en un isomorfismo después de tomar secciones globales $\Gamma({\rm Spec}(k),-)$, donde ${\rm NS}^{n}_{/X}$ es la gavilla de Neron-Severi de Ayoub y Barbieri-Viale \cite[Def. 3.1.2]{ABV09}.
+
+\subsubsection{Factorización de $\mathbf{h}_{0}(\mathcal R )$ } Ahora, se aplicará la $t$-estructura de homotopía \ref{HV} para construir una factorización del morfismo $(\mathcal{A}_{\psi_{\Lambda,y_{0}}})\circ r:\mathcal{R}\to\mathcal{A}$. Así, considerando el siguiente diagrama en $DM^{\mathrm{eff}}$, \ref{TRID}:
+
+
+\begin{align}\label{DIAGP}
+\begin{split}
+\xymatrix{\tau _{\geq 1}\mathcal R \ar[r]^-{t_1}&\tau _{\geq 0}\mathcal R 
+\ar[r]^-{t_0} \ar[d]_-{\sigma _0}
+& \tau _{\geq -1}\mathcal R \cong \mathcal R 
+\ar[d]_-{\sigma _{-1}}  \ar[r]^-r& \mathcal T
+\ar[dd]^-{(\mathcal A _{\psi _{\Lambda , y_0}})} \\
+& \mathbf{h}_{0} (\mathcal R ) \ar@{-->}[drr]_-{a_0}& \mathbf{h}_{-1} (
+\mathcal R )[-1] 
+\ar@{-->}[dr]^-{e_\psi}&  \\
+&&& \mathcal A}
+\end{split}
+\end{align}
+
+
+donde $\tau_{i+1}\mathcal{R} \stackrel{t_{i+1}}{\longrightarrow}
+\tau_i \mathcal{R} \stackrel{\sigma_i}{\longrightarrow}
+\mathbf{h}_i (\mathcal{R}) [i]$ son triángulos distinguidos en $DM^{\mathrm{eff}}_{k}$
+para $i=0, -1$.
+
+Recordando que $\mathcal{A} \in \mathbf{HI}_{k}$ \ref{NC}, así:
+\begin{align*}
+\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\tau_{\geq 1}\mathcal{R}, \mathcal{A})=0=
+\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}((\tau_{\geq 1}\mathcal{R})[1], \mathcal{A}).
+\end{align*}
+
+\subsubsection{La anulación del morfismo  $a_0$}\label{1st.factor}
+Así, existe un único morfismo $a_0:\mathbf{h}_0(\mathcal{R}) \rightarrow \mathcal{A}$
+en $DM^{\mathrm{eff}}_{k}$, tal que $a_0\circ \sigma_0 = (\mathcal{A}_{\psi_{\Lambda, y_0}})\circ r \circ t_0$ en \eqref{DIAGP}.
+
+\begin{proposition}  \label{prop.main.tech}
+Con la notación y condiciones de \ref{3.2.2}, \ref{DIAGP}y \ref{1st.factor}.
+El morfismo
+$a_0: \mathbf{h}_0(\mathcal{R}) \rightarrow \mathcal{A}$ es cero.
+\end{proposition} 
+
+\begin{proof}
+Por \ref{NC1}, es suficiente ver que el morfismo inducido
+$a_{0 \ast}:
+\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}, \mathbf{h}_0(\mathcal{R})) \rightarrow
+\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}, \mathcal{A})\cong A(k)$ es cero.
+
+Se observa que 
+$\sigma_{0\ast}:
+\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}, \tau_{\geq 0} \mathcal{R}) 
+\stackrel{\cong}{\rightarrow}
+\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}, \mathbf{h}_0(\mathcal{R}))$, ya que $\operatorname{Spec}(k)$
+es un punto para la topología de Nisnevich; así, es
+suficiente mostrar que el morfismo inducido:
+\begin{align*}
+((\mathcal{A}_{\psi_{\Lambda, y_0}})\circ r)_\ast:
+\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}, \mathcal{R}) \rightarrow
+\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}, \mathcal{A})
+\end{align*}
+es cero, ya que
+$a_0\circ \sigma_0 = (\mathcal{A}_{\psi_{\Lambda, y_0}})\circ r \circ t_0$ \eqref{1st.factor}.
+
+Ahora, sea $\gamma:\mathbf{1}\to\mathcal{R}$. Por un lado, por \ref{tri}: $0=p\circ r\circ\gamma:\mathbf{1}\to\varphi_{d-n}(M(X))$, así, por la conmutatividad de \ref{diag.modeffcov} se concluye que $0=(\Lambda_{y_{0}})\circ r\circ\gamma:\mathbf{1}\to M(X)(-d+n)[-2d+2n]$. Por otro lado, por la compacidad de $\mathbf{1}\in DM^{\mathrm{eff}}_{k}$, deducimos que el morfismo $r\circ\gamma$ \ref{DIAGP}, \ref{ind.reg.B1}, se factoriza a través de una suma directa finita: $\oplus_{i=1}^{m}M(Y_{i})$, donde $(Y_{i}\in SmProj_{k},\Lambda_{i}\in CH^{n}(Y_{i}\times X),y_{0i}\in Y_{i}(k))$.
+
+Así, se puede asumir que $r\circ\gamma=\langle\beta_{i}\rangle:\mathbf{1}\to\oplus_{i=1}^{m}M(Y_{i})$, donde $d_{i}=\dim Y_{i}$ y $\beta_{i}\in\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1},M(Y_{i}))\cong CH^{d_{i}}(Y_{i})$. Por lo tanto, por \ref{Reldig} se sigue que $\sum_{i=1}^{m}\Lambda_{i}(\beta_{i})-\deg(\beta_{i})\Lambda_{i}([y_{0i}])=0\in CH ^{n}_{\mathrm{alg}}(X)$, ya que $0=(\Lambda_{y_{0}})\circ r\circ\gamma=\sum_{i=1}^{m}\Lambda_{y_{0i}}\circ r\circ\gamma$.
+
+Esto implica que:
+
+\[
+\sum_{i=1}^{m}\psi(\Lambda_{i}(\beta_{i})-\deg(\beta_{i})\Lambda_{i}([y_{0i}])) =\psi\left(\sum_{i=1}^{m}\Lambda_{i}(\beta_{i})-\deg(\beta_{i}) \Lambda_{i}([y_{0i}])\right)
+=\psi(0)=0\in A(k).
+\]
+
+Entonces, por \ref{Prop323}, se concluye que $0=\sum_{i=1}^{m}\mathcal{A}_{\psi_{\Lambda_{i},y_{0i}}}\circ\beta_{i}:\mathbf{1}\to\mathcal{A}$, lo cual implica el resultado, ya que: $((\mathcal{A}_{\psi_{\Lambda,y_{0}}})\circ r)_{*}(\gamma)=(\mathcal{A}_{\psi_{\Lambda,y_{0}}})\circ r\circ\gamma=\sum_{i=1}^{m}\mathcal{A}_{\psi_{\Lambda_{i },y_{0i}}}\circ\beta_{i}:\mathbf{1}\to\mathcal{A}$.
+\end{proof}
+
+\subsubsection{La presentación motívica de un homomorfismo regular} Con la notación y condiciones de \ref{3.2.2}, \ref{ind.reg.B1}, \ref{diag.starting}  y \ref{DIAGP}. Obsérvese que $\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}((\tau_{\geq 0}\mathcal{R})[1], \mathcal{A})=0$, ya que $\mathcal{A}\in\mathbf{HI}_{k}$. Así, combinando \ref{1st.factor} y \ref{prop.main.tech}, concluimos que hay un único morfismo $e_{\psi}:\mathbf{h}_{-1}(\mathcal{R})[-1]\to\mathcal{A}$, tal que el siguiente diagrama en $DM_{k}$ conmuta \ref{DIAGP}:
+
+
+
+\begin{align}  \label{DIAGCOMS}
+\begin{split}
+\xymatrix{\mathcal R  \ar[r]^-r \ar[d]_-{\sigma _{-1}}& \mathcal T  
+\ar[d]^-{(\mathcal A _{\psi _{\Lambda , y_0}})} \\
+\mathbf{h}_{-1} (\mathcal R )[-1]  \ar[r]_-{e_\psi}& \mathcal A }
+\end{split}
+\end{align}
+
+Luego, por el axioma del octaedro \cite[Prop. 1.1.11]{BBD82}, se obtiene el siguiente diagrama conmutativo donde las filas y columnas son triángulos distinguidos en $DM_{k}^{\mathrm{eff}}$ \ref{tri} y \ref{DIAGP}:
+
+
+
+\begin{align}  \label{diag.eff.regmot}
+\begin{split}
+\xymatrix@C=1.4pc{
+\tau _{\geq 0} \mathcal R \ar[r] \ar[d]_-{t_0}& \mathcal T _{\psi} \ar[r] \ar[d]& 
+ \mathcal K _{ \psi}  \ar[d]^-{k_\psi} \\
+\mathcal R  \ar[r]^-r \ar[d]_-{\sigma _{-1}}& \mathcal T  \ar[r]^-p 
+\ar[d]^-{(\mathcal A _{\psi _{\Lambda , y_0}})}
+ & f_0(M(X)(-d+n)[-2d+2n]) \cong \varphi _{d-n}(M(X))\ar[d]^-{\Psi} \\
+\mathbf{h}_{-1} (\mathcal R )[-1]  \ar[r]_-{e_\psi}& \mathcal A \ar[r]_-{a_\psi}&
+\mathcal E _{\psi}}
+\end{split}
+\end{align}
+
+
+\subsubsection{Propiedades de $\mathcal{E}_{\psi}$ }\label{OBS1}
+
+Obsérvese que $\mathcal{E}_{\psi}\in\mathbf{HI}_{k}$, ya que $\{\mathbf{h}_{i}:DM_{k}^{\mathrm{eff}}\to\mathbf{HI}_{k},i\in\mathbb{Z}\}$ es un functor cohomológico \cite[Thm. 1.3.6]{BBD82} y $\mathcal{A},\mathbf{h}_{-1}(\mathcal{R})\in\mathbf{HI}_{k}$. Además, nótese que $\mathcal{A}$ (siendo el functor de puntos de una variedad abeliana) y $\mathbf{h}_{-1}(\mathcal{R})$ son gavillas biracionales \ref{GB}, así, por \cite[Prop. 2.6.2]{KS17}, se deduce que $\mathcal{E}_{\psi}$ es también una gavilla biracional.
+
+\begin{obs}
+El diagrama conmutativo \ref{diag.eff.regmot} proporciona una presentación motívica para un homomorfismo regular $\psi:CH_{\mathrm{alg}}^{n}(X)\to A(k)$ \ref{HR}.
+\end{obs}
+
+Ahora, considerando el siguiente diagrama conmutativo de grupos abelianos inducido por \ref{diag.eff.regmot}:
+
+
+\begingroup\shorthandoff{"} \label{D3}
+\begin{equation}
+\begin{tikzcd}
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}, \mathcal{T})\arrow[r, "p_{*}"]\arrow[d, "\langle\mathcal{A}_{\psi_{\mathcal{A},y_{0}}}\rangle_{*}"] & \operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1},\varphi_{d-n}(M(X))) \arrow[d, "\Psi_{*}"]  \stackrel{(1)}{\cong}CH^{n}(X) \\
+A(k) \underset{\text{(2)}}{\cong}\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1},\mathcal{A}) \arrow[r, "a_{\psi_{*}}"] & \operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}, \mathcal{E}_{\psi})\cong\Gamma(k,\mathcal{E}_{\psi})
+\end{tikzcd}
+\end{equation}
+\endgroup
+
+
+donde los isomorfismos $(1)$, $(2)$ se siguen, respectivamente, de \ref{IS} y del hecho de que $\mathcal{A}\in\mathbf{HI}_{k}$ es el functor de puntos de la variedad abeliana $A$ \ref{NC}. Así, combinando \ref{OBS} con \ref{MF} y \ref{Prop323}, se obtiene el siguiente diagrama conmutativo de grupos abelianos:
+
+\begin{align}  \label{diag.ind.reghom}
+\begin{split}
+\xymatrix{0 \ar[r]& CH^n_{\mathrm{alg}}(X) \ar[r] \ar[d]_-\psi& CH^n (X) 
+\ar[d]^-{\Psi _\ast} \\
+0 \ar[r]& A(k) \ar[r]_-{a_{\psi \ast}} & \Gamma (k, \mathcal E _{\psi})}
+\end{split}
+\end{align}
+
+
+donde $\psi$ es el homomorfismo regular original \ref{3.2.2}, y la inyectividad de $a_{\psi*}$ se sigue del triángulo distinguido en la fila inferior de \ref{diag.eff.regmot}, ya que $0=\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1},\mathbf{h}_{-1}( \mathcal{R})[-1])$.
+
+\begin{proposition}\label{KER}
+Con la notación y condiciones de \ref{NC}-\ref{diag.ind.reghom}. Entonces, $\ker(\psi)=\ker(\Psi_{*})$.
+\end{proposition}
+
+\begin{proof}
+Por la conmutatividad de \ref{diag.ind.reghom}, se concluye que $\ker(\psi)\subseteq\ker(\Psi_{*})$.
+
+Por otro lado, sea $\gamma\in\ker(\Psi_{*})\subseteq\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}( \mathbf{1},\varphi_{d-n}(M(X)))$. Por construcción, \ref{diag.ind.reghom} es inducido por \ref{D3}, así, por la inyectividad de $a_{\psi*}$ \ref{diag.ind.reghom} es suficiente ver que $\gamma$ está en la imagen de $p_{*}$ en \ref{D3}.
+
+Ahora, recordando que la columna derecha en \ref{diag.eff.regmot} es un triángulo distinguido en $DM_{k}^{\mathrm{eff}}$, así, se deduce que $\gamma$ está en la imagen de $k_{\psi*}:\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1},\mathcal{K}_{\psi })\to\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1},\varphi_{d-n}(M(X)))$. Luego, se observa que la fila superior del diagrama conmutativo \ref{diag.eff.regmot} es un triángulo distinguido en $DM_{k}^{\mathrm{eff}}$, así, para mostrar que $\gamma$ está en la imagen de $p_{*}$ en  \ref{D3}, es suficiente probar que: $\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1},\tau_{\geq 0}\mathcal{R}[ 1])=0$, lo cual se cumple, ya que $\operatorname{Spec}(k)$ es un punto para la topología de Nisnevich.
+\end{proof}
+
+\subsubsection{Construcción de  $M^{n}_{\psi}(X)$ y $z_{\psi}$ }\label{CNC}
+
+Con la notación y condiciones de \ref{NC} y \ref{diag.eff.regmot}. Se escribirá $M^{n}_{\psi}(X)\in DM_{k}^{\mathrm{eff}}$ para $\mathcal{K}_{\psi}(d-n)[2d-2n]$ \ref{diag.eff.regmot}(3.2.20), y sea $c_{\psi}:M^{n}_{\psi}(X)\to f_{d-n}M(X)$ el morfismo $k_{\psi}(d-n)[2d-2n]$ en $DM_{k}^{\mathrm{eff}}$ (véase \ref{diag.eff.regmot} y \cite[3.3.3(2)]{Pel17}).
+
+Se define $z_{\psi}:M^{n}_{\psi}(X)\to M(X)$ como la siguiente composición:
+
+\[
+M^{n}_{\psi}(X)\xrightarrow{c_{\psi}}f_{d-n}M(X)\xrightarrow{\epsilon^{M(X)}_{ d-n}}M(X)
+\]
+
+donde $\epsilon_{d-n}$ es la counidad de la adjunción $(i_{d-n},r_{d-n})$ \ref{GM3}. Ahora, se considera el morfismo de grupos abelianos inducido por $z_{\psi}$:
+
+
+$$\xymatrix@R=10mm{ 
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M^{n}_{\psi}(X))
+\ar@{->}[d]^{z_{\psi*}} \\
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M(X))
+}$$\label{DHOM}
+
+
+
+
+\begin{theorem}\label{TP1}
+Con la notación y condiciones de \ref{NC}- \ref{DHOM}. Bajo el isomorfismo $\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M(X))\cong CH^{n}(X)$ \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b}, la imagen de $z_{\psi*}$ \ref{DHOM} es $\ker(\psi)\subseteq CH^{n}_{\mathrm{alg}}(X)$.
+\end{theorem}
+
+\begin{proof}
+Se observa que la columna derecha en \ref{diag.eff.regmot} es un triángulo distinguido en $DM_{k}^{\mathrm{eff}}$. Así, dado que $z_{\psi}=\epsilon^{M(X)}_{d-n}\circ k_{\psi}(d-n)[2d-2n]$, se deduce el resultado combinando \ref{KER}, el teorema de cancelación de Voevodsky \cite{Voe10a} y la propiedad universal de la counidad $\epsilon^{M(X)}_{d-n}:f_{d-n}M(X)\to M(X)$ \cite[3.3.1]{Pel17}.
+\end{proof}
+
+\begin{obs}
+Dado $X\in SmProj_{k}$ y un homomorfismo regular $\psi:CH^{n}_{\mathrm{alg}}(X)\to A(k)$ \ref{HR}, el diagrama conmutativo \ref{DIAGCOMS}  en $DM_{k}^{\mathrm{eff}}$ es canónico. En contraste, $\mathcal{K}_{\psi}\in DM_{k}^{\mathrm{eff}}$ \ref{diag.eff.regmot} y $M^{n}_{\psi}(X)\in DM_{k}^{\mathrm{eff}}$ \ref{CNC} (3.2.26) son únicos solo hasta un isomorfismo no canónico en $DM_{k}^{\mathrm{eff}}$.
+\end{obs}
+
+\subsection{Jacobianos intermedios}\label{JI}
+ Supóngase que  que $k=\mathbb{C}$ y recordando que $J^{n}(X)$ el $n$-ésimo jacobiano intermedio de Weil-Griffiths, considérese el morfismo de Abel-Jacobi de Weil $\psi_{n}:CH_{\mathrm{alg}}^{n}(X)\to J^{n}(X)$, se tienen los siguientes resultados:
+
+
+\begin{theorem}
+Con la notación y condiciones de \ref{JI}, existe $M_{AJ}^{n}(X)\in DM_{k}^{\mathrm{eff}}$, y un morfismo $z_{AJ}^{n}:M_{AJ}^{n}(X)\to M(X)$ en $DM_{k}^{\mathrm{eff}}$, tal que bajo el isomorfismo $\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M(X)) \cong CH^{n}(X)$ \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b}, la imagen del morfismo inducido:
+
+$$\xymatrix@R=10mm{ 
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M_{AJ}^{n}(X)) 
+\ar@{->}[d]^{z_{AJ*}^{n}}\\
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M(X))\cong CH^{n}(X)
+}$$
+
+es el subgrupo de ciclos algebraicos Abel-Jacobi equivalentes a cero: $CH_{\mathrm{AJ}}^{n}(X)\subseteq CH_{\mathrm{alg}}^{n}(X)$.
+\end{theorem}
+
+\begin{proof}
+Consideramos el homomorfismo regular $\psi_{n}:CH_{\mathrm{alg}}^{n}(X)\to J_{a}^{n}(X)(\mathbb{C})$. Ahora sea $M_{AJ}^{n}(X)=M_{\psi_{n}}^{n}(X)\in DM_{k}^{\mathrm{eff}}$ \ref{CNC} (3.2.26) y $z_{\mathrm{\mathrm{AJ}}}^{n}=z_{\psi_{n}}:M_{AJ}^{n}(X)\to M(X)$ \ref{CNC}. Entonces, el resultado se sigue de \ref{TP1}.
+\end{proof}
+
+Con la notación y condiciones de \ref{TP1}, sea $\alpha\in CH_{\mathrm{alg}}^{n}(X)$. Se sabe (véase Grothendieck-Kleiman \cite[p. 446-447]{Kle71} y H. Saito \cite[Thm. 3.6]{Sai79}) que existe una variedad abeliana $\operatorname{Pic}^{n}(X)$ y un homomorfismo regular sobreyectivo $\psi_{n}:CH_{\mathrm{alg}}^{n}(X)\to \operatorname{Pic}^{n}(X)(k)$, tal que $\ker(\psi_{n})=CH_{\mathrm{inc}}^{n}(X)$.
+
+\begin{theorem}
+Con la notación y condiciones de \ref{EI}. Existe $M_{\mathrm{inc}}^{n}(X)\in DM_{k}^{\mathrm{eff}}$, y un morfismo $z_{\mathrm{inc}}^{n}:M_{\mathrm{inc}}^{n}(X)\to M(X)$ en $DM_{k}^{\mathrm{eff}}$, tal que bajo el isomorfismo $\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M(X)) \cong CH^{n}(X)$ \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b}, la imagen del morfismo inducido:
+
+
+$$\xymatrix@R=10mm{ 
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M_{\mathrm{Inc}}^{n}(X)) 
+\ar@{->}[d]^{z_{\mathrm{inc*}}^{n}}\\
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M(X))\cong CH^{n}(X)
+}$$
+
+
+
+es el subgrupo de ciclos algebraicos incidente equivalentes a cero: $CH_{\mathrm{inc}}^{n}(X)\subseteq CH_{\mathrm{alg}}^{n}(X)$.
+\end{theorem}
+
+
+\begin{proof}
+Considérese el homomorfismo regular $\psi_{n}:CH^{n}_{\mathrm{alg}}(X)\to \operatorname{Pic}^{n}(X)(k)$ \cite[p. 446-447]{Kle71}, \cite[Thm. 3.6]{Sai79}, y defina $M^{n}_{\mathrm{inc}}(X)$, $z^{n}_{\mathrm{inc}}$ para ser, respectivamente, $M^{n}_{\psi_{n}}(X)\in DM^{\mathrm{eff}}_{k}$ \ref{CNC}, $z_{\psi_{n}}:M^{n}_{\mathrm{inc}}(X)\to M(X)$ \ref{CNC}. Entonces, el resultado se sigue de \ref{TP1}.
+\end{proof}
+
+\subsection{Cubiertas efectivas y rebanadas}
+
+Aplicando el functor triangulado $f_{m}$ \ref{GM3} al triángulo distinguido en la columna derecha de \ref{diag.eff.regmot}, se obtiene el siguiente triángulo distinguido en $DM_{k}$:
+
+\begin{equation}\label{3.5.1}
+f_{m}(\mathcal{K}_{\psi})\xrightarrow{f_{m}(\ell_{\psi})}f_{m}(\varphi_{d-n}(M(X)))\xrightarrow{f_{m}(\Psi)}f_{m}(\mathcal{E}_{\psi}).
+\end{equation}
+
+
+\begin{theorem}\label{TP2}
+Con la notación y condiciones de \ref{3.2.2}-\ref{DHOM} y \ref{3.5.1}.
+
+\begin{enumerate}
+\item\label{TP21} Para $m\geq 1$, $f_{m}(\mathcal{E}_{\psi})\cong 0$.
+
+\item\label{TP22} Para $r\geq 1$, el morfismo $f_{d-n+r}(z_{\psi}):f_{d-n+r}(M^{n}_{\psi}(X))\to f_{d-n+r}(M(X))$ es un isomorfismo en $DM^{\mathrm{eff}}_{k}$ (3.2.26).
+
+\item\label{TP23} Para $r\geq 1$, el morfismo $s_{d-n+r}(z_{\psi}):s_{d-n+r}(M^{n}_{\psi}(X))\to s_{d-n+r}(M(X))$ es un isomorfismo en $DM^{\mathrm{eff}}_{k}$ (2.3.4).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1): Dado que $DM^{\mathrm{eff}}_{k}(m)\subseteq DM^{\mathrm{eff}}_{k}(1)$ para $m\geq 1$ \ref{GM3}, se concluye que $f_{m}\cong f_{m}\circ f_{1}$, así, es suficiente probar que $f_{1}(\mathcal{E}_{\psi})\cong 0$. Luego, recordando que $\mathcal{E}_{\psi}\in\mathbf{HI}_{k}$ es una gavilla biracional\ref{OBS1}, así, por \cite[Thm. 5.7]{Voe00a} se concluye que para todo $Z\in Sm_{k}$, $i>0$: $H^{i}_{\mathrm{Nis}}(Z,\mathcal{E}_{\psi})=0$. Así, combinando \cite[Cor. 4.5.3 and Lem. 4.5.4]{KS17} y \cite[Lem. 5.9]{Voe10b}, \cite[Prop. 1.1]{HK06}, se deduce que $f_{1}(\mathcal{E}_{\psi})=0$, como se quería
+
+(2): Por \ref{3.5.1} y \ref{TP21} se concluye que $f_{r}(k_{\psi})$ es un isomorfismo. Luego, recordando que por construcción $z_{\psi}=\epsilon_{d-n}^{M(X)}\circ k_{\psi}(d-n)[2d-2n]$, $M^{n}_{\psi}(X)=\mathcal{K}_{\psi}(X)(d-n)[2d-2n]$ \ref{CNC} y $\varphi_{d-n}(M(X))=f_{d-n}(M(X))(-d+n)[-2d+2n]$ \ref{3.2.7}, así, por \cite[3.3.3(2)]{Pel17} se deduce que $f_{d-n+r}(k_{\psi}(d-n)[2d-2n])$ es un isomorfismo en $DM^{\mathrm{eff}}_{k}$. Finalmente, por la propiedad universal de la counidad $\epsilon_{d-n}$ \cite[3.3.1]{Pel17} se concluye que $f_{d-n+r}(\epsilon_{d-n}^{M(X)})$ es un isomorfismo en $DM^{\mathrm{eff}}_{k}$, lo cual implica el resultado.
+
+(3): Esto se sigue de \ref{TP22}, ya que $s_{m}\cong s_{m}\circ f_{m}$ para $m\in\mathbb{Z}$.
+\end{proof}
+
+\section{Motivos de Voevodsky y ciclos abelianamente equivalentes a cero}\label{MVEA}
+
+\subsection{Caracterización de la equivalencia abeliana}\label{EA1}
+
+Sea $\psi:CH^{n}_{\mathrm{alg}}(X)\to A(k)$ un homomorfismo regular \ref{HR}, y con la notación y condiciones de \ref{3.2.2},  \ref{ind.reg.B1}, \ref{diag.starting} y  \ref{DIAGP}. Considere el diagrama conmutativo \ref{DIAGCOMS} en $DM^{\mathrm{eff}}_{k}$:
+\begingroup\shorthandoff{"}\label{DIAC}
+\[
+\begin{tikzcd}
+\mathcal{R}\arrow[r, "r"]\arrow[d, "\sigma_{-1}"] & \mathcal{T}\arrow[d, "(\mathcal{A}_{\psi_{\Lambda,y_{0}}})"] \\
+\mathbf{h}_{-1}(\mathcal{R})[-1]\arrow[r, "e_{\psi}"] & \mathcal{A}
+\end{tikzcd}
+\]
+\endgroup
+
+
+Sea $\mathfrak{Ab} \in \mathbf{HI}_{k} \subseteq DM^{\mathrm{eff}}_{k}$ el producto \ref{HR0}:
+\begin{equation}\label{4.1.2}
+\mathfrak{Ab} = \prod_{\substack{\psi \in \operatorname{Reg}^{n}(X,A) \\ A \in \operatorname{Abv}_{k}}} \mathcal{A}
+\end{equation}
+
+
+donde $\operatorname{Abv}_{k}$ es la subcategoría plena de $SmProj_{k}$ que consiste en variedades abelianas y $\mathcal{A}$ es el functor de puntos para una variedad abeliana $A$ \ref{NC}.
+
+Ahora, considerando los siguientes morfismos en $DM^{\mathrm{eff}}_{k}$ inducidos por \ref{DIAGCOMS} en cada factor directo de $\mathfrak{Ab}$:
+\begin{align}\label{CUAC}
+\langle \mathcal{A}_{\psi_{\Lambda,y_{0}}} \rangle &: \mathcal{T} \to \mathfrak{Ab} \\
+\langle e_{\psi} \rangle &: \mathbf{h}_{-1}(\mathcal{R})[-1] \to \mathfrak{Ab}
+\end{align}
+
+Entonces, dado que \ref{DIAGCOMS} conmuta, se obtiene el siguiente diagrama conmutativo en $DM^{\mathrm{eff}}_{k}$:
+\begingroup\shorthandoff{"}\label{D10}
+\[
+\begin{tikzcd}
+\mathcal{R} \arrow[r, "r"] \arrow[d, "\sigma_{-1}"] & \mathcal{T} \arrow[d, "\langle \mathcal{A}_{\psi_{\Lambda,y_{0}}} \rangle"] \\
+\mathbf{h}_{-1}(\mathcal{R})[-1] \arrow[r, "\langle e_{\psi} \rangle"] & \mathfrak{Ab}
+\end{tikzcd}
+\]
+\endgroup
+
+
+
+Así, por el axioma del octaedro \cite[Prop. 1.1.11]{BBD82}, se obtiene el siguiente diagrama conmutativo donde las filas y columnas son triángulos distinguidos en $DM^{\mathrm{eff}}_{k}$ \ref{tri}, \label{diag.principal}:
+\begin{equation}\label{DCG}
+\begin{tikzcd}
+\tau_{\geq 0}\mathcal{R} \arrow[r] \arrow[d, "(t_{0})"] & \mathcal{T}_{\mathrm{ab}} \arrow[r] \arrow[d] & \mathcal{K}^{n}_{\mathrm{ab}}(X) \arrow[d, "(k^{n}_{\mathrm{ab}})"] \\
+\mathcal{R} \arrow[r, "r"] \arrow[d, "\sigma_{-1}"] & \mathcal{T} \arrow[r, "\langle \mathcal{A}_{\psi_{\Lambda,y_{0}}} \rangle"] \arrow[d, "p"] & f_{0}(M(X)(-d+n)[-2d+2n]) \cong \varphi_{d-n}(M(X)) \arrow[d, "\Psi^{n}_{\mathrm{ab}}"] \\
+\mathbf{h}_{-1}(\mathcal{R})[-1] \arrow[r, "\langle e_{\psi} \rangle"] & \mathfrak{Ab} \arrow[r, "\xi^{n}_{\mathrm{ab}}"] & \mathcal{E}^{n}_{\mathrm{ab}}
+\end{tikzcd}
+\end{equation}
+
+\subsection{Propiedades de  $\mathcal{E}^{n}_{\mathrm{ab}}$}\label{4.1.6}
+ Nótese que $\mathcal{E}^{n}_{\mathrm{ab}} \in \mathbf{HI}_{k}$, ya que $\{\mathbf{h}_{i}: DM^{\mathrm{eff}}_{k} \to \mathbf{HI}_{k}, i \in \mathbb{Z}\}$ es un functor cohomológico \cite[Thm. 1.3.6]{BBD82} y $\mathfrak{Ab}, \mathbf{h}_{-1}(\mathcal{R}) \in \mathbf{HI}_{k}$. Además, se observa que $\mathfrak{Ab}$ es una gavilla biracional (siendo el producto de gavilla biracionales), así, por un argumento paralelo a \ref{OBS1} se deduce que $\mathcal{E}^{n}_{\mathrm{ab}}$ es también un gavilla biracional.
+
+
+Se observa que \ref{DCG} induce el siguiente diagrama conmutativo de grupos abelianos:
+
+
+\begingroup\shorthandoff{"}
+\[
+\begin{tikzcd}[column sep=large, row sep=large]
+\mathrm{Hom}_{\mathbf{DM}^{\mathrm{eff}}_k}(1, \mathcal{T}) \arrow[r, "p\ast"] \arrow[d,  "\langle \mathcal{A}_{\psi_{\Lambda,y_{0}}} \rangle \ast"] 
+  & \mathrm{Hom}_{\mathbf{DM}^{\mathrm{eff}}_k}(1, \varphi_{d - n}(M(X))) 
+      \arrow[d, "\Psi^{n}_{\mathrm{ab\ast}}"]
+ \overset{\text{(1)}}{ \cong}\mathrm{CH}^n(X) \\
+\mathrm{Hom}_{\mathbf{DM}^{\mathrm{eff}}_k}(1, \mathfrak{Ab}) 
+  \arrow[d, "\cong"', "(2)"] 
+  \arrow[r, "\xi^{n}_{\mathrm{ab}}\ast"] 
+  & \mathrm{Hom}_{\mathbf{DM}^{\mathrm{eff}}_k}(1, \mathcal{E}^{n}_{\mathrm{ab}}) 
+   \cong\Gamma(k, \mathcal{E}^{n}_{\mathrm{ab}}) \\
+\prod \limits_{\substack{\psi \in \operatorname{Reg}^n (X,A) \\
+	A \in \operatorname{Abv}_k}} A(k)
+\end{tikzcd}
+\]\label{4.1.7}
+
+donde los isomorfismos $(1)$, $(2)$ se siguen, respectivamente, de \ref{IS} y la construcción de $\mathfrak{Ab}$ \ref{4.1.2} como un producto de functores de puntos para variedades abelianas $A \in \operatorname{Abv}_{k}$ \ref{NC}. Entonces, por \ref{OBS}, \ref{MF} y \ref{Prop323}, obtenemos el siguiente diagrama conmutativo de grupos abelianos:
+
+\begin{align}  \label{diag.final.ind.abeq}
+\begin{split}
+\xymatrix{0 \ar[r]& CH^n_{\mathrm{alg}}(X) \ar[r]^-{p_\ast}
+ \ar[d]_-{\langle \psi \rangle} & CH^n (X) 
+\ar[d]^-{\Psi ^n _{\mathrm{ab} \ast}} \\
+0 \ar[r]& 
+\prod \limits_{\substack{\psi \in \operatorname{Reg}^n (X,A) \\
+	A \in \operatorname{Abv}_k}}
+A(k) \ar[r]_-{\xi ^n _{\mathrm{ab} \ast}} & \Gamma (k, \mathcal E ^n _{\mathrm{ab}})}
+\end{split}
+\end{align}
+
+
+
+con $\pi_{A,\psi} \circ \langle\psi\rangle = \psi$, donde $\pi_{A,\psi}: \prod_{\substack{\psi \in \operatorname{Reg}^{n}(X,A) \\ A \in \operatorname{Abv}_{k}}} A(k) \to A(k)$ es la proyección al factor indexado por $(\psi,A)$, y la inyectividad de $\xi^{n}_{\mathrm{ab}*}$ se sigue del triángulo distinguido en la fila inferior de \ref{DCG}, ya que $0 = \operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1},\mathbf{h}_{-1}(\mathcal{R})[-1])$.
+
+\subsubsection{Identificación de $\ker(\langle\psi\rangle$}\label{Prop} En particular, se observa que $\gamma \in \ker(\langle\psi\rangle)$ si y solo si $\psi(\gamma) = 0 \in A(k)$, para toda variedad abeliana $A \in SmProj_{k}$ y todo homomorfismo regular $\psi \in \operatorname{Reg}^{n}(X,A)$ \ref{HR}. Por lo tanto, $\ker(\langle\psi\rangle) = CH^{n}_{\mathrm{ab}}(X)$ \ref{EA}.
+
+\begin{proposition}\label{Prop1}
+Con la notación y condiciones de \ref{EA} y \ref{EA1}-\ref{diag.final.ind.abeq}. Entonces, $\ker(\langle\psi\rangle) = \ker(\Psi^{n}_{\mathrm{ab}*})$.
+\end{proposition}
+
+\begin{proof}
+Esto se sigue por un argumento paralelo a \ref{KER}.
+\end{proof}
+
+\subsubsection{Construcción de  $M^{n}_{\mathrm{ab}}(X)$ y $z^{n}_{\mathrm{ab}}$}\label{4.1.11} Con la notación y condiciones de \ref{EA} y \ref{EA1}-\ref{diag.final.ind.abeq}. Se escribirá $M^{n}_{\mathrm{ab}}(X) \in DM_{k}^{\mathrm{eff}}$ para $\mathcal{K}^{n}_{\mathrm{ab}}(X)(d-n)[2d-2n]$\ref{DCG}, y sea $c^{n}_{\mathrm{ab}}: M^{n}_{\mathrm{ab}}(X) \to f_{d-n}M(X)$ el morfismo $k^{n}_{\mathrm{ab}}(d-n)[2d-2n]$ en $DM_{k}^{\mathrm{eff}}$ (véase\ref{DCG} y \cite[3.3.3(2)]{Pel17}).
+
+Sea $z^{n}_{\mathrm{ab}}: M^{n}_{\mathrm{ab}}(X) \to M(X)$ la siguiente composición:
+
+\[
+M^{n}_{\mathrm{ab}}(X) \xrightarrow{c^{n}_{\mathrm{ab}}} f_{d-n}M(X) \xrightarrow{\epsilon^{M(X)}_{d-n}} M(X)
+\]
+
+
+donde $\epsilon_{d-n}$ es la counidad de la adjunción $(i_{d-n},r_{d-n})$ \ref{GM3}. Ahora, considerando el morfismo de grupos abelianos inducido por $z^{n}_{\mathrm{ab}}$:
+
+\begin{equation}
+\xymatrix@R=10mm{ 
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M_{\mathrm{ab}}^{n}(X))
+\ar@{->}[d]^{z_{\mathrm{ab*}}^{n}}\\
+\operatorname{Hom}_{DM_{k}^{\mathrm{eff}}}(\mathbf{1}(d-n)[2d-2n],M(X))
+}
+\label{DCOM}
+\end{equation}
+
+
+
+
+\begin{theorem}\label{TP3}
+Con la notación y condiciones de \ref{EA} y \ref{EA1}-\ref{DCOM}. Bajo el isomorfismo $\operatorname{Hom}_{DM^{\mathrm{eff}}_{k}}(\mathbf{1}(d-n)[2d-2n],M(X))\cong CH^{n}(X)$ \cite[Prop. 2.1.4, Thm. 3.2.6]{Voe00b}, la imagen de $z^{n}_{\mathrm{ab*}}$ \ref{DCOM} es el subgrupo de ciclos algebraicos abelianamente equivalentes a cero: $CH^{n}_{\mathrm{ab}}(X)\subseteq CH^{n}_{\mathrm{alg}}(X)$ \ref{EA}.
+\end{theorem}
+
+\begin{proof}
+Recordando que la columna derecha en \ref{DCG} es un triángulo distinguido en $DM^{\mathrm{eff}}_{k}$. Entonces, dado que $z^{n}_{\mathrm{ab}}=\epsilon^{M(X)}_{d-n}\circ k^{n}_{\mathrm{ab}}(d-n)[2d-2n]$, se deduce el resultado combinando \ref{Prop}-\ref{Prop1}, el teorema de cancelación de Voevodsky \cite{Voe10a} y la propiedad universal de la counidad $\epsilon^{M(X)}_{d-n}:f_{d-n}M(X)\to M(X)$ \cite[3.3.1]{Pel17}.
+\end{proof}
+
+\subsection{Cubiertas efectivas y rebanadas}
+
+Considere el triángulo distinguido en la columna derecha de \ref{DCG}. Dado que $f_{m}:DM_{k}\to DM_{k}$ es un functor triangulado \ref{GM3}, se obtiene el siguiente triángulo distinguido en $DM_{k}$:
+
+\begin{equation}\label{TD}
+f_{m}(\mathcal{K}^{n}_{\mathrm{ab}}(X))\xrightarrow{f_{m}(k^{n}_{\mathrm{ab}})}f_{m}(\varphi_{d-n}(M(X)))\xrightarrow{f_{m}(\Psi^{n}_{\mathrm{ab}})}f_{m}(\mathcal{E}^{n}_{\mathrm{ab}}).
+\end{equation}
+
+
+\begin{theorem}\label{TP4}
+Con la notación y condiciones de \ref{EA}, \ref{EA1}-\ref{DCOM} y \ref{TD}.
+
+\begin{enumerate}
+\item\label{LTP1} Para $m\geq 1$, $f_{m}(\mathcal{E}^{n}_{\mathrm{ab}})\cong 0$.
+
+\item\label{LTP2} Para $r\geq 1$, el morfismo $f_{d-n+r}(z^{n}_{\mathrm{ab}}):f_{d-n+r}(M^{n}_{\mathrm{ab}}(X))\to f_{d-n+r}(M(X))$ es un isomorfismo en $DM^{\mathrm{eff}}_{k}$ \ref{4.1.11}.
+
+\item\label{LTP3} Para $r\geq 1$, el morfismo $s_{d-n+r}(z^{n}_{\mathrm{ab}}):s_{d-n+r}(M^{n}_{\mathrm{ab}}(X))\to s_{d-n+r}(M(X))$ es un isomorfismo en $DM^{\mathrm{eff}}_{k}$ \ref{GM4}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1): Esto se sigue por un argumento paralelo a \ref{TP21}, observando que $\mathcal{E}^{n}_{\mathrm{ab}}\in\mathbf{HI}_{k}$ es una gavilla biracional \ref{4.1.6}.
+
+(2)-(3): Esto se sigue de \ref{LTP1} combinando con un argumento paralelo a \ref{TP22} y \ref{TP23}, respectivamente.
+\end{proof}
+
+% ==================== PAGE 17 ====================
+\newpage
+\begin{thebibliography}{99}
+\bibitem[ABV09]{ABV09}
+Joseph Ayoub and Luca Barbieri-Viale, \emph{N\'eron-Severi groups as motivic cohomology}, `Preprint` (2009).
+
+\bibitem[Ayo07]{Ayo07}
+Joseph Ayoub, \emph{Les six op\'erations de Grothendieck et le formalisme des cycles
+  \'evanescents dans le monde motivique. I}, Ast\'erisque \textbf{314} (2007),
+  x+466 pp. (2008). MR2423375 (2009i:14006)
+
+\bibitem[Ayo11]{Ayo11}
+---------, \emph{Note sur les op\'erations de Grothendieck et la r\'ealisation de
+  Betti}, J. Inst. Math. Jussieu \textbf{10} (2011), no. 1, 77--99. MR2749572
+  (2012a:14032)
+
+ \bibitem[B]{B} Bloch S., \textit{Some Elementary Theorems about Algebraic Cycles on Abelian Varieties}, Inventions math. 37, 215-228. 1976.
+
+\bibitem[BBD82]{BBD82}
+A.~A. Be{\u\i}linson, J. Bernstein, and P. Deligne, \emph{Faisceaux pervers},
+  Analysis and topology on singular spaces, I (Luminy, 1981), 1982, pp. 5--171.
+  MR751966 (86g:32015)
+
+\bibitem[Bek00]{Bek00}
+Tibor Beke, \emph{Sheafifiable homotopy model categories}, Math. Proc. Cambridge
+  Philos. Soc. \textbf{129} (2000), no.~3, 447--475. MR1780498 (2001i:18015)
+
+\bibitem[BV08]{BV08}
+Luca Barbieri-Viale and Bruno Kahn, \emph{On the derived category of 1-motives},
+  Ast\'erisque \textbf{381} (2016), xi+254. MR3545133
+
+\bibitem[Ful98]{Ful98} William Fulton, \textit{Intersection theory}, Second, Ergebnisse der Mathematik und ihrer Grenzgebiete. 3. Folge. A Series of Modern Surveys in Mathematics [Results in Mathematics and Related Areas. 3rd Series. A Series of Modern Surveys in Mathematics], vol. 2, Springer-Verlag, Berlin, 1998. MR1644323 (99d:14003)
+
+\bibitem[GP22]{GP22} Cesar Galindo and Pablo Pelaez, \textit{On the convergence of the orthogonal spectral sequence}, Homology Homotopy Appl. \textbf{24} (2022), no. 2, 389-401. MR4486247
+
+\bibitem[Gri68]{Gri68} Phillip A. Griffiths, \textit{Periods of integrals on algebraic manifolds. II. Local study of the period mapping}, Amer. J. Math. \textbf{90} (1968), 805-865. MR233825
+
+\bibitem[Gri71]{Gri71} \textit{Some transcendental methods in the study of algebraic cycles}, Several complex variables, II (Proc. Internat. Conf., Univ. Maryland, College Park, Md., 1970), 1971, pp. 1-46. MR309937
+
+\bibitem[Har77]{Har77} Robin Hartshorne, \textit{Algebraic geometry}, Graduate Texts in Mathematics, vol. No. 52, Springer-Verlag, New York-Heidelberg, 1977. MR463157
+
+\bibitem[Hir03]{Hir03} Philip S. Hirschhorn, \textit{Model categories and their localizations}, Mathematical Surveys and Monographs, vol. 99, American Mathematical Society, Providence, RI, 2003. MR1944041 (2003j:18018)
+
+\bibitem[HK06]{HK06} Annette Huber and Bruno Kahn, \textit{The slice filtration and mixed Tate motives}, Compos. Math. \textbf{142} (2006), no. 4, 907-936. MR2249535
+
+\bibitem[Hov01]{Hov01} Mark Hovey, \textit{Spectra and symmetric spectra in general model categories}, J. Pure Appl. Algebra \textbf{165} (2001), no. 1, 63-127. MR1860878 (2002j:55006)
+
+\bibitem[Kle71]{Kle71} Steven L. Kleiman, \textit{Finiteness theorems for algebraic cycles}, Actes du Congres International des Math\'ematiques (Nice, 1970), Tome 1, 1971, pp. 445-449. MR424807
+
+\bibitem[KS17]{KS17} Bruno Kahn and Ramdorai Sujatha, \textit{Birational motives, II: Triangulated birational motives}, Int. Math. Res. Not. IMRN \textbf{22} (2017), 6778-6831. MR3737321
+
+
+\bibitem[L]{L} Levine M. \textit{Six Lectures on Motives}.
+
+\bibitem[Lie68]{Lie68} David I. Lieberman, \textit{Higher Picard varieties}, Amer. J. Math. \textbf{90} (1968), 1165-1199. MR238857
+
+\bibitem[Mil]{Mil} Milne J. Abelian Varieties, in Arithmetic Geometry (G. Cornell, J. Silverman, eds.) rev. printing, Springer, 1998, 103-150.
+
+\bibitem[Mur83]{Mur83} Jacob P. Murre, \textit{Un r\'esultat en th\'eorie des cycles alg\'ebriques de codimension deux}, C. R. Acad. Sci. Paris S\'er. I Math. \textbf{296} (1983), no. 23, 981-984. MR777590
+
+\bibitem[Mur85]{Mur85} J. P. Murre, \textit{Applications of algebraic $K$-theory to the theory of algebraic cycles}, Algebraic geometry, Sitges (Barcelona), 1983, 1985, pp. 216-261. MR805336
+
+\bibitem[Mur90]{Mur90} \textit{On the motive of an algebraic surface}, J. Reine Angew. Math. \textbf{409} (1990), 190-204. MR1061525
+
+\bibitem[MVW06]{MVW06} Carlo Mazza, Vladimir Voevodsky, and Charles Weibel, \textit{Lecture notes on motivic cohomology}, Clay Mathematics Monographs, vol. 2, American Mathematical Society, Providence, RI, 2006. MR2242284 (2007e:14035)
+
+\bibitem[Nee01]{Nee01} Amnon Neeman, \textit{Triangulated categories}, Annals of Mathematics Studies, vol. 148, Princeton University Press, Princeton, NJ, 2001. MR1812507 (2001k:18010)
+
+\bibitem[Nee96]{Nee96} \textit{The Grothendieck duality theorem via Bousfield's techniques and Brown representability}, J. Amer. Math. Soc. \textbf{9} (1996), no. 1, 205-236. MR1308405 (96c:18006)
+
+\bibitem[Pel17]{Pel17} Pablo Pelaez, \textit{Mixed motives and motivic birational covers}, J. Pure Appl. Algebra \textbf{221} (2017), no. 7, 1699-1716. MR3614974
+
+\bibitem[PR25]{PR25} Pablo Pelaez and Araceli Reyes, \textit{Incidence equivalence and the Bloch-Beilinson filtration} (2025), available at \texttt{https://arxiv.org/abs/2501.19147}.
+
+\bibitem[Sai79]{Sai79} Hiroshi Saito, \textit{Abelian varieties attached to cycles of intermediate dimension}, Nagoya Math. J. \textbf{75} (1979), 95-119. MR542191
+
+\bibitem[Sam60]{Sam60} Pierre Samuel, \textit{Relations d'\'equivalence en g\'eom\'etrie alg\'ebrique}, Proc. Internat. Congress Math. 1958, 1960, pp. 470-487. MR116010
+
+\bibitem[SS03]{SS03} Michael Spie{\ss} and Tam\'as Szamuely, \textit{On the Albanese map for smooth quasi-projective varieties}, Math. Ann. \textbf{325} (2003), no. 1, 1-17. MR1957261
+
+\bibitem[Sus17]{Sus17} Andrei Suslin, \textit{Motivic complexes over nonperfect fields}, Ann. K-Theory \textbf{2} (2017), no. 2, 277-302. MR3590347
+
+\bibitem[SV00]{SV00} Andrei Suslin and Vladimir Voevodsky, \textit{Bloch-Kato conjecture and motivic cohomology with finite coefficients}, The arithmetic and geometry of algebraic cycles (Banff, AB, 1998), 2000, pp. 117-189. MR1744945 (2001g:14031)
+
+\bibitem[V]{V} Voevodsky V., and Friedlander E.M., \textit{Cycles, Tranfers and Motivic homology theories}, volume 143 of Annals of Mathematics Studies. Princeton Univ. Press, 2000.
+
+ \bibitem[Vo1]{Vo1} Voevodsky V. Motivic cohomology groups are isomorphic to higher Chow groups in any characteristic. Int. Math. Res. Not. 7:351-355, 2002.
+
+\bibitem[Voe00a]{Voe00a} Vladimir Voevodsky, \textit{Cohomological theory of presheaves with transfers}, Cycles, transfers, and motivic homology theories, 2000, pp. 87-137. MR1764200
+
+\bibitem[Voe00b]{Voe00b} \textit{Triangulated categories of motives over a field}, Cycles, transfers, and motivic homology theories, 2000, pp. 188-238. MR1764202
+
+% ==================== PAGE 18 ====================
+\bibitem[Voe02a]{Voe02a} Vladimir Voevodsky, \textit{Motivic cohomology groups are isomorphic to higher Chow groups in any characteristic}, Int. Math. Res. Not. \textbf{2002} (2002), no. 7, 351-355. MR1883180
+
+\bibitem[Voe02b]{Voe02b} \textit{Open problems in the motivic stable homotopy theory. I}, Motives, polylogarithms and Hodge theory, Part I (Irvine, CA, 1998), 2002, pp. 3-34. MR1977581
+
+\bibitem[Voe10a]{Voe10a} \textit{Cancellation theorem}, Doc. Math. \textbf{Extra} (2010), 671-685. MR2804267
+
+\bibitem[Voe10b]{Voe10b} \textit{On the slice filtration}, Doc. Math. \textbf{Extra} (2010), 673-694. MR2804268
+
+  \bibitem[W]{W} Weibel C. A., \textit{An introduction to homological algebra}, Cambridge University Press, 1997.
+
+\bibitem[Wei52]{Wei52} Andr\'e Weil, \textit{Abelian varieties and the Hodge ring}, Collected papers, vol. III, 1952, pp. 421-429.
+
+\end{thebibliography}
+
+\newpage
+
+
+
+\end{document}
